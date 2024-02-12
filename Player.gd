@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Player
 var speed = 300
+var max_health = 50
+var health = max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,9 +28,11 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
+		print("melee")
 	
 	if Input.is_action_just_pressed("ranged"):
 		ranged_attack()
+		print("ranged")
 
 func melee_attack():
 	pass
@@ -36,6 +40,7 @@ func melee_attack():
 func ranged_attack():
 	pass
 
-#when you die
+#when you get hit
 func _on_body_entered(body):
-	hide()
+	health -= 10
+	print(health)
