@@ -24,8 +24,17 @@ func _process(delta):
 	#move player
 	position += velocity * speed * delta
 	
+	if Input.is_action_just_pressed("melee"):
+		melee_attack()
 	
+	if Input.is_action_just_pressed("ranged"):
+		ranged_attack()
 
+func melee_attack():
+	pass
+
+func ranged_attack():
+	pass
 
 #when you die
 func _on_body_entered(body):
