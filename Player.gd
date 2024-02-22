@@ -1,8 +1,15 @@
 extends Area2D
 
 class_name Player
+
 var speed = 300
+
+#adjustable stats
 var max_health = 50
+var player_atk = 10
+var player_def = 10
+var player_spd = 10
+
 var health = max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +47,15 @@ func melee_attack():
 func ranged_attack():
 	pass
 
-#when you get hit
-func _on_body_entered(body):
-	health -= 10
+
+#die
+func on_death():
+	var dead = true
+
+func deal_damage(enemy_atk):
+	health -= (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	print(health)
+	if health <=0:
+		health = 0
+		on_death()
+
