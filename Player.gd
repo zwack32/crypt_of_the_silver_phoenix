@@ -23,16 +23,16 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	
 	#change velocity by player's input
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		direction = Vector2.DOWN
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		direction = Vector2.UP
 		velocity.y += -1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		velocity.x += -1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		direction = Vector2.RIGHT
 		velocity.x += 1
 	
