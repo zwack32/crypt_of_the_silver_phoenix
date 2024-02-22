@@ -56,6 +56,8 @@ func get_mouse_direction_from_player():
 	
 	var mouse_global_pos = get_viewport().get_mouse_position()
 	
+	print(viewport_w, " ", viewport_h, " ", mouse_global_pos)
+	
 	return Vector2(mouse_global_pos.x / viewport_w, mouse_global_pos.y / viewport_h)
 
 func melee_attack():
