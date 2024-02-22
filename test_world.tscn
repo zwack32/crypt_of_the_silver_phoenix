@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhy7e2fcung4f"]
+[gd_scene load_steps=4 format=3 uid="uid://dhy7e2fcung4f"]
 
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://player.tscn" id="1_titjy"]
 [ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://enemy.tscn" id="2_6imu3"]
+[ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_fo2hy"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -10,6 +11,7 @@ offset_right = 1173.0
 offset_bottom = 670.0
 
 [node name="Player" parent="." instance=ExtResource("1_titjy")]
+weapon_test_stick = ExtResource("2_fo2hy")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6imu3")]
 position = Vector2(282, 163)

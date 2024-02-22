@@ -13,7 +13,7 @@ func _ready():
 
 #Move toward player
 func _process(delta):
-	var direction = (player.global_position - global_position).normalized()
+	var direction = (player.position - position).normalized()
 	position += direction * speed
 
 #Hit player

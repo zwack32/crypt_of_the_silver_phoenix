@@ -7,6 +7,7 @@
 size = Vector2(127, 127)
 
 [node name="Enemy" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_51ycr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
