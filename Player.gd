@@ -14,6 +14,9 @@ var direction = Vector2.UP
 
 @export var weapon_test_stick: PackedScene
 
+func get_player_atk():
+	return player_atk
+
 func _ready():
 	pass
 
@@ -62,6 +65,7 @@ func get_mouse_direction_from_player():
 
 func melee_attack():
 	var test_stick = weapon_test_stick.instantiate()
+	test_stick.player = self
 	add_child(test_stick)
 
 func ranged_attack():
