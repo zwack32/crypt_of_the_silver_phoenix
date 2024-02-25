@@ -1,23 +1,29 @@
 extends Area2D
 class_name Player
 
-var speed = 300
+var movement_speed = 300
 
 #adjustable stats
-var max_health = 50
+var player_max_health = 50
 var player_atk = 10
 var player_def = 10
 var player_spd = 10
 
-var health = max_health
+var health = player_max_health
 var direction = Vector2.UP
 
 @export var weapon_test_stick: PackedScene
 
 var swing_weapon
-
+#annoying functions so that we can use these in other scripts
 func get_player_atk():
 	return player_atk
+func get_player_def():
+	return player_def
+func get_player_spd():
+	return player_spd
+func get_player_max_hp():
+	return player_max_health
 
 func _ready():
 	pass
@@ -49,7 +55,7 @@ func _process(delta):
 	velocity = velocity.normalized()
 
 	#move player
-	position += velocity * speed * delta
+	position += velocity * movement_speed * delta
 	
 	if swing_weapon:
 		swing_weapon.rotation_degrees += 12
