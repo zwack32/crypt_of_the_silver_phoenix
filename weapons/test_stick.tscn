@@ -7,7 +7,7 @@
 size = Vector2(19.9174, 31.75)
 
 [node name="TestStick" type="Area2D"]
-collision_layer = 0
+collision_layer = 9
 collision_mask = 8
 script = ExtResource("1_x8eap")
 
