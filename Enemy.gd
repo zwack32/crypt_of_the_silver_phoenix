@@ -33,13 +33,19 @@ func _process(delta):
 
 #Hit player
 func _on_area_entered(area):
+	if area is MeleeWeapon:
+		print("is melee")
+	elif area is Player:
+		print("player takes damage")
+			
 	#print(area.get_parent().get_children())
 	#if area == player:
 	#	player.deal_damage(enemy_atk)
 	#	print("player")
-	#else: #area == weapon:
+	#sssssselse: #area == weapon:
 	#	enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, sword_str)
 	#	print("weapon")
+	pass
 	
 	
 
@@ -47,4 +53,3 @@ func enemy_take_damage(player_atk,enemy_def,enemy_hp, sword_str):
 	var new_enemy_health = enemy_hp
 	new_enemy_health -= (clamp(player_atk+sword_str-enemy_def, 0, 9999999))+sword_str
 	enemy_hp = new_enemy_health
-

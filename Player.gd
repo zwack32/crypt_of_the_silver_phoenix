@@ -124,3 +124,5 @@ func deal_damage(enemy_atk):
 		health = 0
 		on_death()
 
+func is_player():
+	pass

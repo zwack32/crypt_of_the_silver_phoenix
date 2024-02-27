@@ -1,4 +1,4 @@
-extends Area2D
+extends MeleeWeapon
 
 @onready var collision_shape_2d = $CollisionShape2D
 @export var player: Player
@@ -23,3 +23,6 @@ func enemy_damage(player_atk,enemy_def,enemy_hp):
 	var new_enemy_health = enemy_hp
 	new_enemy_health -= (clamp(player_atk+str-enemy_def, 0, 9999999))+str
 	#actually do the damage here
+
+func is_weapon():
+	pass
