@@ -117,7 +117,7 @@ func ranged_attack():
 func on_death():
 	var dead = true
 
-func deal_damage(enemy_atk):
+func take_damage(enemy_atk):
 	health -= (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	print(health)
 	if health <=0:

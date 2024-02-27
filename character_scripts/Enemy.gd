@@ -11,6 +11,7 @@ var enemy_def = 5
 
 var enemy_health = enemy_max_health
 
+
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
 	return enemy_atk
@@ -31,22 +32,16 @@ func _process(delta):
 	var direction = (player.position - position).normalized()
 	position += direction * speed
 
-#Hit player
+#differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
 	if area is MeleeWeapon:
-		print("is melee")
+		#enemy takes damage
+		enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
+		print("enemy take damage")
 	elif area is Player:
-		print("player takes damage")
-			
-	#print(area.get_parent().get_children())
-	#if area == player:
-	#	player.deal_damage(enemy_atk)
-	#	print("player")
-	#sssssselse: #area == weapon:
-	#	enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, sword_str)
-	#	print("weapon")
-	pass
-	
+		#player takes damage
+		player.take_damage(enemy_atk)
+		print("player take damage")
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_hp, sword_str):
