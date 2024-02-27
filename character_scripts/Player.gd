@@ -15,6 +15,8 @@ var direction = Vector2.UP
 @export var weapon_test_stick: PackedScene
 
 var swing_weapon
+var swing_weapon_rot
+var swing_weapon_start_rot
 #annoying functions so that we can use these in other scripts
 func get_player_atk():
 	return player_atk
@@ -37,19 +39,15 @@ func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		direction = Vector2.DOWN
 		velocity.y += 1
-		rotation_degrees = 180
 	if Input.is_action_pressed("move_up"):
 		direction = Vector2.UP
 		velocity.y += -1
-		rotation_degrees = 0
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		velocity.x += -1
-		rotation_degrees = 270
 	if Input.is_action_pressed("move_right"):
 		direction = Vector2.RIGHT
 		velocity.x += 1
-		rotation_degrees = 90
 	
 	#normalize the velocity
 	velocity = velocity.normalized()
@@ -59,7 +57,9 @@ func _process(delta):
 	
 	if swing_weapon:
 		swing_weapon.rotation_degrees += 12
-		if swing_weapon.rotation_degrees >= 45:
+		swing_weapon_rot += 12
+		if swing_weapon_rot >= swing_weapon_start_rot + 90:
+			swing_weapon.queue_free()
 			swing_weapon = null
 	
 	if Input.is_action_just_pressed("melee"):
@@ -72,22 +72,30 @@ func _process(delta):
 		var theta_b = acos(right_up_vec.dot(mouse_dir) / (right_up_vec.length() * mouse_dir.length()))
 		
 		var swing_direction
+		var swing_rot = 0
 		if theta_a < PI / 2:
 			if theta_b < PI / 2:
 				# Right 
 				swing_direction = Vector2.RIGHT
+				swing_rot = -45 - 270
+				
 			else:
 				# Down
 				swing_direction = Vector2.DOWN
+				swing_rot = -45 - 180
 		else:
 			if theta_b < PI / 2:
 				# Up
 				swing_direction = Vector2.UP
+				swing_rot = -45
 			else:
 				# Left
 				swing_direction = Vector2.LEFT
+				swing_rot = -45 - 90
 				
-		swing_weapon.rotation_degrees = -45
+		swing_weapon.rotation_degrees = swing_rot
+		swing_weapon_start_rot = swing_rot
+		swing_weapon_rot = swing_rot
 				
 		print(swing_direction)
 	
