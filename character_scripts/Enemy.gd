@@ -5,7 +5,7 @@ class_name Enemy
 @export var stick: Area2D
 @export var speed: float = 2.0
 
-var enemy_max_health = 20
+var enemy_max_health = 30
 var enemy_atk = 5
 var enemy_def = 5
 
@@ -47,4 +47,12 @@ func _on_area_entered(area):
 func enemy_take_damage(player_atk,enemy_def,enemy_hp, sword_str):
 	var new_enemy_health = enemy_hp
 	new_enemy_health -= (clamp(player_atk+sword_str-enemy_def, 0, 9999999))+sword_str
-	enemy_hp = new_enemy_health
+	enemy_health = new_enemy_health
+	if enemy_health <= 0:
+		enemy_health = 0
+		enemy_die()
+	print(enemy_health)
+
+func enemy_die():
+	pass
+	
