@@ -16,3 +16,4 @@ weapon_test_stick = ExtResource("2_oq22v")
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aib2c")]
 position = Vector2(282, 163)
 player = NodePath("../Player")
+speed = 2.0
