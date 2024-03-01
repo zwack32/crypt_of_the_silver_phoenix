@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhy7e2fcung4f"]
+[gd_scene load_steps=7 format=3 uid="uid://dhy7e2fcung4f"]
 
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_impp3"]
+[ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
 [ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_oq22v"]
 [ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/enemy.tscn" id="3_aib2c"]
+[ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="5_cxhdf"]
+[ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_q2ave"]
 
 [node name="TestWorld" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1173.0
-offset_bottom = 670.0
+[node name="StartRoom" parent="." node_paths=PackedStringArray("room_manager") instance=ExtResource("1_qiyfc")]
+room_manager = NodePath("../RoomManager")
+triggerable = false
+
+[node name="TestRoom" parent="." node_paths=PackedStringArray("room_manager") instance=ExtResource("1_qiyfc")]
+position = Vector2(0, -1040)
+room_manager = NodePath("../RoomManager")
 
 [node name="Player" parent="." instance=ExtResource("1_impp3")]
 weapon_test_stick = ExtResource("2_oq22v")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aib2c")]
-position = Vector2(282, 163)
+position = Vector2(119, 239)
 player = NodePath("../Player")
-speed = 2.0
+
+[node name="TestRoomDoor" parent="." instance=ExtResource("5_cxhdf")]
+position = Vector2(0, -540)
+
+[node name="RoomManager" parent="." instance=ExtResource("6_q2ave")]
