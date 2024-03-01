@@ -8,11 +8,11 @@ class_name Enemy
 @onready var death_timer = $DeathTimer
 @onready var sprite = $Sprite2D
 
-var enemy_max_health = 15
+var enemy_max_health = 30
 var enemy_atk = 5
 var enemy_def = 5
 
-var enemy_health = enemy_max_health
+var enemy_health
 
 var dead = false
 #annoying functions so that we can use these in other scripts
@@ -24,11 +24,10 @@ func get_enemy_max_hp():
 	return enemy_max_health
 func get_enemy_health():
 	return enemy_health
-#this worked for the player; idk what else to do
-#test_stick.enemy = self
 
 func _ready():
 	sprite.texture = load("res://icon.svg")
+	enemy_health = enemy_max_health
 
 #Move toward player
 func _process(delta):
@@ -43,7 +42,7 @@ func _on_area_entered(area):
 	if !dead:
 		if area is MeleeWeapon:
 			#enemy takes damage
-			enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
+			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 			print("enemy take damage")
 		elif area is Player:
 			#player takes damage
@@ -56,7 +55,7 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	if enemy_health <= 0:
 		enemy_health = 0
 		enemy_die()
-	print(enemy_health)
+	return enemy_health
 
 func enemy_die():
 	dead = true
