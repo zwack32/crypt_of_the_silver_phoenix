@@ -6,6 +6,7 @@ class_name Enemy
 @export var speed: float = 2.0
 
 @onready var death_timer = $DeathTimer
+@onready var sprite = $Sprite2D
 
 var enemy_max_health = 15
 var enemy_atk = 5
@@ -27,7 +28,7 @@ func get_enemy_health():
 #test_stick.enemy = self
 
 func _ready():
-	pass 
+	sprite.texture = load("res://icon.svg")
 
 #Move toward player
 func _process(delta):
@@ -60,4 +61,4 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 func enemy_die():
 	dead = true
 	death_timer.start()
-	#make him grey
+	sprite.texture = load("res://art/rect1.svg")
