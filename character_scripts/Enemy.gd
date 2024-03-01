@@ -1,9 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 class_name Enemy
 
-@export var player: Area2D
+@export var player: Player
 @export var stick: Area2D
-@export var speed: float = 2.0
+@export var speed: float = 100.0
 
 @onready var death_timer = $DeathTimer
 @onready var sprite = $Sprite2D
@@ -31,11 +31,13 @@ func _ready():
 
 #Move toward player
 func _process(delta):
+	velocity = Vector2.ZERO
 	if !dead:
 		var direction = (player.position - position).normalized()
-		position += direction * speed
+		velocity = direction * speed
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
+	move_and_slide()
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
@@ -58,6 +60,8 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	return enemy_health
 
 func enemy_die():
+	print("did you die again")
 	dead = true
+	velocity = Vector2.ZERO
 	death_timer.start()
 	sprite.texture = load("res://art/rect1.svg")

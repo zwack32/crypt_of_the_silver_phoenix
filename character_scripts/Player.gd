@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 class_name Player
 
 var movement_speed = 300
@@ -32,28 +32,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#create velocity, set it to zero
-	var velocity = Vector2.ZERO
+	var player_velocity = Vector2.ZERO
 	
 	#change velocity by player's input
 	if Input.is_action_pressed("move_down"):
 		direction = Vector2.DOWN
-		velocity.y += 1
+		player_velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		direction = Vector2.UP
-		velocity.y += -1
+		player_velocity.y += -1
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
-		velocity.x += -1
+		player_velocity.x += -1
 	if Input.is_action_pressed("move_right"):
 		direction = Vector2.RIGHT
-		velocity.x += 1
-	
-	#normalize the velocity
-	velocity = velocity.normalized()
+		player_velocity.x += 1
 
-	#move player
-	position += velocity * movement_speed * delta
+	velocity = player_velocity.normalized() * movement_speed
 	
 	if swing_weapon:
 		swing_weapon.rotation_degrees += 12
@@ -61,6 +56,7 @@ func _process(delta):
 		if swing_weapon_rot >= swing_weapon_start_rot + 90:
 			swing_weapon.queue_free()
 			swing_weapon = null
+	move_and_slide()
 	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
