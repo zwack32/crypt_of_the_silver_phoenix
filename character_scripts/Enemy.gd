@@ -28,6 +28,15 @@ func get_enemy_health():
 func _ready():
 	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
+	var room_number = 1
+	#randomize stats
+	enemy_atk += randi_range(-1, (2+room_number))
+	enemy_def += randi_range(-1, (2+room_number))
+	enemy_health += randi_range(-2, 5+(2*room_number))
+	
+	print(str(enemy_atk) + "atk")
+	print(str(enemy_def) + "def")
+	print(str(enemy_health) + "health")
 
 #Move toward player
 func _process(delta):
