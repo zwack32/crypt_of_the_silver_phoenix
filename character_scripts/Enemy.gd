@@ -54,7 +54,7 @@ func _on_area_entered(area):
 		if area is MeleeWeapon:
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-			print("enemy take damage")
+			#print("enemy take damage")
 		elif area is Player:
 			#player takes damage
 			player.take_damage(enemy_atk)
@@ -62,10 +62,12 @@ func _on_area_entered(area):
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
-	enemy_health -= (clamp(player_atk+sword_str-enemy_def, 0, 9999999))+sword_str
+	var dmg = (clamp(player_atk+sword_str-enemy_def, 0, 9999999))+sword_str
+	enemy_health -= dmg
 	if enemy_health <= 0:
 		enemy_health = 0
 		enemy_die()
+	print("Enemy takes " + str(dmg) + " damage and has " + str(enemy_health) + " hp left")
 	return enemy_health
 
 func enemy_die():

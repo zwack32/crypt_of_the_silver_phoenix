@@ -26,5 +26,6 @@ player = NodePath("../Player")
 
 [node name="TestRoomDoor" parent="." instance=ExtResource("5_cxhdf")]
 position = Vector2(0, -540)
+collision_layer = 16
 
 [node name="RoomManager" parent="." instance=ExtResource("6_q2ave")]
