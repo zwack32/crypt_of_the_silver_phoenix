@@ -1,16 +1,17 @@
 extends CharacterBody2D
-class_name Enemy
+class_name Bat
 
 @export var player: Player
 @export var stick: Area2D
-@export var speed: float = 100.0
+@export var speed: float = 1000.0
 
 @onready var death_timer = $DeathTimer
+@onready var attack_timer = $AttackTimer
 @onready var sprite = $Sprite2D
 
-var enemy_max_health = 30
-var enemy_atk = 5
-var enemy_def = 5
+var enemy_max_health = 20
+var enemy_atk = 7
+var enemy_def = 3
 
 var enemy_health
 
@@ -42,8 +43,10 @@ func _ready():
 func _process(delta):
 	velocity = Vector2.ZERO
 	if !dead:
-		var direction = (player.position - position).normalized()
-		velocity = direction * speed
+		if attack_timer <= 0:
+			var direction = (player.position - position).normalized()
+			velocity = direction * speed
+			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
 	move_and_slide()
@@ -76,3 +79,4 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	sprite.texture = load("res://art/rect1.svg")
+

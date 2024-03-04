@@ -124,7 +124,7 @@ func on_death():
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	health -= dmg
-	print("Player takes " + str(dmg) + "damage and has " + str(health) + " hp left")
+	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
 	#print(health)
 	if health <=0:
 		health = 0
