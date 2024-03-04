@@ -6,18 +6,22 @@ const DoorNode = DoorsScript.DoorNode
 
 class CheckNode:
 	var doors: Array[DoorNode]
+	
+	static func init() -> CheckNode:
+		var this = CheckNode.new()
+		return this
 
-func check(rooms: Array[RoomNode], doors: Array[DoorNode]) -> bool:
-	var nodes = []
+static func check(rooms: Array[RoomNode], doors: Array[DoorNode]) -> bool:
+	var nodes: Array[CheckNode] = []
 	for _r in rooms:
-		nodes.push_back(CheckNode)
+		nodes.push_back(CheckNode.init())
 	for door in doors:
-		rooms[door.original_room_idx].push_back(door);
+		nodes[door.original_room_idx].doors.push_back(door);
 
 	var last_count = 0;
-	for idx in range(0, len(rooms)):
-		var node = rooms[idx]
-		var walked_rooms = [];
+	for idx in range(0, len(nodes)):
+		var node: CheckNode = nodes[idx]
+		var walked_rooms: Array[int] = [];
 		walked_rooms.push_back(idx);
 		if idx == 0:
 			last_count = walk_room(nodes, node, walked_rooms)
@@ -28,9 +32,9 @@ func check(rooms: Array[RoomNode], doors: Array[DoorNode]) -> bool:
 
 	return true
 
-func walk_room(rooms: Array[CheckNode], room: CheckNode, walked_rooms: Array[int]) -> int:
+static func walk_room(rooms: Array[CheckNode], room: CheckNode, walked_rooms: Array[int]) -> int:
 	var room_count = 0
-
+	
 	for door in room.doors:
 		var next_room = rooms[door.pair_room_idx]
 		if !walked_rooms.has(door.pair_room_idx):
