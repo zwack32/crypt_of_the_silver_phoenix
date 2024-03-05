@@ -108,8 +108,6 @@ func melee_attack():
 	swing_weapon.swing_speed = player_spd
 	swing_weapon.rot = swing_rot
 	swing_weapon.player = self
-			
-	print(swing_direction)
 
 func ranged_attack():
 	pass
