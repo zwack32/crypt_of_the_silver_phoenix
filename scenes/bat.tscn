@@ -17,7 +17,7 @@ scale = Vector2(1, 0.4375)
 texture = ExtResource("1_6vikr")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]

@@ -3,7 +3,7 @@ class_name Bat
 
 @export var player: Player
 @export var stick: Area2D
-@export var speed: float = 1000.0
+@export var speed: float = 500.0
 
 var velocity = Vector2.ZERO
 
@@ -45,18 +45,26 @@ func _ready():
 
 #Move toward player
 func _process(delta):
-	velocity = Vector2.ZERO
 	if !dead:
 		if attack_timer.time_left <= 0:
-			var direction = (player.position - position) * 0.1
+			var direction = (player.position - position).normalized()
 			velocity = direction * speed
-			
-			await get_tree().create_timer(1).timeout
+			check_attack_timer()
+			if check_attack_timer():
+				await get_tree().create_timer(2).timeout
 			
 			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
 	position += velocity * delta
+
+func check_attack_timer():
+	if attack_timer.timeout:
+		return true
+		velocity = Vector2.ZERO
+	else:
+		return false
+
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
