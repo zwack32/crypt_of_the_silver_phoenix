@@ -34,6 +34,19 @@ func _ready():
 	enemy_def += randi_range(-1, (2+room_number))
 	enemy_health += randi_range(-2, 5+(2*room_number))
 	
+	#if on room 3 or higher, start adding elemental enemies
+	var type = "normal"
+	if room_number >= 3:
+		var type_determiner = randi_range(1, 4)
+		if type_determiner == 1 or 2:
+			type = "normal"
+		elif type_determiner == 3:
+			type = "fire"
+			#load red godot icon here
+		elif type_determiner == 4:
+			type = "ice"
+			#load cyan godot logo here
+	
 	print(str(enemy_atk) + "atk")
 	print(str(enemy_def) + "def")
 	print(str(enemy_health) + "health")
