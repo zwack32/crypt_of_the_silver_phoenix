@@ -105,6 +105,7 @@ func melee_attack():
 			
 	swing_weapon.rotation_degrees = swing_rot
 	swing_weapon.start_rot = swing_rot
+	swing_weapon.swing_speed = player_spd
 	swing_weapon.rot = swing_rot
 	swing_weapon.player = self
 			
