@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=8 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_g71mc"]
@@ -8,6 +8,22 @@ size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbbew"]
 size = Vector2(128, 128)
+
+[sub_resource type="Theme" id="Theme_tvr1f"]
+ProgressBar/colors/font_color = Color(0.968627, 0.968627, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0yto"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fbgb"]
+bg_color = Color(0.231373, 0.533333, 0.215686, 0.92549)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 18
@@ -26,3 +42,14 @@ texture = ExtResource("2_g71mc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -118.0
+offset_top = -108.0
+offset_right = 118.0
+offset_bottom = -85.0
+theme = SubResource("Theme_tvr1f")
+theme_override_styles/background = SubResource("StyleBoxFlat_j0yto")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2fbgb")
+step = 1.0
+value = 50.0

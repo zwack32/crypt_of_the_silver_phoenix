@@ -12,6 +12,8 @@ var player_spd = 10
 var health = player_max_health
 var direction = Vector2.UP
 
+
+
 @export var weapon_test_stick: PackedScene
 
 var swing_weapon
@@ -29,6 +31,7 @@ func get_player_max_hp():
 
 func _ready():
 	pass
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
