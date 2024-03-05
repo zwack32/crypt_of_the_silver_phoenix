@@ -49,18 +49,7 @@ static func render_level(
 		draw_rect(tm, room.pos, room.size, room_atlas)
 		draw_rect_borders(tm, room.pos, room.size, room_atlas)
 	for door in doors:
-		var size: Vector2
-		if door.normal == Vector2(1.0, 0.0):
-			size = Vector2(1.0, 5.0)
-		elif door.normal == Vector2(-1.0, 0.0):
-			size = Vector2(1.0, 5.0)
-		elif door.normal == Vector2(0.0, 1.0):
-			size = Vector2(5.0, 1.0)
-		elif door.normal == Vector2(0.0, -1.0):
-			size = Vector2(5.0, 1.0)
-		else:
-			printerr("This really shouldn't happen. Go yell at David")
-
+		var size = door.get_size()
 		draw_rect(tm, door.pos, size, room_atlas)
 
 static func set_origin_to_last_room(rooms: Array[RoomNode]):

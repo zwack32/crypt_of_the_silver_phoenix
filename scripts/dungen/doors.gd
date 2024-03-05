@@ -45,6 +45,20 @@ class DoorNode:
 		node.pair_room_idx = new_pair_room_idx
 		return node
 
+	func get_size() -> Vector2:
+		var size: Vector2
+		if self.normal == Vector2(1.0, 0.0):
+			size = Vector2(1.0, 5.0)
+		elif self.normal == Vector2(-1.0, 0.0):
+			size = Vector2(1.0, 5.0)
+		elif self.normal == Vector2(0.0, 1.0):
+			size = Vector2(5.0, 1.0)
+		elif self.normal == Vector2(0.0, -1.0):
+			size = Vector2(5.0, 1.0)
+		else:
+			printerr("This really shouldn't happen. Go yell at David")
+		return size
+
 static func doors_gen(rooms: Array[RoomNode]) -> Array[DoorNode]:
 	var nodes = []
 	for original_room_idx in range(0, len(rooms)):
