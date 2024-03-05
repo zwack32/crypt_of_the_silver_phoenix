@@ -72,6 +72,7 @@ func _on_area_entered(area):
 		if area is MeleeWeapon:
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
+			velocity = Vector2.ZERO
 			#print("enemy take damage")
 		elif area.owner is Player:
 			#player takes damage
