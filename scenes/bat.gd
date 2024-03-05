@@ -38,12 +38,14 @@ func _ready():
 	print(str(enemy_atk) + "atk")
 	print(str(enemy_def) + "def")
 	print(str(enemy_health) + "health")
+	
+	attack_timer.start()
 
 #Move toward player
 func _process(delta):
 	velocity = Vector2.ZERO
 	if !dead:
-		if attack_timer <= 0:
+		if attack_timer.time_left <= 0:
 			var direction = (player.position - position).normalized()
 			velocity = direction * speed
 			attack_timer.start()

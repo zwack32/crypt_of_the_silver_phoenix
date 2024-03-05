@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://chvuc5rsrewvi" path="res://scenes/level.tscn" id="1_dfah8"]
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_impp3"]
-[ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
+[ext_resource type="PackedScene" path="res://scenes/room.tscn" id="1_qiyfc"]
 [ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_oq22v"]
-[ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/enemy.tscn" id="3_aib2c"]
-[ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="5_cxhdf"]
-[ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_q2ave"]
+[ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/slime.tscn" id="3_aib2c"]
+[ext_resource type="PackedScene" path="res://scenes/room_manager.tscn" id="6_q2ave"]
+[ext_resource type="PackedScene" uid="uid://qq15dgyc72ta" path="res://scenes/bat.tscn" id="8_ib53q"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -25,12 +25,13 @@ room_manager = NodePath("../RoomManager")
 [node name="Player" parent="." instance=ExtResource("1_impp3")]
 weapon_test_stick = ExtResource("2_oq22v")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aib2c")]
-position = Vector2(119, 239)
+[node name="RoomManager" parent="." instance=ExtResource("6_q2ave")]
+
+[node name="Bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_ib53q")]
+position = Vector2(387, 23)
+collision_mask = 8
 player = NodePath("../Player")
 
-[node name="TestRoomDoor" parent="." instance=ExtResource("5_cxhdf")]
-position = Vector2(0, -540)
-collision_layer = 16
-
-[node name="RoomManager" parent="." instance=ExtResource("6_q2ave")]
+[node name="Slime" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aib2c")]
+position = Vector2(156, 240)
+player = NodePath("../Player")
