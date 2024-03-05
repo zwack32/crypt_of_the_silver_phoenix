@@ -81,16 +81,17 @@ func check_attack_timer():
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
+	print("area entered")
 	if !dead:
 		if area is MeleeWeapon:
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 			velocity = Vector2.ZERO
-			#print("enemy take damage")
+			print("enemy take damage")
 		elif area.owner is Player:
 			#player takes damage
 			player.take_damage(enemy_atk)
-			#print("player take damage")
+			print("player take damage")
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
