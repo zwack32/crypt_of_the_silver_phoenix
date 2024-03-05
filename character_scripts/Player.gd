@@ -11,12 +11,10 @@ var player_spd = 10
 
 var health = player_max_health
 var direction = Vector2.UP
+var can_swing = false
 
 @export var weapon_test_stick: PackedScene
 
-var swing_weapon
-var swing_weapon_rot
-var swing_weapon_start_rot
 #annoying functions so that we can use these in other scripts
 func get_player_atk():
 	return player_atk
@@ -50,50 +48,10 @@ func _process(delta):
 
 	velocity = player_velocity.normalized() * movement_speed
 	
-	if swing_weapon:
-		swing_weapon.rotation_degrees += 12
-		swing_weapon_rot += 12
-		if swing_weapon_rot >= swing_weapon_start_rot + 90:
-			swing_weapon.queue_free()
-			swing_weapon = null
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
-		var right_down_vec = Vector2(1, 1).normalized()
-		var right_up_vec = Vector2(1, -1).normalized()
-		var mouse_dir = get_mouse_direction_from_player()
-		
-		var theta_a = acos(right_down_vec.dot(mouse_dir) / (right_down_vec.length() * mouse_dir.length()))
-		var theta_b = acos(right_up_vec.dot(mouse_dir) / (right_up_vec.length() * mouse_dir.length()))
-		
-		var swing_direction
-		var swing_rot = 0
-		if theta_a < PI / 2:
-			if theta_b < PI / 2:
-				# Right 
-				swing_direction = Vector2.RIGHT
-				swing_rot = -45 - 270
-				
-			else:
-				# Down
-				swing_direction = Vector2.DOWN
-				swing_rot = -45 - 180
-		else:
-			if theta_b < PI / 2:
-				# Up
-				swing_direction = Vector2.UP
-				swing_rot = -45
-			else:
-				# Left
-				swing_direction = Vector2.LEFT
-				swing_rot = -45 - 90
-				
-		swing_weapon.rotation_degrees = swing_rot
-		swing_weapon_start_rot = swing_rot
-		swing_weapon_rot = swing_rot
-				
-		print(swing_direction)
 	
 	if Input.is_action_just_pressed("ranged"):
 		ranged_attack()
@@ -108,11 +66,46 @@ func get_mouse_direction_from_player():
 	return screen_coord.normalized()
 
 func melee_attack():
-	if !swing_weapon:
-		var test_stick = weapon_test_stick.instantiate()
-		test_stick.player = self
-		swing_weapon = test_stick
-		add_child(test_stick)
+	var test_stick = weapon_test_stick.instantiate()
+	test_stick.player = self
+	var swing_weapon = test_stick
+	add_child(test_stick)
+	can_swing = false
+
+	var right_down_vec = Vector2(1, 1).normalized()
+	var right_up_vec = Vector2(1, -1).normalized()
+	var mouse_dir = get_mouse_direction_from_player()
+	
+	var theta_a = acos(right_down_vec.dot(mouse_dir) / (right_down_vec.length() * mouse_dir.length()))
+	var theta_b = acos(right_up_vec.dot(mouse_dir) / (right_up_vec.length() * mouse_dir.length()))
+	
+	var swing_direction
+	var swing_rot = 0
+	if theta_a < PI / 2:
+		if theta_b < PI / 2:
+			# Right 
+			swing_direction = Vector2.RIGHT
+			swing_rot = -45 - 270
+		else:
+			# Down
+			swing_direction = Vector2.DOWN
+			swing_rot = -45 - 180
+	else:
+		if theta_b < PI / 2:
+			# Up
+			swing_direction = Vector2.UP
+			swing_rot = -45
+		else:
+			# Left
+			swing_direction = Vector2.LEFT
+			swing_rot = -45 - 90
+			
+	swing_weapon.rotation_degrees = swing_rot
+	swing_weapon.start_rot = swing_rot
+	swing_weapon.rot = swing_rot
+	swing_weapon.player = self
+			
+	print(swing_direction)
 
 func ranged_attack():
 	pass
@@ -129,3 +122,7 @@ func take_damage(enemy_atk):
 		health = 0
 		on_death()
 	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
+
+func renable_swing():
+	can_swing = true
+
