@@ -1,16 +1,9 @@
 extends MeleeWeapon
 
 @onready var collision_shape_2d = $CollisionShape2D
-@export var player: Player
 @export var enemy: Enemy
 
 var str = 5
-
-func _ready():
-	pass
-
-func _process(delta):
-	pass
 
 func _on_area_entered(area):
 	#enemy_damage(player.get_player_atk(), enemy.get_enemy_def(), enemy.get_enemy_health())

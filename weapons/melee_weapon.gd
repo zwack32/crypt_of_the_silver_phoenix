@@ -1,12 +1,13 @@
 extends Area2D
 class_name MeleeWeapon
 
+@export var rot: float
+@export var start_rot: float
+@export var player: Player
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _process(_delta):
+	self.rotation_degrees += 12
+	rot += 12
+	if rot >= start_rot + 90:
+		self.queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
