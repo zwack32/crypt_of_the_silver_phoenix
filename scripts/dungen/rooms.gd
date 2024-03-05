@@ -131,12 +131,12 @@ static func rooms_inject_room(nodes: Array[RoomNode], initial_node: RoomNode):
 		var cm = get_rooms_center_of_mass(nodes)
 		var next_pos = n.pos + (cm - n.pos).normalized()
 
-		if nodes.any(func (nn): return nn.collides_with(RoomNode.init(Vector2(next_pos.x, n.pos.y), n.size))):
+		if !nodes.any(func (nn): return nn.collides_with(RoomNode.init(Vector2(next_pos.x, n.pos.y), n.size))):
 			n.pos.x = next_pos.x
 		else:
 			x_collision = true
 
-		if nodes.any(func (nn): return nn.collides_with(RoomNode.init(Vector2(n.pos.x, next_pos.y), n.size))):
+		if !nodes.any(func (nn): return nn.collides_with(RoomNode.init(Vector2(n.pos.x, next_pos.y), n.size))):
 			n.pos.y = next_pos.y
 		else:
 			y_collision = true
@@ -149,5 +149,6 @@ static func rooms_inject_room(nodes: Array[RoomNode], initial_node: RoomNode):
 	n.pos.y = round(n.pos.y)
 	n.size.x = round(n.size.x)
 	n.size.y = round(n.size.y)
+
 	nodes.push_back(n)
 
