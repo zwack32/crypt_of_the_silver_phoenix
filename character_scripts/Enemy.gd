@@ -68,7 +68,7 @@ func _on_area_entered(area):
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 			#print("enemy take damage")
-		elif area.owner is PlayerArea:
+		elif area.owner is Player:
 			#player takes damage
 			player.take_damage(enemy_atk)
 			#print("player take damage")

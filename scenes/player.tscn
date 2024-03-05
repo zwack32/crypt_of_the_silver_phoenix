@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=5 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
-[ext_resource type="Script" path="res://scripts/PlayerArea.gd" id="2_dreqp"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_g71mc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nia33"]
@@ -15,7 +14,6 @@ collision_mask = 18
 script = ExtResource("1_j4g1x")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_dreqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_nia33")
