@@ -81,7 +81,6 @@ func check_attack_timer():
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
-	print("area entered")
 	if !dead:
 		if area is MeleeWeapon:
 			#enemy takes damage

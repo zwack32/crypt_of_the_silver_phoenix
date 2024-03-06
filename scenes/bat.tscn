@@ -11,7 +11,7 @@ size = Vector2(128, 56)
 
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 24
 script = ExtResource("1_lp1dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_vjhq5")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8bfjk")
