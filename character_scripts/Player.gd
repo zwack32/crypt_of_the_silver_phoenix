@@ -11,7 +11,7 @@ var player_spd = 10
 
 var health = player_max_health
 var direction = Vector2.UP
-var can_swing = false
+var can_swing = true
 
 
 
@@ -69,6 +69,9 @@ func get_mouse_direction_from_player():
 	return screen_coord.normalized()
 
 func melee_attack():
+	if !can_swing:
+		return
+
 	var test_stick = weapon_test_stick.instantiate()
 	test_stick.player = self
 	var swing_weapon = test_stick

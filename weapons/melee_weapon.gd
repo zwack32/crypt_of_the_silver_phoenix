@@ -10,5 +10,6 @@ func _process(_delta):
 	self.rotation_degrees += swing_speed
 	rot += swing_speed
 	if rot >= start_rot + 90:
+		player.can_swing = true
 		self.queue_free()
 
