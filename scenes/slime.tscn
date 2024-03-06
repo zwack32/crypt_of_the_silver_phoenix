@@ -8,7 +8,7 @@ size = Vector2(128, 128)
 
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 24
 script = ExtResource("1_soans")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,11 +1,11 @@
-extends Area2D
+extends CharacterBody2D
 class_name Bat
 
 @export var player: Player
 @export var stick: Area2D
 @export var speed: float = 500.0
 
-var velocity = Vector2.ZERO
+#velocity = Vector2.ZERO
 
 @onready var death_timer = $DeathTimer
 @onready var attack_timer = $AttackTimer
