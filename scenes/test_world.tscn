@@ -21,11 +21,11 @@ room_manager = NodePath("../RoomManager")
 [node name="Player" parent="." instance=ExtResource("1_impp3")]
 weapon_test_stick = ExtResource("2_oq22v")
 
-[node name="Bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_ib53q")]
+[node name="Bat" parent="." instance=ExtResource("8_ib53q")]
 position = Vector2(387, 23)
 collision_mask = 8
-player = NodePath("../Player")
+player = null
 
-[node name="Slime" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aib2c")]
+[node name="Slime" parent="." instance=ExtResource("3_aib2c")]
 position = Vector2(156, 240)
-player = NodePath("../Player")
+player = null

@@ -1,5 +1,5 @@
 extends Area2D
-class_name MeleeWeapon
+class_name Tome
 
 
 # Called when the node enters the scene tree for the first time.
