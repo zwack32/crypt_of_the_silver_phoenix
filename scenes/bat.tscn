@@ -10,7 +10,7 @@ size = Vector2(128, 56)
 size = Vector2(128, 56)
 
 [node name="Bat" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 24
 script = ExtResource("1_lp1dh")
 
