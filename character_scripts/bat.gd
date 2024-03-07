@@ -37,6 +37,8 @@ func _ready():
 	enemy_def += randi_range(-1, (2+room_number))
 	enemy_health += randi_range(-2, 5+(2*room_number))
 	
+	collision_layer |= 0
+	
 	#if on room 3 or higher, start adding elemental enemies
 	var type = "normal"
 	if room_number >= 3:
@@ -107,6 +109,7 @@ func enemy_die():
 	dead = true
 	velocity = Vector2.ZERO
 	death_timer.start()
+	collision_layer |= 2
 	sprite.texture = load("res://art/rect1.svg")
 
 
