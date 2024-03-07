@@ -13,6 +13,7 @@ var health = player_max_health
 var direction = Vector2.UP
 var can_swing = true
 
+@onready var health_bar = $HealthBar
 
 
 @export var weapon_test_stick: PackedScene
@@ -28,7 +29,7 @@ func get_player_max_hp():
 	return player_max_health
 
 func _ready():
-	pass
+	health_bar.max_value = player_max_health
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -122,10 +123,12 @@ func on_death():
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	health -= dmg
+	
 	#print(health)
 	if health <=0:
 		health = 0
 		on_death()
+	health_bar.value = health
 	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
 
 func renable_swing():

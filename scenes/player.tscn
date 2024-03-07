@@ -44,12 +44,14 @@ texture = ExtResource("2_g71mc")
 position_smoothing_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -118.0
+offset_left = -104.0
 offset_top = -108.0
-offset_right = 118.0
-offset_bottom = -85.0
+offset_right = 96.0
+offset_bottom = -80.0
 theme = SubResource("Theme_tvr1f")
 theme_override_styles/background = SubResource("StyleBoxFlat_j0yto")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2fbgb")
+max_value = 50.0
 step = 1.0
 value = 50.0
+show_percentage = false
