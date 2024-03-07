@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 LevelTransition="*res://scenes/level_transition.tscn"
 
+[display]
+
+window/subwindows/embed_subwindows=false
+
 [input]
 
 ui_left={
