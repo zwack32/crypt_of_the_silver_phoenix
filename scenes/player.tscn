@@ -58,3 +58,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_2fbgb")
 max_value = 50.0
 step = 1.0
 value = 50.0
+
+[node name="SpellCooldownTimer" type="Timer" parent="."]

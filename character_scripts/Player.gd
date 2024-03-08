@@ -119,7 +119,7 @@ func ranged_attack():
 		pass
 	var fireball = fireball.instantiate()
 	fireball.player = self
-	add_child(fireball)
+	get_tree().add_child(fireball)
 	
 
 #die
