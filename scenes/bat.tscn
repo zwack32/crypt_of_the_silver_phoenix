@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://qq15dgyc72ta"]
+[gd_scene load_steps=7 format=3 uid="uid://qq15dgyc72ta"]
 
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_6vikr"]
 [ext_resource type="Script" path="res://character_scripts/bat.gd" id="1_lp1dh"]
@@ -8,6 +8,18 @@ size = Vector2(128, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bfjk"]
 size = Vector2(128, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxa6t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldndp"]
+bg_color = Color(0.694118, 0, 0.141176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
 
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 0
@@ -35,10 +47,17 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_8bfjk")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="BatHealthBar" type="ProgressBar" parent="."]
+offset_left = -105.0
+offset_top = -68.0
+offset_right = 108.0
+offset_bottom = -41.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vxa6t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ldndp")
+value = 50.0
+show_percentage = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

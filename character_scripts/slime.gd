@@ -84,6 +84,7 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	enemy_health -= dmg
 	if enemy_health <= 0:
 		enemy_health = 0
+		enemy_health_bar.hide()
 		enemy_die()
 	enemy_health_bar.value = enemy_health
 	print("Enemy takes " + str(dmg) + " damage and has " + str(enemy_health) + " hp left")
