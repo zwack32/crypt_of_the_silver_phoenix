@@ -37,4 +37,8 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8bfjk")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

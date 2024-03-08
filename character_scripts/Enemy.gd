@@ -14,6 +14,8 @@ var enemy_def = 5
 
 var enemy_health
 
+@onready var enemy_health_bar = $EnemyHealth
+
 var dead = false
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
@@ -26,6 +28,7 @@ func get_enemy_health():
 	return enemy_health
 
 func _ready():
+	enemy_health_bar.max_value = enemy_max_health
 	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
 	var room_number = 1
@@ -80,6 +83,7 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	if enemy_health <= 0:
 		enemy_health = 0
 		enemy_die()
+	enemy_health_bar.value = enemy_health
 	print("Enemy takes " + str(dmg) + " damage and has " + str(enemy_health) + " hp left")
 	return enemy_health
 
