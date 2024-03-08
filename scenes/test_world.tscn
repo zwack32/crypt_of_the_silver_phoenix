@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
 [ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/slime.tscn" id="3_aib2c"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="3_mvr7j"]
-[ext_resource type="PackedScene" path="res://scenes/room_manager.tscn" id="6_q2ave"]
+[ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_q2ave"]
 [ext_resource type="PackedScene" uid="uid://qq15dgyc72ta" path="res://scenes/bat.tscn" id="8_ib53q"]
 
 [node name="TestWorld" type="Node2D"]

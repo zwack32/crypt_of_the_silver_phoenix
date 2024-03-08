@@ -1,8 +1,11 @@
 extends Node2D
 class_name RoomManager
 
+@export var room_battle_instance_scene: PackedScene
+
 var entered_rooms: Array[Room]
 var triggered_room: Room
+var triggered_battle: RoomBattleInstance
 var doors: Array[Door]
 
 var nontrigger_rooms: Array[Room]
@@ -32,5 +35,10 @@ func trigger(room: Room):
 	if !is_room_triggerable(room):
 		return
 	triggered_room = room
+
+	triggered_battle = room_battle_instance_scene.instantiate()
+	triggered_battle.room_level = 2
+	add_child(triggered_battle)
+
 	for door in doors:
 		door.call_deferred("set_disabled", false)

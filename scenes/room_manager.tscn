@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://s8isyy0scoq5"]
+[gd_scene load_steps=3 format=3 uid="uid://s8isyy0scoq5"]
 
 [ext_resource type="Script" path="res://scripts/RoomManager.gd" id="1_06d41"]
+[ext_resource type="PackedScene" uid="uid://dvacu8dh1edix" path="res://scenes/room_battle_instance.tscn" id="2_5f5bt"]
 
 [node name="room_manager" type="Node2D"]
 script = ExtResource("1_06d41")
+room_battle_instance_scene = ExtResource("2_5f5bt")

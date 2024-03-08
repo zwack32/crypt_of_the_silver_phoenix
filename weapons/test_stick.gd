@@ -1,7 +1,7 @@
 extends MeleeWeapon
 
 @onready var collision_shape_2d = $CollisionShape2D
-@export var enemy: Enemy
+@export var enemy: Slime
 
 var str = 5
 
