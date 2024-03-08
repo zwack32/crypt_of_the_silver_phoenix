@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends Enemy
 class_name Slime
 
-@export var player: Player
 @export var stick: Area2D
 @export var speed: float = 100.0
 

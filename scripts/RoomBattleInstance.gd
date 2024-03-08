@@ -1,6 +1,7 @@
 extends Node
 class_name RoomBattleInstance
 
+@export var player: Player
 @export var room_level: int
 @export var room_position: Vector2
 @export var room_size: Vector2
@@ -16,7 +17,7 @@ class BattleWave:
 	static func init_empty() -> BattleWave:
 		var this = BattleWave.new()
 		this.total_enemy_count = 0
-		this.total_enemy_count = 0
+		this.enemies_left = 0
 		return this
 
 func begin_battle():
@@ -24,8 +25,9 @@ func begin_battle():
 	for i in room_level:
 		var wave = BattleWave.new() 
 		wave.total_enemy_count = i + 2
-		wave.enemies_left = wave.enemy_count
-	waves_left.push_front(BattleWave.init_empty())
+		wave.enemies_left = wave.total_enemy_count
+		waves_left.push_front(wave)
+	waves_left[0].enemies_left = 0
 
 func _process(_delta):
 	if len(waves_left) == 0:
@@ -37,6 +39,8 @@ func _process(_delta):
 		for _i in current_wave.total_enemy_count:
 			var rand_position = get_random_room_position()
 			var enemy = slime_scene.instantiate()
+			enemy.player = player
+			enemy.room_battle_instance = self
 			add_child(enemy)
 		waves_left.pop_front()
 

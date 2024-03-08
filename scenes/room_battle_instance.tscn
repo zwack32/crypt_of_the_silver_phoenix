@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvacu8dh1edix"]
+[gd_scene load_steps=3 format=3 uid="uid://dvacu8dh1edix"]
 
 [ext_resource type="Script" path="res://scripts/RoomBattleInstance.gd" id="1_gkgbc"]
+[ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/slime.tscn" id="2_fdcum"]
 
 [node name="RoomBattleInstance" type="Node2D"]
 script = ExtResource("1_gkgbc")
+slime_scene = ExtResource("2_fdcum")
