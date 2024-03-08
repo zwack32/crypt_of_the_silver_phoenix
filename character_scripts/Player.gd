@@ -15,8 +15,9 @@ var can_swing = true
 
 @onready var health_bar = $HealthBar
 
-
+@onready var spell_cooldown_timer = $SpellCooldownTimer
 @export var weapon_test_stick: PackedScene
+@export var fireball: PackedScene
 
 #annoying functions so that we can use these in other scripts
 func get_player_atk():
@@ -67,7 +68,7 @@ func get_mouse_direction_from_player():
 	var screen_mouse_pos = Vector2(mouse_pos.x / viewport.x, mouse_pos.y / viewport.y)
 	var screen_coord = screen_mouse_pos * 2.0 - Vector2(1.0, 1.0)
 	
-	return screen_coord.normalized()
+	return screen_coord
 
 func melee_attack():
 	if !can_swing:
@@ -81,7 +82,7 @@ func melee_attack():
 
 	var right_down_vec = Vector2(1, 1).normalized()
 	var right_up_vec = Vector2(1, -1).normalized()
-	var mouse_dir = get_mouse_direction_from_player()
+	var mouse_dir = get_mouse_direction_from_player().normalized()
 	
 	var theta_a = acos(right_down_vec.dot(mouse_dir) / (right_down_vec.length() * mouse_dir.length()))
 	var theta_b = acos(right_up_vec.dot(mouse_dir) / (right_up_vec.length() * mouse_dir.length()))
@@ -114,7 +115,12 @@ func melee_attack():
 	swing_weapon.player = self
 
 func ranged_attack():
-	pass
+	if !spell_cooldown_timer.timeout:
+		pass
+	var fireball = fireball.instantiate()
+	fireball.player = self
+	add_child(fireball)
+	
 
 #die
 func on_death():

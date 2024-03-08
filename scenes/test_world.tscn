@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhy7e2fcung4f"]
+[gd_scene load_steps=8 format=3 uid="uid://dhy7e2fcung4f"]
 
 [ext_resource type="PackedScene" uid="uid://chvuc5rsrewvi" path="res://scenes/level.tscn" id="1_dfah8"]
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_impp3"]
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
-[ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_oq22v"]
 [ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/slime.tscn" id="3_aib2c"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="3_mvr7j"]
 [ext_resource type="PackedScene" path="res://scenes/room_manager.tscn" id="6_q2ave"]
@@ -19,7 +18,6 @@ room_manager = NodePath("../RoomManager")
 [node name="RoomManager" parent="." instance=ExtResource("6_q2ave")]
 
 [node name="Player" parent="." instance=ExtResource("1_impp3")]
-weapon_test_stick = ExtResource("2_oq22v")
 
 [node name="Bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_ib53q")]
 position = Vector2(387, 23)
