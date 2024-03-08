@@ -51,9 +51,9 @@ position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_8bfjk")
 
 [node name="BatHealthBar" type="ProgressBar" parent="."]
-offset_left = -105.0
-offset_top = -68.0
-offset_right = 108.0
+offset_left = -77.0
+offset_top = -62.0
+offset_right = 73.0
 offset_bottom = -41.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vxa6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ldndp")

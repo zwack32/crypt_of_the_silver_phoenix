@@ -41,10 +41,10 @@ shape = SubResource("RectangleShape2D_k3680")
 shape = SubResource("RectangleShape2D_k3680")
 
 [node name="EnemyHealth" type="ProgressBar" parent="."]
-offset_left = -88.0
-offset_top = -116.0
-offset_right = 89.0
-offset_bottom = -96.0
+offset_left = -78.0
+offset_top = -102.0
+offset_right = 78.0
+offset_bottom = -82.0
 theme = SubResource("Theme_xhqky")
 theme_override_styles/background = SubResource("StyleBoxFlat_l1qn3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_f0dgw")
