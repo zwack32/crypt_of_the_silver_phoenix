@@ -96,6 +96,8 @@ func _on_area_entered(area):
 			#player takes damage
 			player.take_damage(enemy_atk)
 			print("player take damage")
+		elif area is Tome:
+			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):

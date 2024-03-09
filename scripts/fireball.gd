@@ -1,5 +1,6 @@
 extends Tome
 
+var str = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,4 +23,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	await get_tree().create_timer(delta).timeout
+	set_collision_layer_value(1, 0)

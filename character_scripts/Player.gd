@@ -31,6 +31,7 @@ func get_player_max_hp():
 
 func _ready():
 	health_bar.max_value = player_max_health
+	spell_cooldown_timer.start()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,11 +116,13 @@ func melee_attack():
 	swing_weapon.player = self
 
 func ranged_attack():
-	if !spell_cooldown_timer.timeout:
+	if !spell_cooldown_timer.time_left == 0:
 		pass
-	var fireball = fireball.instantiate()
-	fireball.player = self
-	get_parent().add_child(fireball)
+	else:
+		var fireball = fireball.instantiate()
+		fireball.player = self
+		get_parent().add_child(fireball)
+		spell_cooldown_timer.start()
 	
 
 #die
