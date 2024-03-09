@@ -14,6 +14,7 @@ func _ready():
 	position = (screen_mouse_pos * 2.0 - Vector2(1.0, 1.0))
 	position.x *= viewport.x / 2
 	position.y *= viewport.y / 2
+	position += player.position
 	
 	await get_tree().create_timer(2).timeout
 	queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
-[ext_resource type="PackedScene" path="res://scenes/fireball.tscn" id="2_frjs7"]
+[ext_resource type="PackedScene" uid="uid://ckol2xr6nh5dn" path="res://scenes/fireball.tscn" id="2_frjs7"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_g71mc"]
 [ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_m5mvt"]
 
