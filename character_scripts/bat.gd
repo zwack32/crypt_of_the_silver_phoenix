@@ -9,6 +9,7 @@ class_name Bat
 
 @onready var death_timer = $DeathTimer
 @onready var attack_timer = $AttackTimer
+@onready var fire_tick_timer = $FireTickTimer
 @onready var sprite = $Sprite2D
 
 var enemy_max_health = 20
@@ -20,6 +21,10 @@ var enemy_health
 @onready var bat_health_bar = $BatHealthBar
 
 var dead = false
+
+var on_fire = true
+var frozen = false
+
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
 	return enemy_atk
@@ -32,6 +37,7 @@ func get_enemy_health():
 
 func _ready():
 	bat_health_bar.max_value = enemy_max_health
+	fire_tick_timer.start()
 	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
 	var room_number = 1
@@ -75,6 +81,18 @@ func _process(delta):
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
 	position += velocity * delta
+	
+	bat_health_bar.value = enemy_health
+	#print(attack_timer.time_left)
+	if on_fire:
+		if fire_tick_timer.time_left == 0:
+			enemy_health -= 2
+			print(enemy_health)
+			fire_tick_timer.start()
+		if enemy_health <= 0:
+			enemy_health = 0
+			bat_health_bar.hide()
+			enemy_die()
 
 func check_attack_timer():
 	if attack_timer.timeout:
@@ -118,5 +136,8 @@ func enemy_die():
 	death_timer.start()
 	collision_layer |= 2
 	sprite.texture = load("res://art/rect1.svg")
+	
+	on_fire = false
+	frozen = false
 
 

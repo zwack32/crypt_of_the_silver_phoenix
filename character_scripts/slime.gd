@@ -17,6 +17,12 @@ var enemy_health
 @onready var enemy_health_bar = $EnemyHealth
 
 var dead = false
+
+var on_fire = false
+var frozen = false
+
+@onready var fire_tick_timer = $FireTickTimer
+
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
 	return enemy_atk
@@ -30,6 +36,7 @@ func get_enemy_health():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enemy_health_bar.max_value = enemy_max_health
+	fire_tick_timer.start()
 	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
 	var room_number = 1
@@ -65,6 +72,19 @@ func _process(delta):
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
 	move_and_slide()
+	
+	
+	enemy_health_bar.value = enemy_health
+	
+	if on_fire:
+		if fire_tick_timer.time_left == 0:
+			enemy_health -= 2
+			print(enemy_health)
+			fire_tick_timer.start()
+		if enemy_health <= 0:
+			enemy_health = 0
+			enemy_health_bar.hide()
+			enemy_die()
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
@@ -98,4 +118,7 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	sprite.texture = load("res://art/rect1.svg")
+	
+	on_fire = false
+	frozen = false
 

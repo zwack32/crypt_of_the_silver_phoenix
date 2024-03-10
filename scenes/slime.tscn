@@ -51,4 +51,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_f0dgw")
 value = 30.0
 show_percentage = false
 
+[node name="FireTickTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
