@@ -15,6 +15,8 @@ var can_swing = true
 
 @onready var health_bar = $HealthBar
 
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 @export var weapon_test_stick: PackedScene
 @export var fireball: PackedScene
@@ -47,9 +49,15 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		player_velocity.x += -1
+		animated_sprite_2d.play("walk_left")
 	if Input.is_action_pressed("move_right"):
 		direction = Vector2.RIGHT
 		player_velocity.x += 1
+		animated_sprite_2d.play("walk_right")
+	elif Input.is_action_just_released("move_left"):
+		animated_sprite_2d.stop()
+	elif Input.is_action_just_released("move_right"):
+		animated_sprite_2d.stop()
 
 	velocity = player_velocity.normalized() * movement_speed
 	
