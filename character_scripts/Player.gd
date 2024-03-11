@@ -56,8 +56,10 @@ func _process(delta):
 		animated_sprite_2d.play("walk_right")
 	elif Input.is_action_just_released("move_left"):
 		animated_sprite_2d.stop()
+		animated_sprite_2d.play("default_left")
 	elif Input.is_action_just_released("move_right"):
 		animated_sprite_2d.stop()
+		animated_sprite_2d.play("default_right")
 
 	velocity = player_velocity.normalized() * movement_speed
 	
@@ -116,6 +118,7 @@ func melee_attack():
 			# Left
 			swing_direction = Vector2.LEFT
 			swing_rot = -45 - 90
+			
 			
 	swing_weapon.rotation_degrees = swing_rot
 	swing_weapon.start_rot = swing_rot

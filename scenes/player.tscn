@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=42 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="PackedScene" uid="uid://ch0qfkpi4s11o" path="res://scenes/fireball.tscn" id="2_frjs7"]
@@ -58,6 +58,14 @@ region = Rect2(1024, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a856e"]
 atlas = ExtResource("4_8d348")
 region = Rect2(1056, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_metig"]
+atlas = ExtResource("4_8d348")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5ldb"]
+atlas = ExtResource("4_8d348")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p57u1"]
 atlas = ExtResource("4_8d348")
@@ -176,6 +184,22 @@ animations = [{
 "speed": 7.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_metig")
+}],
+"loop": true,
+"name": &"default_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5ldb")
+}],
+"loop": true,
+"name": &"default_right",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.05,
 "texture": SubResource("AtlasTexture_p57u1")
 }, {
@@ -274,7 +298,7 @@ texture_filter = 1
 position = Vector2(-0.499996, -1.01328e-06)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_mkymf")
-animation = &"attack1"
+animation = &"default_left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
