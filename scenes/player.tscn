@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="PackedScene" uid="uid://ch0qfkpi4s11o" path="res://scenes/fireball.tscn" id="2_frjs7"]
 [ext_resource type="PackedScene" uid="uid://pq3d8p6fi55t" path="res://weapons/test_stick.tscn" id="2_m5mvt"]
-[ext_resource type="Texture2D" uid="uid://bth5k4exco1ky" path="res://art/Player.png" id="4_8d348"]
+[ext_resource type="Texture2D" path="res://art/Player.png" id="4_8d348"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nia33"]
 size = Vector2(76, 119)
@@ -148,9 +148,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8mb7s")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack1",
-"speed": 10.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +171,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a856e")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack2",
 "speed": 7.0
 }, {
@@ -275,8 +275,6 @@ position = Vector2(-0.499996, -1.01328e-06)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_mkymf")
 animation = &"attack1"
-frame = 3
-frame_progress = 0.911344
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

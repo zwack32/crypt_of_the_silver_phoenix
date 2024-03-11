@@ -86,6 +86,7 @@ func melee_attack():
 	test_stick.player = self
 	var swing_weapon = test_stick
 	add_child(test_stick)
+	animated_sprite_2d.play("attack1")
 	can_swing = false
 
 	var right_down_vec = Vector2(1, 1).normalized()
