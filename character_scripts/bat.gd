@@ -10,6 +10,7 @@ class_name Bat
 @onready var death_timer = $DeathTimer
 @onready var attack_timer = $AttackTimer
 @onready var fire_tick_timer = $FireTickTimer
+@onready var frozen_timer = $FrozenTimer
 @onready var sprite = $Sprite2D
 
 var enemy_max_health = 20
@@ -22,8 +23,9 @@ var enemy_health
 
 var dead = false
 
-var on_fire = true
-var frozen = false
+var on_fire = false
+var frozen = true
+var frozen_process = false
 
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
@@ -93,6 +95,17 @@ func _process(delta):
 			enemy_health = 0
 			bat_health_bar.hide()
 			enemy_die()
+	
+	if frozen:
+		frozen_timer.start()
+		frozen = false
+		frozen_process = true
+		speed /= 2
+	#wtf
+	if frozen_process and frozen_timer.time_left == 0:
+		frozen_process = false
+		speed *= 2
+	
 
 func check_attack_timer():
 	if attack_timer.timeout:
