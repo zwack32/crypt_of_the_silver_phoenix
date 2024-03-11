@@ -117,7 +117,6 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	sprite.texture = load("res://art/rect1.svg")
-	
 	on_fire = false
 	frozen = false
-
+	room_battle_instance.pop_enemy()
