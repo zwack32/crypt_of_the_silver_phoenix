@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends Enemy
 class_name Slime
 
-@export var player: Player
 @export var stick: Area2D
 @export var speed: float = 100.0
 
@@ -118,7 +117,6 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	sprite.texture = load("res://art/rect1.svg")
-	
 	on_fire = false
 	frozen = false
-
+	room_battle_instance.pop_enemy()
