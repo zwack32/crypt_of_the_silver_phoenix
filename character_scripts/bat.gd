@@ -101,10 +101,12 @@ func _process(delta):
 		frozen = false
 		frozen_process = true
 		speed /= 2
-	#wtf
+		print("bat froze", frozen_process)
+	
 	if frozen_process and frozen_timer.time_left == 0:
 		frozen_process = false
 		speed *= 2
+		print("unfroze")
 	
 
 func check_attack_timer():

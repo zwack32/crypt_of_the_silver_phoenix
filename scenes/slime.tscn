@@ -54,4 +54,8 @@ show_percentage = false
 [node name="FireTickTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="FrozenTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

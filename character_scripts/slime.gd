@@ -19,8 +19,10 @@ var dead = false
 
 var on_fire = false
 var frozen = false
+var frozen_process = false
 
 @onready var fire_tick_timer = $FireTickTimer
+@onready var frozen_timer = $FrozenTimer
 
 #annoying functions so that we can use these in other scripts
 func get_enemy_atk():
@@ -84,6 +86,18 @@ func _process(delta):
 			enemy_health = 0
 			enemy_health_bar.hide()
 			enemy_die()
+			
+	if frozen:
+			frozen_timer.start()
+			frozen = false
+			frozen_process = true
+			speed /= 2
+			print("bat froze", frozen_process)
+	
+	if frozen_process and frozen_timer.time_left == 0:
+		frozen_process = false
+		speed *= 2
+		print("unfroze")
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
