@@ -13,11 +13,10 @@ var health = player_max_health
 var direction = Vector2.UP
 var can_swing = true
 
-@onready var health_bar = $HealthBar
+@export var weapon_manager: WeaponManager
 
+@onready var health_bar = $HealthBar
 @onready var spell_cooldown_timer = $SpellCooldownTimer
-@export var weapon_test_stick: PackedScene
-@export var fireball: PackedScene
 
 #annoying functions so that we can use these in other scripts
 func get_player_atk():
@@ -75,7 +74,7 @@ func melee_attack():
 	if !can_swing:
 		return
 
-	var weapon = weapon_test_stick.instantiate()
+	var weapon = weapon_manager.get_melee_scene().instantiate()
 	weapon.player = self
 	add_child(weapon)
 	can_swing = false
@@ -118,7 +117,7 @@ func ranged_attack():
 	if !spell_cooldown_timer.time_left == 0:
 		pass
 	else:
-		var fireball = fireball.instantiate()
+		var fireball = weapon_manager.get_tome_scene().instantiate()
 		fireball.player = self
 		get_parent().add_child(fireball)
 		spell_cooldown_timer.start()
