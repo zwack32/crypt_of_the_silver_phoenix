@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4hgiwdogaluq"]
+
+[ext_resource type="Script" path="res://weapons/greatsword.gd" id="1_36d5l"]
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_ksbfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alxv1"]
+size = Vector2(16, 384)
+
+[node name="Greatsword" type="Area2D"]
+script = ExtResource("1_36d5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_alxv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -192)
+scale = Vector2(0.125, 3)
+texture = ExtResource("1_ksbfy")

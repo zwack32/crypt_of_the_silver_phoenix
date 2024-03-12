@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://br5ljks23evgb"]
+
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_8vyoy"]
+[ext_resource type="Script" path="res://weapons/ice_sword.gd" id="1_lslar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ammd"]
+size = Vector2(16, 256)
+
+[node name="IceSword" type="Area2D"]
+script = ExtResource("1_lslar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_5ammd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+scale = Vector2(0.125, 2)
+texture = ExtResource("1_8vyoy")

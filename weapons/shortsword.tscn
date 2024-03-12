@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbenmhq8l5ssu"]
+
+[ext_resource type="Script" path="res://weapons/shortsword.gd" id="1_begh2"]
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_jbxuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp6p8"]
+size = Vector2(16, 192)
+
+[node name="Shortsword" type="Area2D"]
+script = ExtResource("1_begh2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+scale = Vector2(0.125, 1.5)
+texture = ExtResource("1_jbxuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_yp6p8")
