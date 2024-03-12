@@ -6,6 +6,10 @@ class_name MeleeWeapon
 @export var swing_speed: float
 @export var player: Player
 
+# Required to inherit
+# var str: float
+# var spd: float
+
 func _process(_delta):
 	self.rotation_degrees += swing_speed
 	rot += swing_speed
