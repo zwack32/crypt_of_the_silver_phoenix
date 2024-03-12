@@ -59,6 +59,6 @@ func pop_enemy():
 func get_random_room_position() -> Vector2:
 	# TODO: Replace this magic numbers
 	print(room_size)
-	var x = randf_range(-room_size.x * 2, room_size.x * 2)
-	var y = randf_range(-room_size.y * 2, room_size.y * 2)
+	var x = randf_range(-room_size.x, room_size.x)
+	var y = randf_range(-room_size.y, room_size.y)
 	return room_position + Vector2(x, y)

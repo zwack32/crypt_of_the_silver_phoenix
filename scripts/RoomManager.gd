@@ -38,10 +38,10 @@ func trigger(room: Room):
 	
 	triggered_room = room
 	triggered_battle = room_battle_instance_scene.instantiate()
-	triggered_battle.room_level = 10
+	triggered_battle.room_level = 4
 	triggered_battle.player = player
-	triggered_battle.room_position = room.global_position
-	triggered_battle.room_size = room.global_scale
+	triggered_battle.room_position = room.position
+	triggered_battle.room_size = room.get_pixel_size()
 	add_child(triggered_battle)
 	
 	triggered_battle.begin_battle()

@@ -17,6 +17,3 @@ room_manager = NodePath("../RoomManager")
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_impp3")]
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(768, -33536)
