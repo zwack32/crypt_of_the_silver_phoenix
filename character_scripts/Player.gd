@@ -75,10 +75,9 @@ func melee_attack():
 	if !can_swing:
 		return
 
-	var test_stick = weapon_test_stick.instantiate()
-	test_stick.player = self
-	var swing_weapon = test_stick
-	add_child(test_stick)
+	var weapon = weapon_test_stick.instantiate()
+	weapon.player = self
+	add_child(weapon)
 	can_swing = false
 
 	var right_down_vec = Vector2(1, 1).normalized()
@@ -109,11 +108,11 @@ func melee_attack():
 			swing_direction = Vector2.LEFT
 			swing_rot = -45 - 90
 			
-	swing_weapon.rotation_degrees = swing_rot
-	swing_weapon.start_rot = swing_rot
-	swing_weapon.swing_speed = player_spd
-	swing_weapon.rot = swing_rot
-	swing_weapon.player = self
+	weapon.rotation_degrees = swing_rot
+	weapon.start_rot = swing_rot
+	weapon.swing_speed = player_spd
+	weapon.player = self
+	weapon.rot = swing_rot
 
 func ranged_attack():
 	if !spell_cooldown_timer.time_left == 0:
