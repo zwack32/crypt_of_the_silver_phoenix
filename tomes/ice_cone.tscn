@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djx3jxny78ig6"]
+
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_sintp"]
+[ext_resource type="Script" path="res://tomes/ice_cone.gd" id="1_xp4w1"]
+
+[node name="IceCone" type="Area2D"]
+script = ExtResource("1_xp4w1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -156)
+scale = Vector2(1, 2.4375)
+texture = ExtResource("1_sintp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 128, -320, -128, -320)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkmleq2q5mg10"]
+
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_pqhyi"]
+[ext_resource type="Script" path="res://tomes/sunburst.gd" id="1_v8ekr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj4lp"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlwb2"]
+radius = 168.19
+
+[node name="Sunburst" type="Area2D"]
+script = ExtResource("1_v8ekr")
+
+[node name="BeadCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nj4lp")
+
+[node name="BeadSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_pqhyi")
+
+[node name="BlastCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hlwb2")
+
+[node name="BlastSprite" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 3.8147e-06)
+scale = Vector2(2, 2)
+texture = ExtResource("1_pqhyi")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

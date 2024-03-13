@@ -11,7 +11,7 @@ const FIRE_SWORD = preload("res://weapons/fire_sword.tscn")
 const ICE_SWORD = preload("res://weapons/ice_sword.tscn")
 const SUN_SWORD = preload("res://weapons/sun_sword.tscn")
 
-const FIREBALL = preload("res://scenes/fireball.tscn")
+const FIREBALL = preload("res://tomes/fireball.tscn")
 
 enum MeleeWeaponType {
 	ShortSword = 0,

@@ -35,33 +35,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player_velocity = Vector2.ZERO
-	
-	#change velocity by player's input
-	if Input.is_action_pressed("move_down"):
-		direction = Vector2.DOWN
-		player_velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		direction = Vector2.UP
-		player_velocity.y += -1
-	if Input.is_action_pressed("move_left"):
-		direction = Vector2.LEFT
-		player_velocity.x += -1
-	if Input.is_action_pressed("move_right"):
-		direction = Vector2.RIGHT
-		player_velocity.x += 1
-
-	velocity = player_velocity.normalized() * movement_speed
-	
-	move_and_slide()
+	move()
 	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
 	
 	if Input.is_action_just_pressed("ranged"):
 		ranged_attack()
-		print("ranged")
-		
+	
+	pick_up_item()
+	
+	
 func get_mouse_direction_from_player():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var viewport = get_viewport().size
@@ -69,6 +53,7 @@ func get_mouse_direction_from_player():
 	var screen_coord = screen_mouse_pos * 2.0 - Vector2(1.0, 1.0)
 	
 	return screen_coord
+
 
 func melee_attack():
 	if !can_swing:
@@ -121,7 +106,32 @@ func ranged_attack():
 		fireball.player = self
 		get_parent().add_child(fireball)
 		spell_cooldown_timer.start()
+
+func move():
+	var player_velocity = Vector2.ZERO
 	
+	#change velocity by player's input
+	if Input.is_action_pressed("move_down"):
+		direction = Vector2.DOWN
+		player_velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		direction = Vector2.UP
+		player_velocity.y += -1
+	if Input.is_action_pressed("move_left"):
+		direction = Vector2.LEFT
+		player_velocity.x += -1
+	if Input.is_action_pressed("move_right"):
+		direction = Vector2.RIGHT
+		player_velocity.x += 1
+
+	velocity = player_velocity.normalized() * movement_speed
+	
+	move_and_slide()
+
+func pick_up_item():
+	if Input.is_action_pressed("pick_up"): #and player is within range of item
+		pass
+		#inventory manager, manage inventory!
 
 #die
 func on_death():
