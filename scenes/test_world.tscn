@@ -14,7 +14,8 @@ room_collider = ExtResource("1_qiyfc")
 door_collider = ExtResource("3_mvr7j")
 room_manager = NodePath("../RoomManager")
 
-[node name="RoomManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_q2ave")]
+[node name="RoomManager" parent="." node_paths=PackedStringArray("weapon_manager", "player") instance=ExtResource("6_q2ave")]
+weapon_manager = NodePath("../WeaponManager")
 player = NodePath("../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("weapon_manager") instance=ExtResource("1_impp3")]

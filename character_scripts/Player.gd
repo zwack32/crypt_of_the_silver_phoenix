@@ -39,14 +39,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move()
-
+	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
 	
 	if Input.is_action_just_pressed("ranged"):
 		ranged_attack()
-	
-	pick_up_item()
 	
 	spell_bar.value = spell_cooldown_timer.time_left
 
@@ -143,27 +141,23 @@ func move():
 	
 	move_and_slide()
 
-func pick_up_item():
-	#var able_to_pickup = (position-pickup_position)
-	if Input.is_action_pressed("pick_up"): #and able_to_pickup <= whatever range we want
-		#player is within range of item
-		pass
-		#inventory manager, manage inventory!
-
 #die
 func on_death():
 	var dead = true
 
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
-	health -= dmg
-	
-	if health <=0:
-		health = 0
-		on_death()
-	health_bar.value = health
+	set_health(health - dmg)
 	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
 
 func renable_swing():
 	can_swing = true
 
+func get_health() -> float:
+	return health
+	
+func set_health(new_health: float):
+	if health <= 0.0:
+		on_death()
+	health = clamp(new_health, 0.0, player_max_health)
+	health_bar.value = health

@@ -24,12 +24,14 @@ enum MeleeWeaponType {
 	FireSword = 3,
 	IceSword = 4,
 	SunSword = 5,
+	_Count,
 }
 
 enum TomeType {
 	Fireball = 0,
 	IceCone = 1,
 	Sunburst = 2,
+	_Count,
 }
 
 func set_melee(melee: MeleeWeaponType):
