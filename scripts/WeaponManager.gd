@@ -4,6 +4,7 @@ class_name WeaponManager
 var current_melee: MeleeWeaponType = 0
 var current_tome: TomeType = 0
 
+#swords
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")
 const GREATSWORD = preload("res://weapons/greatsword.tscn")
@@ -11,7 +12,10 @@ const FIRE_SWORD = preload("res://weapons/fire_sword.tscn")
 const ICE_SWORD = preload("res://weapons/ice_sword.tscn")
 const SUN_SWORD = preload("res://weapons/sun_sword.tscn")
 
+#tomes
 const FIREBALL = preload("res://tomes/fireball.tscn")
+const ICE_CONE = preload("res://tomes/ice_cone.tscn")
+const SUNBURST = preload("res://tomes/sunburst.tscn")
 
 enum MeleeWeaponType {
 	ShortSword = 0,
@@ -23,7 +27,9 @@ enum MeleeWeaponType {
 }
 
 enum TomeType {
-	FireBall = 0
+	Fireball = 0,
+	IceCone = 1,
+	Sunburst = 2,
 }
 
 func set_melee(melee: MeleeWeaponType):
@@ -54,8 +60,12 @@ func set_tome(tome: TomeType):
 	current_tome = tome
 
 func get_tome_scene() -> PackedScene:
-	if current_tome == TomeType.FireBall:
+	if current_tome == TomeType.Fireball:
 		return FIREBALL
+	elif current_tome == TomeType.IceCone:
+		return ICE_CONE
+	elif current_tome == TomeType.Sunburst:
+		return SUNBURST
 	else:
 		push_error("Bad tome value used, check set_tome call")
 		return null
