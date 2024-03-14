@@ -106,3 +106,7 @@ pick_up={
 2d_physics/layer_2="enemy"
 2d_physics/layer_4="player_weapon"
 2d_physics/layer_5="walls"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
