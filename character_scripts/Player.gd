@@ -17,6 +17,8 @@ var can_swing = true
 
 @onready var health_bar = $HealthBar
 @onready var spell_bar = $SpellBar
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 
 #annoying functions so that we can use these in other scripts
@@ -37,7 +39,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move()
-	
+
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
 	
@@ -64,6 +66,7 @@ func melee_attack():
 	var weapon = weapon_manager.get_melee_scene().instantiate()
 	weapon.player = self
 	add_child(weapon)
+	animated_sprite_2d.play("attack1")
 	can_swing = false
 
 	var right_down_vec = Vector2(1, 1).normalized()
@@ -93,7 +96,7 @@ func melee_attack():
 			# Left
 			swing_direction = Vector2.LEFT
 			swing_rot = -45 - 90
-			
+
 	weapon.rotation_degrees = swing_rot
 	weapon.start_rot = swing_rot
 	weapon.swing_speed = weapon.spd
@@ -124,9 +127,17 @@ func move():
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		player_velocity.x += -1
+		animated_sprite_2d.play("walk_left")
 	if Input.is_action_pressed("move_right"):
 		direction = Vector2.RIGHT
 		player_velocity.x += 1
+		animated_sprite_2d.play("walk_right")
+	elif Input.is_action_just_released("move_left"):
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("default_left")
+	elif Input.is_action_just_released("move_right"):
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("default_right")
 
 	velocity = player_velocity.normalized() * movement_speed
 	
