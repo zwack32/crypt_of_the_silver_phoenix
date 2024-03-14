@@ -33,7 +33,6 @@ func _ready():
 	health_bar.max_value = player_max_health
 	spell_cooldown_timer.start()
 	spell_bar.max_value = spell_cooldown_timer.time_left
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,7 +47,7 @@ func _process(delta):
 	pick_up_item()
 	
 	spell_bar.value = spell_cooldown_timer.time_left
-	
+
 func get_mouse_direction_from_player():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var viewport = get_viewport().size
@@ -107,6 +106,8 @@ func ranged_attack():
 	else:
 		var fireball = weapon_manager.get_tome_scene().instantiate()
 		fireball.player = self
+		#TODO make this work with all spells. it might already, 
+		#but if it does we need to rename the variable
 		get_parent().add_child(fireball)
 		spell_cooldown_timer.start()
 
@@ -132,7 +133,9 @@ func move():
 	move_and_slide()
 
 func pick_up_item():
-	if Input.is_action_pressed("pick_up"): #and player is within range of item
+	#var able_to_pickup = (position-pickup_position)
+	if Input.is_action_pressed("pick_up"): #and able_to_pickup <= whatever range we want
+		#player is within range of item
 		pass
 		#inventory manager, manage inventory!
 
@@ -144,7 +147,6 @@ func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	health -= dmg
 	
-	#print(health)
 	if health <=0:
 		health = 0
 		on_death()

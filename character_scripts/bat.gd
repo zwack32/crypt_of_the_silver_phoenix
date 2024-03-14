@@ -44,9 +44,9 @@ func _ready():
 	enemy_health = enemy_max_health
 	var room_number = 1
 	#randomize stats
-	enemy_atk += randi_range(-1, (2+room_number))
-	enemy_def += randi_range(-1, (2+room_number))
-	enemy_health += randi_range(-2, 5+(2*room_number))
+	enemy_atk += randi_range((-1 + roundf(room_number/2)), (2+room_number))
+	enemy_def += randi_range((-1 + roundf(room_number/2)), (2+room_number))
+	enemy_health += randi_range((-2 + roundf(room_number/2)), 5+(2*room_number))
 	
 	collision_layer |= 0
 	
@@ -101,12 +101,10 @@ func _process(delta):
 		frozen = false
 		frozen_process = true
 		speed /= 2
-		print("bat froze", frozen_process)
 	
 	if frozen_process and frozen_timer.time_left == 0:
 		frozen_process = false
 		speed *= 2
-		print("unfroze")
 	
 
 func check_attack_timer():

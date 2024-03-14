@@ -42,9 +42,9 @@ func _ready():
 	enemy_health = enemy_max_health
 	var room_number = 1
 	#randomize stats
-	enemy_atk += randi_range(-1, (2+room_number))
-	enemy_def += randi_range(-1, (2+room_number))
-	enemy_health += randi_range(-2, 5+(2*room_number))
+	enemy_atk += randi_range((-1 + roundf(room_number/2)), (2+room_number))
+	enemy_def += randi_range((-1 + roundf(room_number/2)), (2+room_number))
+	enemy_health += randi_range((-2 + roundf(room_number/2)), 5+(2*room_number))
 	
 	#if on room 3 or higher, start adding elemental enemies
 	var type = "normal"
@@ -63,7 +63,6 @@ func _ready():
 	print(str(enemy_def) + "def")
 	print(str(enemy_health) + "health")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = Vector2.ZERO
@@ -73,7 +72,6 @@ func _process(delta):
 	if death_timer.time_left <= 0 and dead:
 		queue_free()
 	move_and_slide()
-	
 	
 	enemy_health_bar.value = enemy_health
 	
@@ -92,12 +90,11 @@ func _process(delta):
 			frozen = false
 			frozen_process = true
 			speed /= 2
-			print("bat froze", frozen_process)
 	
 	if frozen_process and frozen_timer.time_left == 0:
 		frozen_process = false
 		speed *= 2
-		print("unfroze")
+
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
