@@ -53,6 +53,11 @@ func _ready():
 		new_room_collider.scale = room.size * 1.5
 		new_room_collider.room_manager = room_manager
 
+		room_manager.add_room(new_room_collider)
+		
+		if room_idx == start_room_idx:
+			room_manager.add_non_trigger_room(new_room_collider)
+
 		add_child(new_room_collider)
 
 	for door_idx in range(0, len(doors)):
@@ -60,7 +65,11 @@ func _ready():
 		var new_door_collider = door_collider.instantiate()
 		new_door_collider.position = door.pos * 16.0
 		new_door_collider.scale = door.get_size() * 0.25
+		new_door_collider.direction = door.normal
+		new_door_collider.original_room_idx = door.original_room_idx
+		new_door_collider.room_manager = room_manager
 
 		room_manager.add_door(new_door_collider)
 
 		add_child(new_door_collider)
+		
