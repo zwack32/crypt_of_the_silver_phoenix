@@ -16,6 +16,7 @@ var can_swing = true
 @export var weapon_manager: WeaponManager
 
 @onready var health_bar = $HealthBar
+@onready var spell_bar = $SpellBar
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 
 #annoying functions so that we can use these in other scripts
@@ -31,6 +32,7 @@ func get_player_max_hp():
 func _ready():
 	health_bar.max_value = player_max_health
 	spell_cooldown_timer.start()
+	spell_bar.max_value = spell_cooldown_timer.time_left
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +47,7 @@ func _process(delta):
 	
 	pick_up_item()
 	
+	spell_bar.value = spell_cooldown_timer.time_left
 	
 func get_mouse_direction_from_player():
 	var mouse_pos = get_viewport().get_mouse_position()

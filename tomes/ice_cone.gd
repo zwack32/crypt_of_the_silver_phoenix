@@ -1,14 +1,6 @@
 extends Tome
 
-var str = 0
-#actual strength is 5
-var velocity = Vector2.ZERO
-var speed = 700.0
-
-@onready var bead_collison_shape = $BeadCollisionShape
-@onready var bead_sprite = $BeadSprite
-@onready var blast_collision_shape = $BlastCollisionShape
-@onready var blast_sprite = $BlastSprite
+var str = 7
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +8,10 @@ func _ready():
 	var mouse_pos = get_viewport().get_mouse_position()
 	
 	var direction = (mouse_pos - position).normalized()
+	
+	rotation = acos(direction.x)
+	#this is probably going to only do it on one side
+	#fuck arccos
 	
 	
 
