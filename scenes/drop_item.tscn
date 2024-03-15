@@ -7,6 +7,7 @@
 radius = 76.0
 
 [node name="DropItem" type="Area2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_wlkss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

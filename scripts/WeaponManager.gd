@@ -17,6 +17,13 @@ const FIREBALL = preload("res://tomes/fireball.tscn")
 const ICE_CONE = preload("res://tomes/ice_cone.tscn")
 const SUNBURST = preload("res://tomes/sunburst.tscn")
 
+const FLAME_SWORD_TEXTURE = preload("res://art/flame_sword.png")
+const GREATSWORD_TEXTURE = preload("res://art/greatsword.png")
+const ICE_SWORD_TEXTURE = preload("res://art/ice_sword.png")
+const LONGSWORD_TEXTURE = preload("res://art/longsword.png")
+const SHORTSWORD_TEXTURE = preload("res://art/shortsword.png")
+const SUNSWORD_TEXTURE = preload("res://art/sunsword.png")
+
 enum MeleeWeaponType {
 	ShortSword = 0,
 	LongSword = 1,
@@ -55,6 +62,23 @@ func get_melee_scene() -> PackedScene:
 	else:
 		push_error("Bad melee value used, check set_melee call")
 		return null
+		
+func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
+	if melee == MeleeWeaponType.ShortSword:
+		return SHORTSWORD_TEXTURE
+	elif melee == MeleeWeaponType.LongSword:
+		return LONGSWORD_TEXTURE
+	elif melee == MeleeWeaponType.GreatSword:
+		return GREATSWORD_TEXTURE
+	elif melee == MeleeWeaponType.FireSword:
+		return FLAME_SWORD_TEXTURE
+	elif melee == MeleeWeaponType.IceSword:
+		return ICE_SWORD_TEXTURE
+	elif melee == MeleeWeaponType.SunSword:
+		return SUNSWORD_TEXTURE
+	else:
+		push_error("Bad melee value used in get_melee_texture function")
+		return null
 
 func set_tome(tome: TomeType):
 	if !TomeType.find_key(tome):
@@ -70,4 +94,18 @@ func get_tome_scene() -> PackedScene:
 		return SUNBURST
 	else:
 		push_error("Bad tome value used, check set_tome call")
+		return null
+		
+func get_tome_texture(tome: TomeType) -> Texture2D:
+	# STUB: Waiting on tome textures
+	return load("res://art/rect1.svg")
+	
+	if tome == TomeType.Fireball:
+		return null
+	elif tome == TomeType.IceCone:
+		return null
+	elif tome == TomeType.Sunburst:
+		return null
+	else:
+		push_error("Bad melee value used in get_tome_texture function")
 		return null

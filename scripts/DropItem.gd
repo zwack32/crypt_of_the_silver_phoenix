@@ -35,14 +35,16 @@ var is_in_range = false
 var drop_item: DropItemUnion = DropItemUnion.new()
 
 func _ready():
-	var drop_type = randi_range(0, DropItemType._Count)
+	var drop_type = randi_range(0, DropItemType._Count - 1)
 	var data
 	if drop_type == DropItemType.Health:
-		data = randi_range(0, DropHeathValues._Count)
+		data = randi_range(0, DropHeathValues._Count - 1)
 	elif drop_type == DropItemType.Melee:
-		data = randi_range(0, MeleeWeaponType._Count)
+		data = randi_range(0, MeleeWeaponType._Count - 1)
+		sprite_2d.texture = weapon_manager.get_melee_texture(data)
 	elif drop_type == DropItemType.Tome:
-		data = randi_range(0, TomeType._Count)
+		data = randi_range(0, TomeType._Count - 1)
+		sprite_2d.texture = weapon_manager.get_tome_texture(data)
 		
 	drop_item.ty = drop_type
 	drop_item.data = data
