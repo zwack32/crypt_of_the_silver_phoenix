@@ -4,7 +4,6 @@ class_name WeaponManager
 var current_melee: MeleeWeaponType = 0
 var current_tome: TomeType = 0
 
-#swords
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")
 const GREATSWORD = preload("res://weapons/greatsword.tscn")
@@ -12,7 +11,6 @@ const FIRE_SWORD = preload("res://weapons/fire_sword.tscn")
 const ICE_SWORD = preload("res://weapons/ice_sword.tscn")
 const SUN_SWORD = preload("res://weapons/sun_sword.tscn")
 
-#tomes
 const FIREBALL = preload("res://tomes/fireball.tscn")
 const ICE_CONE = preload("res://tomes/ice_cone.tscn")
 const SUNBURST = preload("res://tomes/sunburst.tscn")
@@ -23,6 +21,10 @@ const ICE_SWORD_TEXTURE = preload("res://art/ice_sword.png")
 const LONGSWORD_TEXTURE = preload("res://art/longsword.png")
 const SHORTSWORD_TEXTURE = preload("res://art/shortsword.png")
 const SUNSWORD_TEXTURE = preload("res://art/sunsword.png")
+
+const FIREBALL_TEXTURE = preload("res://art/fireball.png")
+const SUNBURST_TEXTURE = preload("res://art/sunburst.png")
+const ICE_CONE_TEXTURE = preload("res://art/ice_cone.png")
 
 enum MeleeWeaponType {
 	ShortSword = 0,
@@ -97,15 +99,12 @@ func get_tome_scene() -> PackedScene:
 		return null
 		
 func get_tome_texture(tome: TomeType) -> Texture2D:
-	# STUB: Waiting on tome textures
-	return load("res://art/rect1.svg")
-	
 	if tome == TomeType.Fireball:
-		return null
+		return FIREBALL_TEXTURE
 	elif tome == TomeType.IceCone:
-		return null
+		return ICE_CONE_TEXTURE
 	elif tome == TomeType.Sunburst:
-		return null
+		return SUNBURST_TEXTURE
 	else:
-		push_error("Bad melee value used in get_tome_texture function")
+		push_error("Bad tome value used in get_tome_texture function")
 		return null

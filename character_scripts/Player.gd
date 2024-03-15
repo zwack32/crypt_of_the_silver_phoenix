@@ -12,6 +12,7 @@ var player_spd = 10
 var health = player_max_health
 var direction = Vector2.UP
 var can_swing = true
+var is_dead = false
 
 @export var weapon_manager: WeaponManager
 
@@ -142,7 +143,7 @@ func move():
 
 #die
 func on_death():
-	var dead = true
+	is_dead = true
 
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
@@ -157,7 +158,9 @@ func get_health() -> float:
 	
 func set_health(new_health: float):
 	if health <= 0.0:
-		on_death()
+		if !is_dead:
+			on_death()
+		return
 	health = clamp(new_health, 0.0, player_max_health)
 	health = round(health)
 	health_bar.value = health
