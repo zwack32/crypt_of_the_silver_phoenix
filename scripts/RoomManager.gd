@@ -10,6 +10,8 @@ var entered_rooms: Array[Room]
 var triggered_room: Room
 var triggered_battle: RoomBattleInstance
 
+var room_level = 1
+
 # It can be assumed that these arrays can be indexed with orginal room idx
 var doors: Array[Door]
 var rooms: Array[Room]
@@ -47,7 +49,7 @@ func trigger(room: Room):
 	triggered_room = room
 	
 	triggered_battle = room_battle_instance_scene.instantiate()
-	triggered_battle.room_level = 4
+	triggered_battle.room_level = room_level
 	triggered_battle.player = player
 	triggered_battle.room_position = room.position
 	triggered_battle.room_size = room.get_pixel_size()
@@ -58,6 +60,8 @@ func trigger(room: Room):
 
 	for door in doors:
 		door.call_deferred("set_disabled", false)
+		
+	room_level += 1
 
 func untrigger_room():
 	var item_drop = drop_item_scene.instantiate()

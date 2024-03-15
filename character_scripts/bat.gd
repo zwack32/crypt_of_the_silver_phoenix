@@ -1,8 +1,6 @@
-extends CharacterBody2D
+extends Enemy
 class_name Bat
 
-@export var player: Player
-@export var stick: Area2D
 @export var speed: float = 500.0
 
 #velocity = Vector2.ZERO
@@ -42,17 +40,16 @@ func _ready():
 	fire_tick_timer.start()
 	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
-	var room_number = 1
 	#randomize stats
-	enemy_atk += randi_range((-1 + roundf(room_number/2)), (2+room_number))
-	enemy_def += randi_range((-1 + roundf(room_number/2)), (2+room_number))
-	enemy_health += randi_range((-2 + roundf(room_number/2)), 5+(2*room_number))
+	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
+	enemy_def += randi_range((-1 + roundf(room_level/2)), (2+room_level))
+	enemy_health += randi_range((-2 + roundf(room_level/2)), 5+(2*room_level))
 	
 	collision_layer |= 0
 	
 	#if on room 3 or higher, start adding elemental enemies
 	var type = "normal"
-	if room_number >= 3:
+	if room_level >= 3:
 		var type_determiner = randi_range(1, 4)
 		if type_determiner == 1 or 2:
 			type = "normal"
