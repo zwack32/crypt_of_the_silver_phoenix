@@ -14,6 +14,8 @@ var direction = Vector2.UP
 var can_swing = true
 var is_dead = false
 
+@onready var game_over = preload("res://scenes/game_over.tscn")
+
 @export var weapon_manager: WeaponManager
 
 @onready var health_bar = $HealthBar
@@ -144,6 +146,9 @@ func move():
 #die
 func on_death():
 	is_dead = true
+	await LevelTransition.fade_to_black()
+	get_tree().change_scene_to_packed(game_over)
+	LevelTransition.fade_from_black()
 
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
