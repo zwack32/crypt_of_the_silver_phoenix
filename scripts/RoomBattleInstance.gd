@@ -46,6 +46,7 @@ func _process(_delta):
 				enemy.player = player
 				enemy.position = rand_position
 				enemy.room_battle_instance = self
+				enemy.room_level = room_level
 				add_child(enemy)
 			waves_left.pop_front()
 
