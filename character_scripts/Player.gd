@@ -33,8 +33,7 @@ func get_player_max_hp():
 
 func _ready():
 	health_bar.max_value = player_max_health
-	spell_cooldown_timer.start()
-	spell_bar.max_value = spell_cooldown_timer.time_left
+	spell_bar.max_value = spell_cooldown_timer.wait_time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
