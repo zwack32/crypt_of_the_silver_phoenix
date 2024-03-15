@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brkrkxye8x57i"]
+[gd_scene load_steps=5 format=3 uid="uid://deibshu8ih60"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_oww1r"]
+[ext_resource type="Texture2D" uid="uid://bafl5x8i1lld7" path="res://art/rect1.svg" id="2_577vn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2yx4"]
 bg_color = Color(0.988235, 0.988235, 0.988235, 1)
@@ -18,6 +19,7 @@ anchor_right = 0.997
 anchor_bottom = 0.991
 offset_right = -0.544044
 offset_bottom = -0.168036
+texture = ExtResource("2_577vn")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = -1

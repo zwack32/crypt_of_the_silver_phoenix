@@ -22,7 +22,7 @@ border_width_bottom = 2
 
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 24
+collision_mask = 26
 script = ExtResource("1_soans")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
