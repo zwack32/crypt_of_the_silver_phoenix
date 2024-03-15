@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxopgnip6fb83"]
 
 [ext_resource type="Script" path="res://weapons/fire_sword.gd" id="1_d840q"]
-[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_4veip"]
+[ext_resource type="Texture2D" uid="uid://b5wd2pfxu5oju" path="res://art/flame_sword.png" id="2_ui8v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhtca"]
-size = Vector2(16, 258)
+size = Vector2(16, 256)
 
 [node name="FireSword" type="Area2D"]
 script = ExtResource("1_d840q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -128)
-scale = Vector2(0.125, 2)
-texture = ExtResource("2_4veip")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ui8v4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -127)
+position = Vector2(0, -128)
 shape = SubResource("RectangleShape2D_hhtca")
