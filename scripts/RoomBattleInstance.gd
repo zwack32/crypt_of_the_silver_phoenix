@@ -35,28 +35,28 @@ func begin_battle():
 	waves_left.push_back(last)
 
 func _process(_delta):
-	if len(waves_left) == 0:
-		battle_ended.emit()
-		queue_free()
-	else:
-		var current_wave = waves_left[0]
-		if current_wave.enemies_left == 0:
-			for _i in current_wave.total_enemy_count:
-				var rand_position = get_random_room_position()
-				
-				var enemy_type = randi_range(0, 1)
-				
-				var enemy
-				if enemy_type == 0:
-					enemy = slime_scene.instantiate()
-				elif enemy_type == 1:
-					enemy = bat_scene.instantiate()
-				enemy.player = player
-				enemy.position = rand_position
-				enemy.room_battle_instance = self
-				enemy.room_level = room_level
-				add_child(enemy)
-			waves_left.pop_front()
+	var current_wave = waves_left[0]
+	if current_wave.enemies_left == 0:
+		for _i in current_wave.total_enemy_count:
+			var rand_position = get_random_room_position()
+			
+			var enemy_type = randi_range(0, 1)
+			
+			var enemy
+			if enemy_type == 0:
+				enemy = slime_scene.instantiate()
+			elif enemy_type == 1:
+				enemy = bat_scene.instantiate()
+			enemy.player = player
+			enemy.position = rand_position
+			enemy.room_battle_instance = self
+			enemy.room_level = room_level
+			add_child(enemy)
+		waves_left.pop_front()
+		
+		if len(waves_left) <= 1:
+			battle_ended.emit()
+			queue_free()
 
 func pop_enemy():
 	if len(waves_left) == 0:
