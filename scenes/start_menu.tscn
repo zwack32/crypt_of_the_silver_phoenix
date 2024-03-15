@@ -5,7 +5,20 @@
 [ext_resource type="Script" path="res://scripts/Window.gd" id="3_je5q4"]
 
 [node name="StartMenu" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_ecl5h")
+
+[node name="Window" type="Window" parent="."]
+title = "Instructions"
+initial_position = 1
+size = Vector2i(500, 500)
+visible = false
+script = ExtResource("3_je5q4")
+
+[node name="Camera2D" type="Camera2D" parent="Window"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Window/Camera2D"]
+texture = ExtResource("1_oqhy6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1153.0
@@ -37,19 +50,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Instructions"
 
-[node name="Window" type="Window" parent="."]
-title = "Instructions"
-initial_position = 1
-size = Vector2i(500, 500)
-visible = false
-script = ExtResource("3_je5q4")
-
-[node name="Camera2D" type="Camera2D" parent="Window"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Window/Camera2D"]
-texture = ExtResource("1_oqhy6")
-
+[connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Instructions" to="Window" method="_on_instructions_pressed"]
-[connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
