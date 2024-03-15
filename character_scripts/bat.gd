@@ -149,5 +149,4 @@ func enemy_die():
 	
 	on_fire = false
 	frozen = false
-
-
+	room_battle_instance.pop_enemy()
