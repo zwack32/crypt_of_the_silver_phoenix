@@ -2,6 +2,8 @@ extends Tome
 
 var str = 10
 
+@onready var cpu_particles_2d = $CPUParticles2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = get_viewport().get_mouse_position()+player.position
@@ -17,7 +19,9 @@ func _ready():
 	position.y *= viewport.y / 2
 	position += player.position
 	
-	await get_tree().create_timer(2).timeout
+	cpu_particles_2d.emitting = true
+	
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 
