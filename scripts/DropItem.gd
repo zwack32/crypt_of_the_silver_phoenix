@@ -8,11 +8,8 @@ const TomeType = WeaponManager.TomeType
 @onready var sprite_2d = $Sprite2D
 
 enum DropHeathValues {
-	# 5%
 	HealthSmall = 0,
-	# 10%
 	HealthMedium = 1,
-	# 20%
 	HealthBig = 2,
 	_Count,
 }
@@ -51,13 +48,14 @@ func _ready():
 
 func _process(delta):
 	if is_in_range && Input.is_action_just_pressed("pick_up"):
+		drop_item.data = DropItemType.Health
 		if drop_item.ty == DropItemType.Health:
 			if drop_item.data == DropHeathValues.HealthSmall:
-				player.set_health(player.get_health() + 0.05 * player.get_player_max_hp())
+				player.set_health(player.get_health() + 0.15 * player.get_player_max_hp())
 			elif drop_item.data == DropHeathValues.HealthSmall:
-				player.set_health(player.get_health() + 0.1 * player.get_player_max_hp())
+				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
 			elif drop_item.data == DropHeathValues.HealthSmall:
-				player.set_health(player.get_health() + 0.2 * player.get_player_max_hp())
+				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
 		elif drop_item.ty == DropItemType.Melee:
 			weapon_manager.set_melee(drop_item.data)
 			print("You got a melee from item drop")

@@ -160,4 +160,5 @@ func set_health(new_health: float):
 	if health <= 0.0:
 		on_death()
 	health = clamp(new_health, 0.0, player_max_health)
+	health = round(health)
 	health_bar.value = health
