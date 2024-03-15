@@ -129,7 +129,7 @@ func _on_area_entered(area):
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
-	var dmg = (clamp(player_atk+sword_str-enemy_def, 0, 9999999))+sword_str
+	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
 	enemy_health -= dmg
 	if enemy_health <= 0:
 		enemy_health = 0
