@@ -2,10 +2,10 @@ const X_RANGE = 1
 const Y_RANGE = 10
 const G_ITERS = 500
 const ROOM_VARIANTS = [
-	[20.0, 20.0, 4],
+	[45.0, 45.0, 4],
 	[40.0, 40.0, 2],
-	[40.0, 20.0, 2],
-	[20.0, 40.0, 1],
+	[50.0, 35.0, 2],
+	[35.0, 50.0, 1],
 ]
 const DOOR_NEIGHBOR_SAMPLES = 4
 const DOOR_PARALLEL_DISTANCE_THRESHOLD = 1.0

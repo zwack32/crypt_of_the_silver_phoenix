@@ -10,7 +10,7 @@ var entered_rooms: Array[Room]
 var triggered_room: Room
 var triggered_battle: RoomBattleInstance
 
-var room_level = 1
+var room_level = 2
 
 # It can be assumed that these arrays can be indexed with orginal room idx
 var doors: Array[Door]
