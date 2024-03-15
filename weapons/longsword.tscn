@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pq3d8p6fi55t"]
 
 [ext_resource type="Script" path="res://weapons/longsword.gd" id="1_01gqb"]
-[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_rnonn"]
+[ext_resource type="Texture2D" uid="uid://be4sbr4f88j28" path="res://art/longsword.png" id="2_do6nk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4yrp"]
 size = Vector2(19.9174, 31.75)
@@ -17,8 +17,8 @@ scale = Vector2(0.605, 8)
 shape = SubResource("RectangleShape2D_d4yrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
-scale = Vector2(0.092, 2)
-texture = ExtResource("1_rnonn")
+position = Vector2(1.90735e-06, -128)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_do6nk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

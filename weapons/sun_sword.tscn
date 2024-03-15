@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rvtv32v8ehm6"]
 
 [ext_resource type="Script" path="res://weapons/sun_sword.gd" id="1_1pyvs"]
-[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_olnjm"]
+[ext_resource type="Texture2D" uid="uid://bjgqf6tg6q0fh" path="res://art/sunsword.png" id="2_g6l3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxr0d"]
 size = Vector2(16, 256)
@@ -10,9 +10,9 @@ size = Vector2(16, 256)
 script = ExtResource("1_1pyvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
-scale = Vector2(0.125, 2)
-texture = ExtResource("1_olnjm")
+position = Vector2(1.90735e-06, -128)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_g6l3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -128)
