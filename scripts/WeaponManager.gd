@@ -1,8 +1,8 @@
 extends Node
 class_name WeaponManager
 
-var current_melee: MeleeWeaponType = 0
-var current_tome: TomeType = 0
+var current_melee: MeleeWeaponType = randi_range(0, 5)
+var current_tome: TomeType = randi_range(0, 2)
 
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")
