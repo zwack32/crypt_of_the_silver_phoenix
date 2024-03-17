@@ -9,6 +9,7 @@ class_name Bat
 @onready var attack_timer = $AttackTimer
 @onready var fire_tick_timer = $FireTickTimer
 @onready var frozen_timer = $FrozenTimer
+@onready var fire_timer = $FireTimer
 @onready var sprite = $Sprite2D
 
 var enemy_max_health = 20
@@ -22,6 +23,7 @@ var enemy_health
 var dead = false
 
 var on_fire = false
+var on_fire_process = false
 var frozen = true
 var frozen_process = false
 
@@ -84,14 +86,23 @@ func _process(delta):
 	bat_health_bar.value = enemy_health
 	#print(attack_timer.time_left)
 	if on_fire:
-		if fire_tick_timer.time_left == 0:
-			enemy_health -= 2
-			print(enemy_health)
-			fire_tick_timer.start()
-		if enemy_health <= 0:
-			enemy_health = 0
-			bat_health_bar.hide()
-			enemy_die()
+		on_fire_process = true
+		fire_tick_timer.start()
+		fire_timer.start()
+		on_fire = false
+		
+	if on_fire_process and fire_tick_timer.time_left == 0:
+		enemy_health -= 2
+		fire_tick_timer.start()
+		
+	if on_fire_process and fire_timer.time_left == 0:
+		on_fire = false
+		on_fire_process = false
+		
+	if enemy_health <= 0:
+		enemy_health = 0
+		bat_health_bar.hide()
+		enemy_die()
 	
 	if frozen:
 		frozen_timer.start()

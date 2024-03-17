@@ -17,10 +17,12 @@ var enemy_health
 var dead = false
 
 var on_fire = false
+var on_fire_process = false
 var frozen = false
 var frozen_process = false
 
 @onready var fire_tick_timer = $FireTickTimer
+@onready var fire_timer = $FireTimer
 @onready var frozen_timer = $FrozenTimer
 
 #annoying functions so that we can use these in other scripts
@@ -74,14 +76,23 @@ func _process(delta):
 	enemy_health_bar.value = enemy_health
 	
 	if on_fire:
-		if fire_tick_timer.time_left == 0:
-			enemy_health -= 2
-			print(enemy_health)
-			fire_tick_timer.start()
-		if enemy_health <= 0:
-			enemy_health = 0
-			enemy_health_bar.hide()
-			enemy_die()
+		on_fire_process = true
+		fire_tick_timer.start()
+		fire_timer.start()
+		on_fire = false
+		
+	if on_fire_process and fire_tick_timer.time_left == 0:
+		enemy_health -= 2
+		fire_tick_timer.start()
+		
+	if on_fire_process and fire_timer.time_left == 0:
+		on_fire = false
+		on_fire_process = false
+		
+	if enemy_health <= 0:
+		enemy_health = 0
+		enemy_health_bar.hide()
+		enemy_die()
 			
 	if frozen:
 			frozen_timer.start()
