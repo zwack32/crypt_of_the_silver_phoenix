@@ -4,3 +4,5 @@ extends MeleeWeapon
 
 var str = 1
 var spd = 13
+
+var type = "glow"

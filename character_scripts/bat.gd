@@ -119,13 +119,22 @@ func _on_area_entered(area):
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 			velocity = Vector2.ZERO
-			print("enemy take damage")
+			#print("enemy take damage")
+			
+			if area.type == "fire":
+				on_fire = true
+			if area.type == "ice":
+				frozen = true
 		elif area.owner is Player:
 			#player takes damage
 			player.take_damage(enemy_atk)
-			print("player take damage")
+			#print("player take damage")
 		elif area is Tome:
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
+			if area.type == "fire":
+				on_fire = true
+			if area.type == "ice":
+				frozen = true
 	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):

@@ -146,7 +146,9 @@ func move():
 #die
 func on_death():
 	is_dead = true
+	print("die")
 	await LevelTransition.fade_to_black()
+	print("faded")
 	get_tree().change_scene_to_packed(game_over)
 	LevelTransition.fade_from_black()
 

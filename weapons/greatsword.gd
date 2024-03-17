@@ -5,3 +5,4 @@ extends MeleeWeapon
 var str = 7
 var spd = 11
 
+var type = "null"

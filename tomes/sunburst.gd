@@ -4,7 +4,7 @@ var str = 0
 #actual strength is 5
 var velocity = Vector2.ZERO
 var speed = 700.0
-
+var type = "glow"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

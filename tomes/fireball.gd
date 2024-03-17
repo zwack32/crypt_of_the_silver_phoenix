@@ -1,6 +1,7 @@
 extends Tome
 
 var str = 10
+var type = "fire"
 
 @onready var cpu_particles_2d = $CPUParticles2D
 

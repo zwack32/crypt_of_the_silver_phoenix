@@ -1,7 +1,7 @@
 extends Tome
 
 var str = 7
-
+var type = "ice"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
