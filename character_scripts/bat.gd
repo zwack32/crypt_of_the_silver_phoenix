@@ -67,6 +67,10 @@ func _ready():
 	print(str(enemy_health) + "health")
 	
 	attack_timer.start()
+	
+	# var tween = get_tree().create_tween()
+	# $Sprite2D.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	# tween.tween_property($Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 1.0), 1)
 
 #Move toward player
 func _process(delta):
@@ -146,7 +150,6 @@ func _on_area_entered(area):
 				on_fire = true
 			if area.type == "ice":
 				frozen = true
-	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)

@@ -2,10 +2,10 @@ extends Enemy
 class_name Slime
 
 @export var speed: float = 100.0
+@export var spawn_delay: float = 2.0
 
 @onready var death_timer = $DeathTimer
 @onready var animated_sprite_2d = $AnimatedSprite2D
-
 
 var enemy_max_health = 30
 var enemy_atk = 5
@@ -16,6 +16,7 @@ var enemy_health
 @onready var enemy_health_bar = $EnemyHealth
 
 var dead = false
+var is_active = false
 
 var on_fire = false
 var on_fire_process = false
@@ -63,9 +64,27 @@ func _ready():
 	print(str(enemy_atk) + "atk")
 	print(str(enemy_def) + "def")
 	print(str(enemy_health) + "health")
+	
+	var tween = get_tree().create_tween()
+	$AnimatedSprite2D.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	tween.tween_property($AnimatedSprite2D, "modulate", Color(1.0, 1.0, 1.0, 1.0), spawn_delay)
+	
+	var original_layer = collision_layer
+	var original_mask = collision_mask
+	
+	collision_layer = 0
+	collision_mask = 0
+	
+	await get_tree().create_timer(spawn_delay).timeout
+	is_active = true
+	collision_layer = original_layer
+	collision_mask = original_mask
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !is_active:
+		return
+	
 	velocity = Vector2.ZERO
 	if !dead:
 		var direction = (player.position - position).normalized()
@@ -109,6 +128,9 @@ func _process(delta):
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
+	if !is_active:
+		return
+		
 	if !dead:
 		if area is MeleeWeapon:
 			#enemy takes damage
