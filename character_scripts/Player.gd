@@ -164,10 +164,11 @@ func get_health() -> float:
 	return health
 	
 func set_health(new_health: float):
+	health = clamp(new_health, 0.0, player_max_health)
+	health = round(health)
+	health_bar.value = health
+	
 	if health <= 0.0:
 		if !is_dead:
 			on_death()
 		return
-	health = clamp(new_health, 0.0, player_max_health)
-	health = round(health)
-	health_bar.value = health
