@@ -3,7 +3,7 @@ extends Tome
 var str = 0
 #actual strength is 5
 var velocity = Vector2.ZERO
-var speed = 700.0
+var speed = 70.0
 var type = "glow"
 var entered_once = false
 
@@ -20,6 +20,7 @@ func _ready():
 
 func _process(delta):
 	position += velocity
+	set_collision_layer_value(1, 0)
 
 func _on_area_entered(area):
 	str = 5
@@ -29,6 +30,5 @@ func _on_area_entered(area):
 		cpu_particles_2d.emitting = true
 		velocity = Vector2.ZERO
 		
-		# STUB: Replace hordcoded timer pls
 		await get_tree().create_timer(0.3).timeout
 		queue_free()

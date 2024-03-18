@@ -7,7 +7,7 @@
 radius = 24.0
 
 [node name="Sunburst" type="Area2D"]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_v8ekr")
 

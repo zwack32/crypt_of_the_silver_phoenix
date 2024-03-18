@@ -3,7 +3,7 @@ class_name WeaponManager
 
 var current_melee: MeleeWeaponType = randi_range(0, MeleeWeaponType._Count - 1)
 # var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
-var current_tome: TomeType = TomeType.IceCone
+var current_tome: TomeType = TomeType.Sunburst
 
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")
