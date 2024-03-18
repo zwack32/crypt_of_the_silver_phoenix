@@ -4,7 +4,8 @@ class_name Slime
 @export var speed: float = 100.0
 
 @onready var death_timer = $DeathTimer
-@onready var sprite = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 
 var enemy_max_health = 30
 var enemy_atk = 5
@@ -39,7 +40,7 @@ func get_enemy_health():
 func _ready():
 	enemy_health_bar.max_value = enemy_max_health
 	fire_tick_timer.start()
-	sprite.texture = load("res://icon.svg")
+	animated_sprite_2d.play("Slime_idle")
 	enemy_health = enemy_max_health
 	#randomize stats
 	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
@@ -93,6 +94,7 @@ func _process(delta):
 		enemy_health = 0
 		enemy_health_bar.hide()
 		enemy_die()
+		
 			
 	if frozen:
 			frozen_timer.start()
@@ -143,8 +145,8 @@ func enemy_die():
 	print("did you die again")
 	dead = true
 	velocity = Vector2.ZERO
+	animated_sprite_2d.play("Slime_die")
 	death_timer.start()
-	sprite.texture = load("res://art/rect1.svg")
 	on_fire = false
 	frozen = false
 	room_battle_instance.pop_enemy()
