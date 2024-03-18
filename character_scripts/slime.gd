@@ -142,6 +142,9 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	return enemy_health
 
 func enemy_die():
+	if dead:
+		return
+		
 	print("did you die again")
 	dead = true
 	velocity = Vector2.ZERO

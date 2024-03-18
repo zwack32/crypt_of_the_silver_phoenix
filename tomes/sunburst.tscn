@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkmleq2q5mg10"]
+[gd_scene load_steps=4 format=3 uid="uid://dkmleq2q5mg10"]
 
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_pqhyi"]
 [ext_resource type="Script" path="res://tomes/sunburst.gd" id="1_v8ekr"]
@@ -6,10 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj4lp"]
 radius = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hlwb2"]
-radius = 168.19
-
 [node name="Sunburst" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_v8ekr")
 
 [node name="BeadCollisionShape" type="CollisionShape2D" parent="."]
@@ -19,12 +18,18 @@ shape = SubResource("CircleShape2D_nj4lp")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_pqhyi")
 
-[node name="BlastCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hlwb2")
-
-[node name="BlastSprite" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, 3.8147e-06)
-scale = Vector2(2, 2)
-texture = ExtResource("1_pqhyi")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(0.96, 0.96, 0.6144, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
