@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_impp3"]
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="3_mvr7j"]
-[ext_resource type="PackedScene" path="res://scenes/weapon_manager.tscn" id="6_bif3i"]
+[ext_resource type="PackedScene" uid="uid://bajt1s68widgu" path="res://scenes/weapon_manager.tscn" id="6_bif3i"]
 [ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_q2ave"]
 
 [node name="TestWorld" type="Node2D"]
