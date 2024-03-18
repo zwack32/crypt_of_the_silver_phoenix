@@ -36,11 +36,11 @@ func _ready():
 	var data
 	if drop_type == DropItemType.Health:
 		data = randi_range(0, DropHeathValues._Count - 1)
-		if data == 0:
+		if data == DropHeathValues.HealthSmall:
 			sprite_2d.texture = load("res://art/small_heart.png")
-		if data == 1:
+		if data == DropHeathValues.HealthMedium:
 			sprite_2d.texture = load("res://art/med_heart.png")
-		if data == 2:
+		if data == DropHeathValues.HealthBig:
 			sprite_2d.texture = load("res://art/large_heart.png")
 	elif drop_type == DropItemType.Melee:
 		data = randi_range(0, MeleeWeaponType._Count - 1)
