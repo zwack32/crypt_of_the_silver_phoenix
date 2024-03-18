@@ -36,6 +36,12 @@ func _ready():
 	var data
 	if drop_type == DropItemType.Health:
 		data = randi_range(0, DropHeathValues._Count - 1)
+		if data == 0:
+			sprite_2d.texture = load("res://art/small_heart.png")
+		if data == 1:
+			sprite_2d.texture = load("res://art/med_heart.png")
+		if data == 2:
+			sprite_2d.texture = load("res://art/large_heart.png")
 	elif drop_type == DropItemType.Melee:
 		data = randi_range(0, MeleeWeaponType._Count - 1)
 		sprite_2d.texture = weapon_manager.get_melee_texture(data)
@@ -51,9 +57,9 @@ func _process(delta):
 		if drop_item.ty == DropItemType.Health:
 			if drop_item.data == DropHeathValues.HealthSmall:
 				player.set_health(player.get_health() + 0.15 * player.get_player_max_hp())
-			elif drop_item.data == DropHeathValues.HealthSmall:
+			elif drop_item.data == DropHeathValues.HealthMedium:
 				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
-			elif drop_item.data == DropHeathValues.HealthSmall:
+			elif drop_item.data == DropHeathValues.HealthBig:
 				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
 		elif drop_item.ty == DropItemType.Melee:
 			weapon_manager.set_melee(drop_item.data)
