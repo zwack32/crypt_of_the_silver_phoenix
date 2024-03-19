@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://qq15dgyc72ta"]
+[gd_scene load_steps=28 format=3 uid="uid://qq15dgyc72ta"]
 
 [ext_resource type="Script" path="res://character_scripts/bat.gd" id="1_lp1dh"]
 [ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_qptct"]
@@ -79,6 +79,10 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("3_qptct")
 region = Rect2(224, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3qnj"]
+atlas = ExtResource("3_qptct")
+region = Rect2(288, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcisv"]
 animations = [{
 "frames": [{
@@ -111,6 +115,45 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_16sy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aecqa")
@@ -147,6 +190,14 @@ animations = [{
 "loop": true,
 "name": &"Bat_idle",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3qnj")
+}],
+"loop": true,
+"name": &"Bat_stoned",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhq5"]

@@ -102,6 +102,11 @@ func _process(delta):
 			
 			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
+		animated_sprite_2d.play("Bat_die")
+		collision_layer = 0
+		collision_mask = 0
+		# STUB: Remove this gross hardcoded time
+		await get_tree().create_timer(3).timeout
 		queue_free()
 	position += velocity * delta
 	
@@ -192,7 +197,7 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	collision_layer |= 2
-	animated_sprite_2d.play("Bat_die")
+	animated_sprite_2d.play("Bat_stoned")
 	
 	on_fire = false
 	frozen = false

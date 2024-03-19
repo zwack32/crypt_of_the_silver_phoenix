@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw0sfcwrtmjxx"]
+[gd_scene load_steps=31 format=3 uid="uid://cw0sfcwrtmjxx"]
 
 [ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_soans"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
+[ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_4wjsr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0lnc"]
 atlas = ExtResource("2_fu2hm")
@@ -59,6 +60,10 @@ region = Rect2(512, 0, 32, 32)
 atlas = ExtResource("2_fu2hm")
 region = Rect2(544, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aecqa"]
+atlas = ExtResource("3_4wjsr")
+region = Rect2(576, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqbln"]
 atlas = ExtResource("2_fu2hm")
 region = Rect2(96, 0, 32, 32)
@@ -82,6 +87,10 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndbbh"]
 atlas = ExtResource("2_fu2hm")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkbdy"]
+atlas = ExtResource("2_fu2hm")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8sqte"]
 animations = [{
@@ -127,6 +136,54 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tanic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
 }],
 "loop": false,
 "name": &"Slime_die",
@@ -139,7 +196,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oenvu")
 }],
-"loop": true,
+"loop": false,
 "name": &"Slime_hurt",
 "speed": 5.0
 }, {
@@ -158,6 +215,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Slime_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkbdy")
+}],
+"loop": true,
+"name": &"Slime_stoned",
 "speed": 5.0
 }]
 
