@@ -60,7 +60,7 @@ func _ready():
 
 		room_manager.add_room(new_room_collider)
 		
-		if room_idx == start_room_idx:
+		if room_idx == start_room_idx || room_idx == exit_room_idx:
 			room_manager.add_non_trigger_room(new_room_collider)
 
 		add_child(new_room_collider)
@@ -77,4 +77,3 @@ func _ready():
 		room_manager.add_door(new_door_collider)
 
 		add_child(new_door_collider)
-		
