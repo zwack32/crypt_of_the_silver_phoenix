@@ -118,6 +118,45 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
 }],
 "loop": false,
 "name": &"Bat_die",
@@ -188,7 +227,7 @@ script = ExtResource("1_lp1dh")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_lcisv")
-animation = &"Bat_idle"
+animation = &"Bat_die"
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0

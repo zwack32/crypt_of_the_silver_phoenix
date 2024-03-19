@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://cw0sfcwrtmjxx"]
+[gd_scene load_steps=31 format=3 uid="uid://cw0sfcwrtmjxx"]
 
 [ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_soans"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
+[ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_4wjsr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0lnc"]
 atlas = ExtResource("2_fu2hm")
@@ -58,6 +59,10 @@ region = Rect2(512, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tanic"]
 atlas = ExtResource("2_fu2hm")
 region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aecqa"]
+atlas = ExtResource("3_4wjsr")
+region = Rect2(576, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqbln"]
 atlas = ExtResource("2_fu2hm")
@@ -131,6 +136,54 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tanic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecqa")
 }],
 "loop": false,
 "name": &"Slime_die",
@@ -199,7 +252,7 @@ script = ExtResource("1_soans")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_idle"
+animation = &"Slime_die"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 30.0
