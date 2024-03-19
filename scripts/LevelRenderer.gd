@@ -14,12 +14,17 @@ func _ready():
 	var doors: Array[DoorsScript.DoorNode]
 
 	var start_room_idx
+	var exit_room_idx
 
 	while true:
-		rooms = RoomsScript.rooms_populate(6)
+		rooms = RoomsScript.rooms_populate(10)
 		RoomsScript.rooms_gen(rooms)
 
 		var start_room = RoomsScript.RoomNode.init(Vector2(0.0, 200.0), Vector2(10.0, 10.0))
+		var exit_room = RoomsScript.RoomNode.init(Vector2(0.0, -200.0), Vector2(10.0, 10.0))
+
+		exit_room_idx = len(rooms)
+		RoomsScript.rooms_inject_room(rooms, exit_room)
 
 		start_room_idx = len(rooms)
 		RoomsScript.rooms_inject_room(rooms, start_room)
