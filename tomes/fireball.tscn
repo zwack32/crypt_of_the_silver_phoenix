@@ -22,8 +22,10 @@ rotation = 0.785398
 texture = ExtResource("2_2bi8o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 20
 lifetime = 0.4
+one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
 emission_shape = 1
