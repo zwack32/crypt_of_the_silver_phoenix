@@ -186,9 +186,7 @@ script = ExtResource("1_soans")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_die"
-frame = 13
-frame_progress = 1.0
+animation = &"Slime_idle"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 30.0

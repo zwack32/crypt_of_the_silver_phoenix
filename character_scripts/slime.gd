@@ -2,7 +2,8 @@ extends Enemy
 class_name Slime
 
 @export var speed: float = 100.0
-@export var spawn_delay: float = 2.0
+@export var spawn_delay: float = 1.5
+@export var spawn_delay_rand_range: float = 0.5
 
 @onready var death_timer = $DeathTimer
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -41,7 +42,6 @@ func get_enemy_health():
 func _ready():
 	enemy_health_bar.max_value = enemy_max_health
 	fire_tick_timer.start()
-	animated_sprite_2d.play("Slime_idle")
 	enemy_health = enemy_max_health
 	#randomize stats
 	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
@@ -75,7 +75,8 @@ func _ready():
 	collision_layer = 0
 	collision_mask = 0
 	
-	await get_tree().create_timer(spawn_delay).timeout
+	await get_tree().create_timer(spawn_delay + randf_range(0.0, spawn_delay_rand_range)).timeout
+	animated_sprite_2d.play("Slime_idle")
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
