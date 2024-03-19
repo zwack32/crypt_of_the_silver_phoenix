@@ -51,8 +51,8 @@ func trigger(room: Room):
 	triggered_battle = room_battle_instance_scene.instantiate()
 	triggered_battle.room_level = room_level
 	triggered_battle.player = player
-	triggered_battle.room_position = room.position
-	triggered_battle.room_size = room.get_pixel_size()
+	triggered_battle.room_position = room.position * 3.0
+	triggered_battle.room_size = room.get_pixel_size() * 1.75
 	add_child(triggered_battle)
 	
 	triggered_battle.begin_battle()
@@ -67,7 +67,7 @@ func untrigger_room():
 	var item_drop = drop_item_scene.instantiate()
 	item_drop.weapon_manager = weapon_manager
 	item_drop.player = player
-	item_drop.position = triggered_room.position
+	item_drop.position = triggered_room.position * 3.0
 	add_child(item_drop)
 	
 	add_non_trigger_room(triggered_room)

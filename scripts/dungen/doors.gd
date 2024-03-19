@@ -48,13 +48,13 @@ class DoorNode:
 	func get_size() -> Vector2:
 		var size: Vector2
 		if self.normal == Vector2(1.0, 0.0):
-			size = Vector2(1.0, 5.0)
+			size = Vector2(1.0, 1.0)
 		elif self.normal == Vector2(-1.0, 0.0):
-			size = Vector2(1.0, 5.0)
+			size = Vector2(1.0, 1.0)
 		elif self.normal == Vector2(0.0, 1.0):
-			size = Vector2(5.0, 1.0)
+			size = Vector2(1.0, 1.0)
 		elif self.normal == Vector2(0.0, -1.0):
-			size = Vector2(5.0, 1.0)
+			size = Vector2(1.0, 1.0)
 		else:
 			printerr("This really shouldn't happen. Go yell at David")
 		return size

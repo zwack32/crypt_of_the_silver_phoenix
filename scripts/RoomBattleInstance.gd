@@ -71,8 +71,6 @@ func pop_enemy():
 	print(current_wave.enemies_left)
 
 func get_random_room_position() -> Vector2:
-	# TODO: Replace this magic numbers
-	print(room_size)
 	var x = randf_range(-room_size.x, room_size.x)
 	var y = randf_range(-room_size.y, room_size.y)
 	return room_position + Vector2(x, y)

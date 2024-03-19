@@ -1,4 +1,4 @@
-extends Node
+extends StaticBody2D
 class_name Door
 
 @export var direction: Vector2
@@ -10,7 +10,8 @@ class_name Door
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
-	enter_trigger.position = -direction * (30.0 + sprite_2d.get_rect().size.x)
+	enter_trigger.position = -Vector2.UP * 80.0
+	rotation = direction.angle() + PI / 2
 
 func set_disabled(disabled: bool):
 	collider.disabled = disabled

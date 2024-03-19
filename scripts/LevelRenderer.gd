@@ -20,8 +20,8 @@ func _ready():
 		rooms = RoomsScript.rooms_populate(10)
 		RoomsScript.rooms_gen(rooms)
 
-		var start_room = RoomsScript.RoomNode.init(Vector2(0.0, 200.0), Vector2(10.0, 10.0))
-		var exit_room = RoomsScript.RoomNode.init(Vector2(0.0, -200.0), Vector2(10.0, 10.0))
+		var start_room = RoomsScript.RoomNode.init(Vector2(0.0, 200.0), Vector2(5.0, 5.0))
+		var exit_room = RoomsScript.RoomNode.init(Vector2(0.0, -200.0), Vector2(5.0, 5.0))
 
 		exit_room_idx = len(rooms)
 		RoomsScript.rooms_inject_room(rooms, exit_room)
@@ -39,23 +39,23 @@ func _ready():
 		rooms, 
 		doors,
 		RendererScript.RoomAtlas.init(
-			Vector2i(3, 2),
+			Vector2i(1, 1),
 			Vector2i(1, 0),
-			Vector2i(1, 7),
-			Vector2i(0, 4),
-			Vector2i(7, 2),
-			Vector2i(1, 1),
-			Vector2i(1, 1),
-			Vector2i(1, 1),
-			Vector2i(1, 1),
+			Vector2i(3, 5),
+			Vector2i(0, 1),
+			Vector2i(4, 4),
+			Vector2i(0, 0),
+			Vector2i(4, 0),
+			Vector2i(0, 5),
+			Vector2i(4, 5),
 		)
 	)
 
 	for room_idx in range(0, len(rooms)):
 		var room = rooms[room_idx]
 		var new_room_collider = room_collider.instantiate()
-		new_room_collider.position = room.pos * 16.0
-		new_room_collider.scale = room.size * 1.5
+		new_room_collider.position = room.pos * 32.0
+		new_room_collider.scale = room.size * 3.2
 		new_room_collider.room_manager = room_manager
 
 		room_manager.add_room(new_room_collider)
@@ -68,8 +68,9 @@ func _ready():
 	for door_idx in range(0, len(doors)):
 		var door = doors[door_idx]
 		var new_door_collider = door_collider.instantiate()
-		new_door_collider.position = door.pos * 16.0
-		new_door_collider.scale = door.get_size() * 0.25
+		new_door_collider.position = door.pos * 32.0
+		new_door_collider.scale = door.get_size() * 0.5
+		new_door_collider.scale.y *= 0.5
 		new_door_collider.direction = door.normal
 		new_door_collider.original_room_idx = door.original_room_idx
 		new_door_collider.room_manager = room_manager
