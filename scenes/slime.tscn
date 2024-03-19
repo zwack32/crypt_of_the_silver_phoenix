@@ -162,7 +162,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3680"]
-size = Vector2(78, 60.5)
+size = Vector2(79, 60.5)
 
 [sub_resource type="Theme" id="Theme_xhqky"]
 
@@ -187,7 +187,7 @@ script = ExtResource("1_soans")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_idle"
+animation = &"Slime_die"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -202,14 +202,14 @@ position = Vector2(-2, -1.75)
 shape = SubResource("RectangleShape2D_k3680")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.25, 0)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_k3680")
 
 [node name="EnemyHealth" type="ProgressBar" parent="."]
 offset_left = -78.0
-offset_top = -102.0
+offset_top = -73.0
 offset_right = 78.0
-offset_bottom = -82.0
+offset_bottom = -53.0
 theme = SubResource("Theme_xhqky")
 theme_override_styles/background = SubResource("StyleBoxFlat_l1qn3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_f0dgw")

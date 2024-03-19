@@ -66,8 +66,8 @@ func _ready():
 	print(str(enemy_health) + "health")
 	
 	var tween = get_tree().create_tween()
-	$AnimatedSprite2D.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	tween.tween_property($AnimatedSprite2D, "modulate", Color(1.0, 1.0, 1.0, 1.0), spawn_delay)
+	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	tween.tween_property(animated_sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), spawn_delay)
 	
 	var original_layer = collision_layer
 	var original_mask = collision_mask

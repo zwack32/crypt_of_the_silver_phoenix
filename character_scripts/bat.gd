@@ -2,6 +2,8 @@ extends Enemy
 class_name Bat
 
 @export var speed: float = 500.0
+@export var spawn_delay: float = 1.5
+@export var spawn_delay_rand_range: float = 0.5
 
 #velocity = Vector2.ZERO
 
@@ -10,7 +12,7 @@ class_name Bat
 @onready var fire_tick_timer = $FireTickTimer
 @onready var frozen_timer = $FrozenTimer
 @onready var fire_timer = $FireTimer
-@onready var sprite = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 var enemy_max_health = 20
 var enemy_atk = 7
@@ -21,6 +23,7 @@ var enemy_health
 @onready var bat_health_bar = $BatHealthBar
 
 var dead = false
+var is_active = false
 
 var on_fire = false
 var on_fire_process = false
@@ -40,7 +43,6 @@ func get_enemy_health():
 func _ready():
 	bat_health_bar.max_value = enemy_max_health
 	fire_tick_timer.start()
-	sprite.texture = load("res://icon.svg")
 	enemy_health = enemy_max_health
 	#randomize stats
 	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
@@ -66,14 +68,30 @@ func _ready():
 	print(str(enemy_def) + "def")
 	print(str(enemy_health) + "health")
 	
-	attack_timer.start()
 	
-	# var tween = get_tree().create_tween()
-	# $Sprite2D.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	# tween.tween_property($Sprite2D, "modulate", Color(1.0, 1.0, 1.0, 1.0), 1)
+	var tween = get_tree().create_tween()
+	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	tween.tween_property(animated_sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), spawn_delay)
+	
+	var original_layer = collision_layer
+	var original_mask = collision_mask
+	
+	collision_layer = 0
+	collision_mask = 0
+	
+	await get_tree().create_timer(spawn_delay + randf_range(0.0, spawn_delay_rand_range)).timeout
+	animated_sprite_2d.play("Bat_idle")
+	is_active = true
+	collision_layer = original_layer
+	collision_mask = original_mask
+
+	attack_timer.start()
 
 #Move toward player
 func _process(delta):
+	if !is_active:
+		return
+	
 	if !dead:
 		if attack_timer.time_left <= 0:
 			var direction = (player.position - position).normalized()
@@ -129,6 +147,9 @@ func check_attack_timer():
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
+	if !is_active:
+		return
+		
 	if !dead:
 		if area is MeleeWeapon:
 			#enemy takes damage
@@ -171,7 +192,7 @@ func enemy_die():
 	velocity = Vector2.ZERO
 	death_timer.start()
 	collision_layer |= 2
-	sprite.texture = load("res://art/rect1.svg")
+	animated_sprite_2d.play("Bat_die")
 	
 	on_fire = false
 	frozen = false
