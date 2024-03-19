@@ -162,7 +162,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3680"]
-size = Vector2(128, 128)
+size = Vector2(78, 60.5)
 
 [sub_resource type="Theme" id="Theme_xhqky"]
 
@@ -184,7 +184,8 @@ collision_mask = 26
 script = ExtResource("1_soans")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(7, 7)
+texture_filter = 1
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
 animation = &"Slime_idle"
 
@@ -197,9 +198,11 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -1.75)
 shape = SubResource("RectangleShape2D_k3680")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.25, 0)
 shape = SubResource("RectangleShape2D_k3680")
 
 [node name="EnemyHealth" type="ProgressBar" parent="."]
