@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvs6efvmcssx"]
+
+[ext_resource type="Script" path="res://scripts/UI.gd" id="1_oy8ww"]
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_jegqi"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_oy8ww")
+
+[node name="WeaponRect" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+texture = ExtResource("2_jegqi")
+
+[node name="TomeRect" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_jegqi")
