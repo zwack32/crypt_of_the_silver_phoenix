@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw0sfcwrtmjxx"]
+[gd_scene load_steps=29 format=3 uid="uid://cw0sfcwrtmjxx"]
 
 [ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_soans"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
@@ -83,6 +83,10 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_fu2hm")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkbdy"]
+atlas = ExtResource("2_fu2hm")
+region = Rect2(224, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8sqte"]
 animations = [{
 "frames": [{
@@ -139,7 +143,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oenvu")
 }],
-"loop": true,
+"loop": false,
 "name": &"Slime_hurt",
 "speed": 5.0
 }, {
@@ -158,6 +162,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Slime_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkbdy")
+}],
+"loop": true,
+"name": &"Slime_stoned",
 "speed": 5.0
 }]
 
@@ -187,7 +199,7 @@ script = ExtResource("1_soans")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_die"
+animation = &"Slime_idle"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 30.0

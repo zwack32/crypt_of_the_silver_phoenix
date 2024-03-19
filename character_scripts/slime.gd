@@ -91,6 +91,11 @@ func _process(delta):
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed
 	if death_timer.time_left <= 0 and dead:
+		animated_sprite_2d.play("Slime_die")
+		collision_layer = 0
+		collision_mask = 0
+		# STUB: Remove this gross hardcoded time
+		await get_tree().create_timer(3).timeout
 		queue_free()
 	move_and_slide()
 	
@@ -151,7 +156,6 @@ func _on_area_entered(area):
 				on_fire = true
 			if area.type == "ice":
 				frozen = true
-	
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
@@ -171,7 +175,7 @@ func enemy_die():
 	print("did you die again")
 	dead = true
 	velocity = Vector2.ZERO
-	animated_sprite_2d.play("Slime_die")
+	animated_sprite_2d.play("Slime_stoned")
 	death_timer.start()
 	on_fire = false
 	frozen = false
