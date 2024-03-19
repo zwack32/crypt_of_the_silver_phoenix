@@ -22,10 +22,8 @@ rotation = 0.785398
 texture = ExtResource("2_2bi8o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
 amount = 20
-lifetime = 0.5
-one_shot = true
+lifetime = 0.4
 speed_scale = 2.0
 explosiveness = 1.0
 emission_shape = 1
@@ -35,6 +33,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 600.0
-linear_accel_min = 10.0
-linear_accel_max = 30.0
+linear_accel_min = -2500.0
+linear_accel_max = -2500.0
+scale_amount_min = 50.0
+scale_amount_max = 100.0
 color_ramp = SubResource("Gradient_0f41u")
