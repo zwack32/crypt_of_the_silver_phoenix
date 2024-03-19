@@ -1,20 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://cw0sfcwrtmjxx"]
+[gd_scene load_steps=28 format=3 uid="uid://cw0sfcwrtmjxx"]
 
 [ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_soans"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
 [ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_4wjsr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0lnc"]
-atlas = ExtResource("2_fu2hm")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqylw"]
-atlas = ExtResource("2_fu2hm")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ehwq7"]
-atlas = ExtResource("2_fu2hm")
-region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyi3a"]
 atlas = ExtResource("2_fu2hm")
@@ -95,15 +83,6 @@ region = Rect2(224, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8sqte"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r0lnc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqylw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ehwq7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vyi3a")
 }, {
