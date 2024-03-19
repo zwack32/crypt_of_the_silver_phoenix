@@ -231,7 +231,7 @@ script = ExtResource("1_soans")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_die"
+animation = &"Slime_idle"
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 30.0
