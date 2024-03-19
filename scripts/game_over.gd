@@ -12,6 +12,6 @@ func _process(delta):
 
 
 func _on_restart_button_pressed():
-	await LevelTransition.fade_to_black()
+	await LevelTransition.fade_to_black(1)
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
-	LevelTransition.fade_from_black()
+	LevelTransition.fade_from_black(1)

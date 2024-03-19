@@ -21,11 +21,6 @@ script = ExtResource("3_je5q4")
 [node name="Sprite2D" type="Sprite2D" parent="Window/Camera2D"]
 texture = ExtResource("3_qmjnh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1153.0
-offset_bottom = 648.0
-texture = ExtResource("1_oqhy6")
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = -1
 anchor_right = 0.997
