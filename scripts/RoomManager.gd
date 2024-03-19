@@ -37,10 +37,11 @@ func enter_room(room_idx: int):
 	entered_rooms.push_back(rooms[room_idx])
 	
 func exit_room(room_idx: int):
+	var a = rooms[room_idx]
 	entered_rooms.erase(rooms[room_idx])
-
-	if len(entered_rooms) == 1:
-		trigger(entered_rooms[0])
+	print("exit room", len(entered_rooms))
+	if len(entered_rooms) == 0:
+		trigger(a)
 
 func trigger(room: Room):
 	if !is_room_triggerable(room):
