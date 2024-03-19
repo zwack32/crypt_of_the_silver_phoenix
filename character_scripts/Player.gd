@@ -107,11 +107,11 @@ func ranged_attack():
 	if !spell_cooldown_timer.time_left == 0:
 		pass
 	else:
-		var fireball = weapon_manager.get_tome_scene().instantiate()
-		fireball.player = self
+		var spell = weapon_manager.get_tome_scene().instantiate()
+		spell.player = self
 		#TODO make this work with all spells. it might already, 
 		#but if it does we need to rename the variable
-		get_parent().add_child(fireball)
+		get_parent().add_child(spell)
 		spell_cooldown_timer.start()
 
 func move():
