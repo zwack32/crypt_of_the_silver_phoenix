@@ -20,7 +20,7 @@ texture = ExtResource("1_pqhyi")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 100
+amount = 120
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0

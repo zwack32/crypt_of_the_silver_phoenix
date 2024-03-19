@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch0qfkpi4s11o"]
+[gd_scene load_steps=5 format=3 uid="uid://ch0qfkpi4s11o"]
 
 [ext_resource type="Script" path="res://tomes/fireball.gd" id="1_5isqm"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_2bi8o"]
-[ext_resource type="Texture2D" uid="uid://bafl5x8i1lld7" path="res://art/rect1.svg" id="3_o71hy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oaidw"]
 radius = 85.0059
@@ -24,12 +23,11 @@ texture = ExtResource("2_2bi8o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 6
+amount = 20
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
-texture = ExtResource("3_o71hy")
 emission_shape = 1
 emission_sphere_radius = 11.06
 direction = Vector2(0, 0)
