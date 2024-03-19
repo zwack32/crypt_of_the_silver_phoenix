@@ -146,11 +146,10 @@ func move():
 #die
 func on_death():
 	is_dead = true
-	print("die")
-	await LevelTransition.fade_to_black()
-	print("faded")
+	get_tree().paused = true
+	await LevelTransition.fade_to_black(0.3)
 	get_tree().change_scene_to_packed(game_over)
-	LevelTransition.fade_from_black()
+	LevelTransition.fade_from_black(0.3)
 
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
