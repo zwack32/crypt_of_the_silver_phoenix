@@ -72,7 +72,7 @@ func _process(delta):
 func _on_area_entered(area):
 	if area.owner is Player:
 		is_in_range = true
-		sprite_2d.modulate.a = 0.9
+		sprite_2d.modulate.a = 0.75
 
 func _on_area_exited(area):
 	if area.owner is Player:
