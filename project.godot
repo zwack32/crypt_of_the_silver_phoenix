@@ -21,6 +21,7 @@ LevelTransition="*res://scenes/level_transition.tscn"
 
 [display]
 
+window/size/initial_screen=1
 window/subwindows/embed_subwindows=false
 
 [input]
