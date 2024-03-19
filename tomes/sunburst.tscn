@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkmleq2q5mg10"]
 
-[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_pqhyi"]
 [ext_resource type="Script" path="res://tomes/sunburst.gd" id="1_v8ekr"]
+[ext_resource type="Texture2D" uid="uid://did3h60swj18b" path="res://art/sunburst_effect.png" id="2_6mejh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj4lp"]
 radius = 24.0
@@ -16,11 +16,11 @@ shape = SubResource("CircleShape2D_nj4lp")
 
 [node name="BeadSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_pqhyi")
+texture = ExtResource("2_6mejh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 120
+amount = 500
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0

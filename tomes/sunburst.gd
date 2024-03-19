@@ -7,6 +7,7 @@ var speed = 70.0
 var type = "glow"
 var entered_once = false
 
+@onready var bead_sprite = $BeadSprite
 @onready var cpu_particles_2d = $CPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +24,8 @@ func _process(delta):
 	set_collision_layer_value(1, 0)
 
 func _on_area_entered(area):
-	str = 5
+	bead_sprite.hide()
+	str = 10000
 	if !entered_once: 
 		entered_once = true
 		scale = Vector2(3, 3)
