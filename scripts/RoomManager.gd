@@ -7,7 +7,8 @@ class_name RoomManager
 @export var player: Player
 
 var entered_rooms: Array[Room]
-var triggered_room: Room
+var entered_room_areas: Array[int]
+var triggered_room: Room = null
 var triggered_battle: RoomBattleInstance
 
 var room_level = 2
@@ -35,15 +36,21 @@ func get_triggered_room():
 	
 func enter_room(room_idx: int):
 	entered_rooms.push_back(rooms[room_idx])
+
+func enter_room_area(room_idx: int):
+	entered_room_areas.push_back(room_idx)
+
+func exit_room_area(room_idx: int):
+	entered_room_areas.erase(room_idx)
 	
 func exit_room(room_idx: int):
 	var a = rooms[room_idx]
 	entered_rooms.erase(rooms[room_idx])
-	if len(entered_rooms) == 0:
+	if len(entered_rooms) == 0 && entered_room_areas.has(room_idx):
 		trigger(a)
 
 func trigger(room: Room):
-	if !is_room_triggerable(room):
+	if !is_room_triggerable(room) || triggered_room != null:
 		return
 	
 	triggered_room = room
@@ -73,4 +80,6 @@ func untrigger_room():
 	add_non_trigger_room(triggered_room)
 	for door in doors:
 		door.call_deferred("set_disabled", true)
+		
+	triggered_room = null	
 	

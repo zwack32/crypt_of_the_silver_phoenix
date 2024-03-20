@@ -57,6 +57,7 @@ func _ready():
 		new_room_collider.position = room.pos * 32.0
 		new_room_collider.scale = room.size * 3.2
 		new_room_collider.room_manager = room_manager
+		new_room_collider.original_room_idx = room_idx
 
 		room_manager.add_room(new_room_collider)
 		
