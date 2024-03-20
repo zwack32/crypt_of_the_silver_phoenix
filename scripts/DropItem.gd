@@ -26,7 +26,6 @@ class DropItemUnion:
 	var data
 
 @export var player: Player
-@export var weapon_manager: WeaponManager
 
 var is_in_range = false
 var drop_item: DropItemUnion = DropItemUnion.new()
@@ -44,10 +43,10 @@ func _ready():
 			sprite_2d.texture = load("res://art/large_heart.png")
 	elif drop_type == DropItemType.Melee:
 		data = randi_range(0, MeleeWeaponType._Count - 1)
-		sprite_2d.texture = weapon_manager.get_melee_texture(data)
+		sprite_2d.texture = WeaponManager.get_melee_texture(data)
 	elif drop_type == DropItemType.Tome:
 		data = randi_range(0, TomeType._Count - 1)
-		sprite_2d.texture = weapon_manager.get_tome_texture(data)
+		sprite_2d.texture = WeaponManager.get_tome_texture(data)
 		
 	drop_item.ty = drop_type
 	drop_item.data = data
@@ -62,10 +61,10 @@ func _process(delta):
 			elif drop_item.data == DropHeathValues.HealthBig:
 				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
 		elif drop_item.ty == DropItemType.Melee:
-			weapon_manager.set_melee(drop_item.data)
+			WeaponManager.set_melee(drop_item.data)
 			print("You got a melee from item drop")
 		elif drop_item.ty == DropItemType.Tome:
-			weapon_manager.set_tome(drop_item.data)
+			WeaponManager.set_tome(drop_item.data)
 			print("You got a tome from item drop")
 		queue_free()
 

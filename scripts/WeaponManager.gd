@@ -1,9 +1,7 @@
 extends Node
-class_name WeaponManager
 
-@export var current_melee: MeleeWeaponType = randi_range(0, MeleeWeaponType._Count - 1)
-# var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
-@export var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
+static var current_melee: MeleeWeaponType = randi_range(0, MeleeWeaponType._Count - 1)
+static var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
 
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")
@@ -44,12 +42,12 @@ enum TomeType {
 	_Count,
 }
 
-func set_melee(melee: MeleeWeaponType):
+static func set_melee(melee: MeleeWeaponType):
 	if !MeleeWeaponType.find_key(melee):
 		push_error("Bad melee value used in set_melee function")
 	current_melee = melee
 
-func get_melee_scene() -> PackedScene:
+static func get_melee_scene() -> PackedScene:
 	if current_melee == MeleeWeaponType.ShortSword:
 		return SHORTSWORD
 	elif current_melee == MeleeWeaponType.LongSword:
@@ -66,7 +64,7 @@ func get_melee_scene() -> PackedScene:
 		push_error("Bad melee value used, check set_melee call")
 		return null
 		
-func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
+static func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
 	if melee == MeleeWeaponType.ShortSword:
 		return SHORTSWORD_TEXTURE
 	elif melee == MeleeWeaponType.LongSword:
@@ -83,12 +81,12 @@ func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
 		push_error("Bad melee value used in get_melee_texture function")
 		return null
 
-func set_tome(tome: TomeType):
+static func set_tome(tome: TomeType):
 	if !TomeType.find_key(tome):
 		push_error("Bad tome value used in set_tome function")
 	current_tome = tome
 
-func get_tome_scene() -> PackedScene:
+static func get_tome_scene() -> PackedScene:
 	if current_tome == TomeType.Fireball:
 		return FIREBALL
 	elif current_tome == TomeType.IceCone:
@@ -99,7 +97,7 @@ func get_tome_scene() -> PackedScene:
 		push_error("Bad tome value used, check set_tome call")
 		return null
 		
-func get_tome_texture(tome: TomeType) -> Texture2D:
+static func get_tome_texture(tome: TomeType) -> Texture2D:
 	if tome == TomeType.Fireball:
 		return FIREBALL_TEXTURE
 	elif tome == TomeType.IceCone:

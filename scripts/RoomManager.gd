@@ -3,7 +3,6 @@ class_name RoomManager
 
 @export var room_battle_instance_scene: PackedScene
 @export var drop_item_scene: PackedScene
-@export var weapon_manager: WeaponManager
 @export var player: Player
 
 var entered_rooms: Array[Room]
@@ -72,7 +71,6 @@ func trigger(room: Room):
 
 func untrigger_room():
 	var item_drop = drop_item_scene.instantiate()
-	item_drop.weapon_manager = weapon_manager
 	item_drop.player = player
 	item_drop.position = triggered_room.position * 3.0
 	add_child(item_drop)

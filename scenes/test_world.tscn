@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhy7e2fcung4f"]
+[gd_scene load_steps=10 format=3 uid="uid://dhy7e2fcung4f"]
 
 [ext_resource type="PackedScene" uid="uid://chvuc5rsrewvi" path="res://scenes/level.tscn" id="1_dfah8"]
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_impp3"]
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="1_qiyfc"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="3_mvr7j"]
-[ext_resource type="PackedScene" uid="uid://bajt1s68widgu" path="res://scenes/weapon_manager.tscn" id="6_bif3i"]
 [ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_q2ave"]
 [ext_resource type="PackedScene" uid="uid://qvs6efvmcssx" path="res://scenes/UI.tscn" id="7_juyyt"]
 [ext_resource type="Texture2D" uid="uid://ci3vc4tpf2v2e" path="res://art/background.png" id="8_ef2xm"]
@@ -429,14 +428,9 @@ room_collider = ExtResource("1_qiyfc")
 door_collider = ExtResource("3_mvr7j")
 room_manager = NodePath("../RoomManager")
 
-[node name="RoomManager" parent="." node_paths=PackedStringArray("weapon_manager", "player") instance=ExtResource("6_q2ave")]
-weapon_manager = NodePath("../WeaponManager")
+[node name="RoomManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_q2ave")]
 player = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("weapon_manager") instance=ExtResource("1_impp3")]
-weapon_manager = NodePath("../WeaponManager")
+[node name="Player" parent="." instance=ExtResource("1_impp3")]
 
-[node name="WeaponManager" parent="." instance=ExtResource("6_bif3i")]
-
-[node name="Ui" parent="." node_paths=PackedStringArray("weapon_manager") instance=ExtResource("7_juyyt")]
-weapon_manager = NodePath("../WeaponManager")
+[node name="Ui" parent="." instance=ExtResource("7_juyyt")]

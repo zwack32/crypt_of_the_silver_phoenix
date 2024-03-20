@@ -21,8 +21,6 @@ var is_map_view = false
 
 @onready var game_over = preload("res://scenes/game_over.tscn")
 
-@export var weapon_manager: WeaponManager
-
 @onready var health_bar = $HealthBar
 @onready var spell_bar = $SpellBar
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -77,7 +75,7 @@ func melee_attack():
 	if !can_swing:
 		return
 
-	var weapon = weapon_manager.get_melee_scene().instantiate()
+	var weapon = WeaponManager.get_melee_scene().instantiate()
 	weapon.player = self
 	add_child(weapon)
 	# animated_sprite_2d.play("attack1")
@@ -121,7 +119,7 @@ func ranged_attack():
 	if !spell_cooldown_timer.time_left == 0:
 		pass
 	else:
-		var spell = weapon_manager.get_tome_scene().instantiate()
+		var spell = WeaponManager.get_tome_scene().instantiate()
 		spell_cooldown_timer.wait_time = spell.cooldown
 		spell_bar.max_value = spell_cooldown_timer.wait_time
 		spell.player = self
