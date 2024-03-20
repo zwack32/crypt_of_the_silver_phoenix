@@ -12,7 +12,7 @@ var player_spd = 10
 var bounce_acceleration = -100.0
 var bounce_initial_speed = 900.0
 
-var health = player_max_health
+var health = Progression.get_player_health() if Progression.get_player_health() != null else player_max_health 
 var direction = Vector2.UP
 var bounce_velocity = Vector2.UP
 var can_swing = true
@@ -41,6 +41,7 @@ func get_player_max_hp():
 	return player_max_health
 
 func _ready():
+	health_bar.value = health
 	health_bar.max_value = player_max_health
 	spell_bar.max_value = spell_cooldown_timer.wait_time
 
@@ -206,6 +207,8 @@ func set_health(new_health: float):
 	health = clamp(new_health, 0.0, player_max_health)
 	health = round(health)
 	health_bar.value = health
+	
+	Progression.set_player_health(health)
 	
 	if health <= 0.0:
 		if !is_dead:
