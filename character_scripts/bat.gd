@@ -176,6 +176,11 @@ func _on_area_entered(area):
 				on_fire = true
 			if area.type == "ice":
 				frozen = true
+				
+
+func _on_area_exited(area):
+	if area is Room:
+		velocity = Vector2.ZERO
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
@@ -202,3 +207,4 @@ func enemy_die():
 	on_fire = false
 	frozen = false
 	room_battle_instance.pop_enemy()
+	
