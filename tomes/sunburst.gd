@@ -2,7 +2,7 @@ extends Tome
 
 var str = 15
 var velocity = Vector2.ZERO
-var speed = 80.0
+var speed = 70.0
 var type = "glow"
 var entered_once = false
 

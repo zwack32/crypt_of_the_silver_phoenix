@@ -79,12 +79,11 @@ func _ready():
 	collision_layer = 0
 	collision_mask = 0
 	
-	await get_tree().create_timer(spawn_delay + randf_range(0.0, spawn_delay_rand_range)).timeout
 	animated_sprite_2d.play("Bat_idle")
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
-	
+	await get_tree().create_timer(spawn_delay + randf_range(0.0, spawn_delay_rand_range)).timeout
 	attack_timer.start()
 
 #Move toward player
@@ -160,7 +159,7 @@ func _on_area_entered(area):
 		if area is MeleeWeapon:
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-			velocity = Vector2.ZERO
+			velocity /= 3
 			#print("enemy take damage")
 			
 			if area.type == "fire":
