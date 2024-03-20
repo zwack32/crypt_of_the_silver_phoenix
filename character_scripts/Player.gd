@@ -148,6 +148,7 @@ func on_death():
 	is_dead = true
 	get_tree().paused = true
 	await LevelTransition.fade_to_black(0.3)
+	get_tree().paused = false
 	get_tree().change_scene_to_packed(game_over)
 	LevelTransition.fade_from_black(0.3)
 
