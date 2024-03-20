@@ -3,6 +3,7 @@ extends Tome
 var velocity = Vector2.ZERO
 var str = 7
 var type = "ice"
+@export var cooldown = 3.0
 
 @onready var cpu_particles_2d = $CPUParticles2D
 

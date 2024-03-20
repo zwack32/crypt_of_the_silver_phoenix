@@ -2,6 +2,7 @@ extends Tome
 
 var str = 10
 var type = "fire"
+@export var cooldown = 6.0
 
 @onready var cpu_particles_2d = $CPUParticles2D
 
