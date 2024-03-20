@@ -6,6 +6,7 @@ const MeleeWeaponType = WeaponManager.MeleeWeaponType
 const TomeType = WeaponManager.TomeType
 
 @onready var sprite_2d = $Sprite2D
+@onready var collision_shape_2d = $CollisionShape2D
 
 enum DropHeathValues {
 	HealthSmall = 0,
