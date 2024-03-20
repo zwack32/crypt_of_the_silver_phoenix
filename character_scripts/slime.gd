@@ -149,6 +149,7 @@ func _on_area_entered(area):
 		elif area.owner is Player:
 			#player takes damage
 			player.take_damage(enemy_atk)
+			player.bounce_towards((player.position - position).normalized())
 			#print("player take damage")
 		elif area is Tome:
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)

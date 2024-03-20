@@ -9,8 +9,12 @@ var player_atk = 10
 var player_def = 10
 var player_spd = 10
 
+var bounce_acceleration = -100.0
+var bounce_initial_speed = 900.0
+
 var health = player_max_health
 var direction = Vector2.UP
+var bounce_velocity = Vector2.UP
 var can_swing = true
 var is_dead = false
 
@@ -139,7 +143,10 @@ func move():
 		animated_sprite_2d.stop()
 		animated_sprite_2d.play("default_right")
 
-	velocity = player_velocity.normalized() * movement_speed
+	velocity = player_velocity.normalized() * movement_speed + bounce_velocity
+	bounce_velocity += Vector2.ONE * bounce_acceleration
+	bounce_velocity.x = clamp(bounce_velocity.x, 0.0, 999.0)
+	bounce_velocity.y = clamp(bounce_velocity.y, 0.0, 999.0)
 	
 	move_and_slide()
 
@@ -172,3 +179,6 @@ func set_health(new_health: float):
 		if !is_dead:
 			on_death()
 		return
+		
+func bounce_towards(direction: Vector2):
+	bounce_velocity = direction * bounce_initial_speed
