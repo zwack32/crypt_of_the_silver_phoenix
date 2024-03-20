@@ -17,7 +17,7 @@ func _ready():
 	var exit_room_idx
 
 	while true:
-		rooms = RoomsScript.rooms_populate(10)
+		rooms = RoomsScript.rooms_populate(Progression.get_room_count())
 		RoomsScript.rooms_gen(rooms)
 
 		var start_room = RoomsScript.RoomNode.init(Vector2(0.0, 200.0), Vector2(5.0, 5.0))
@@ -62,6 +62,11 @@ func _ready():
 		
 		if room_idx == start_room_idx || room_idx == exit_room_idx:
 			room_manager.add_non_trigger_room(new_room_collider)
+		
+		if room_idx == exit_room_idx:
+			var next_level_scene = preload("res://scenes/next_level.tscn")
+			var next_level = next_level_scene.instantiate()
+			new_room_collider.add_child(next_level)
 
 		add_child(new_room_collider)
 

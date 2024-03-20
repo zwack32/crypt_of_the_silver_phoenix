@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5jte24xbggit"]
+
+[ext_resource type="Texture2D" uid="uid://b0r3i2stgdlmr" path="res://art/staircase.png" id="1_o3ihk"]
+[ext_resource type="Script" path="res://scripts/next_level.gd" id="1_whnxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76mmi"]
+size = Vector2(318, 321)
+
+[node name="NextLevel" type="Area2D"]
+scale = Vector2(0.01, 0.01)
+script = ExtResource("1_whnxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_76mmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o3ihk")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
