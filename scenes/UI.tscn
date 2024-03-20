@@ -26,3 +26,10 @@ offset_top = -128.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_jegqi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 31.0
+offset_top = 21.0
+offset_right = 122.0
+offset_bottom = 61.0
+text = "Level 0"
