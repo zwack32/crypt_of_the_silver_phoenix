@@ -100,6 +100,7 @@ func _process(delta):
 			if check_attack_timer():
 				await get_tree().create_timer(2).timeout
 			
+			attack_timer.wait_time += randf_range(-2.0, 2.0)
 			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
 		animated_sprite_2d.play("Bat_die")
