@@ -66,7 +66,7 @@ func melee_attack():
 	var weapon = weapon_manager.get_melee_scene().instantiate()
 	weapon.player = self
 	add_child(weapon)
-	animated_sprite_2d.play("attack1")
+	# animated_sprite_2d.play("attack1")
 	can_swing = false
 
 	var right_down_vec = Vector2(1, 1).normalized()

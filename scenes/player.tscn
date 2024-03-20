@@ -294,7 +294,7 @@ texture_filter = 1
 position = Vector2(-0.499996, -1.01328e-06)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_mkymf")
-animation = &"default_left"
+animation = &"attack1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
