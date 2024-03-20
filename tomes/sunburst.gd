@@ -1,6 +1,6 @@
 extends Tome
 
-var str = 0
+var str = 15
 #actual strength is 5
 var velocity = Vector2.ZERO
 var speed = 70.0
@@ -25,10 +25,9 @@ func _process(delta):
 
 func _on_area_entered(area):
 	bead_sprite.hide()
-	str = 10000
 	if !entered_once: 
 		entered_once = true
-		scale = Vector2(3, 3)
+		scale = Vector2(4, 4)
 		cpu_particles_2d.emitting = true
 		velocity = Vector2.ZERO
 		
