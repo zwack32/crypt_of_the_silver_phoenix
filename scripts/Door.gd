@@ -12,9 +12,14 @@ class_name Door
 func _ready():
 	enter_trigger.position = -Vector2.UP * 100.0
 	rotation = direction.angle() + PI / 2
+	sprite_2d.hide()
 
 func set_disabled(disabled: bool):
 	collider.disabled = disabled
+	if disabled:
+		sprite_2d.hide()
+	else:
+		sprite_2d.show()
 
 func _on_enter_trigger_area_entered(area):
 	if area.owner is Player:
