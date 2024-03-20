@@ -1,9 +1,7 @@
 extends Node
 
-static var current_melee: MeleeWeaponType = 0
-#randi_range(0, MeleeWeaponType._Count - 1)
-static var current_tome: TomeType = 1
-#randi_range(0, TomeType._Count - 1)
+static var current_melee: MeleeWeaponType = randi_range(0, MeleeWeaponType._Count - 1)
+static var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
 
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")

@@ -121,7 +121,7 @@ func _process(delta):
 		enemy_die()
 		
 			
-	if frozen:
+	if frozen and !frozen_process:
 			frozen_timer.start()
 			frozen = false
 			frozen_process = true

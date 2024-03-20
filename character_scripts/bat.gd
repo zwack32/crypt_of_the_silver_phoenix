@@ -3,7 +3,7 @@ class_name Bat
 
 @export var speed: float = 500.0
 @export var spawn_delay: float = 1.5
-@export var spawn_delay_rand_range: float = 0.5
+@export var spawn_delay_rand_range: float = 3.0
 
 #velocity = Vector2.ZERO
 
@@ -27,7 +27,7 @@ var is_active = false
 
 var on_fire = false
 var on_fire_process = false
-var frozen = true
+var frozen = false
 var frozen_process = false
 
 #annoying functions so that we can use these in other scripts
@@ -84,7 +84,7 @@ func _ready():
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
-
+	
 	attack_timer.start()
 
 #Move toward player
@@ -132,7 +132,7 @@ func _process(delta):
 		bat_health_bar.hide()
 		enemy_die()
 	
-	if frozen:
+	if frozen and !frozen_process:
 		frozen_timer.start()
 		frozen = false
 		frozen_process = true

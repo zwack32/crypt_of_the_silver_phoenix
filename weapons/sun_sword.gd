@@ -2,7 +2,7 @@ extends MeleeWeapon
 
 @onready var collision_shape_2d = $CollisionShape2D
 
-var str = 1
-var spd = 13
+var str = 3
+var spd = 6
 
 var type = "glow"
