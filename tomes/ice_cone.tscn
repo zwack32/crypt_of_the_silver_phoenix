@@ -17,7 +17,7 @@ polygon = PackedVector2Array(0, 0, 128, -320, -128, -320)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 60
+amount = 120
 lifetime = 0.3
 one_shot = true
 explosiveness = 1.0

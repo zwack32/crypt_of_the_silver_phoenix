@@ -1,13 +1,12 @@
 extends Tome
 
 var str = 15
-#actual strength is 5
 var velocity = Vector2.ZERO
-var speed = 70.0
+var speed = 80.0
 var type = "glow"
 var entered_once = false
 
-@export var cooldown = 0.3
+@export var cooldown = 4.0
 
 @onready var bead_sprite = $BeadSprite
 @onready var cpu_particles_2d = $CPUParticles2D
