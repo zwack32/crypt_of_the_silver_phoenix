@@ -201,10 +201,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhq5"]
-size = Vector2(128, 56)
+size = Vector2(108, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bfjk"]
-size = Vector2(128, 56)
+size = Vector2(114, 36)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxa6t"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -227,17 +227,18 @@ script = ExtResource("1_lp1dh")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_lcisv")
-animation = &"Bat_die"
+animation = &"Bat_idle"
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 10.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
 shape = SubResource("RectangleShape2D_vjhq5")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -245,14 +246,14 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 2)
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_8bfjk")
 
 [node name="BatHealthBar" type="ProgressBar" parent="."]
-offset_left = -77.0
-offset_top = -62.0
-offset_right = 73.0
-offset_bottom = -41.0
+offset_left = -75.0
+offset_top = -56.0
+offset_right = 75.0
+offset_bottom = -35.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vxa6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ldndp")
 value = 50.0

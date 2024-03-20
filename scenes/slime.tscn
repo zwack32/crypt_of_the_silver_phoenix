@@ -234,7 +234,7 @@ sprite_frames = SubResource("SpriteFrames_8sqte")
 animation = &"Slime_idle"
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
