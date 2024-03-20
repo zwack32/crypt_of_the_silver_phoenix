@@ -15,7 +15,7 @@ class_name Bat
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 var enemy_max_health = 20
-var enemy_atk = 7
+var enemy_atk = 5
 var enemy_def = 3
 
 var enemy_health
@@ -80,10 +80,11 @@ func _ready():
 	collision_mask = 0
 	
 	animated_sprite_2d.play("Bat_idle")
+	await get_tree().create_timer(spawn_delay).timeout
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
-	await get_tree().create_timer(spawn_delay + randf_range(0.0, spawn_delay_rand_range)).timeout
+	await get_tree().create_timer(randf_range(0.0, spawn_delay_rand_range)).timeout
 	attack_timer.start()
 
 #Move toward player
