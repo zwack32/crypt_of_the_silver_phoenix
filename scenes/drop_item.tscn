@@ -3,15 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_kxdaq"]
 [ext_resource type="Script" path="res://scripts/DropItem.gd" id="1_wlkss"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lymmu"]
-radius = 76.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsc3"]
+size = Vector2(426.667, 410)
 
 [node name="DropItem" type="Area2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_wlkss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lymmu")
+position = Vector2(0, -8.33334)
+shape = SubResource("RectangleShape2D_5dsc3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kxdaq")

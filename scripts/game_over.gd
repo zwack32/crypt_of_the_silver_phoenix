@@ -11,8 +11,8 @@ func _process(delta):
 	pass
 
 func _on_restart_button_pressed():
+	Progression.reset()
+	WeaponManager.reset()
 	await LevelTransition.fade_to_black(1)
-	print("fade")
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
-	print("fade pt 2")
 	await LevelTransition.fade_from_black(1)

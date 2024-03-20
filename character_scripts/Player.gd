@@ -12,12 +12,11 @@ var player_spd = 10
 var bounce_acceleration = -100.0
 var bounce_initial_speed = 900.0
 
-var health = player_max_health
+var health = Progression.get_player_health() if Progression.get_player_health() != null else player_max_health 
 var direction = Vector2.UP
 var bounce_velocity = Vector2.UP
 var can_swing = true
 var is_dead = false
-var is_map_view = false
 
 @onready var game_over = preload("res://scenes/game_over.tscn")
 
@@ -41,6 +40,7 @@ func get_player_max_hp():
 	return player_max_health
 
 func _ready():
+	health_bar.value = health
 	health_bar.max_value = player_max_health
 	spell_bar.max_value = spell_cooldown_timer.wait_time
 
@@ -48,10 +48,7 @@ func _ready():
 func _process(delta):
 	move()
 	
-	if Input.is_action_just_pressed("map_view"):
-		is_map_view = !is_map_view
-	
-	if is_map_view:
+	if Input.is_action_pressed("map_view"):
 		camera_2d.zoom = Vector2(0.1, 0.1)
 	else:
 		camera_2d.zoom = Vector2(0.75, 0.75)
@@ -206,6 +203,8 @@ func set_health(new_health: float):
 	health = clamp(new_health, 0.0, player_max_health)
 	health = round(health)
 	health_bar.value = health
+	
+	Progression.set_player_health(health)
 	
 	if health <= 0.0:
 		if !is_dead:

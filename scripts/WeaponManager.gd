@@ -107,3 +107,7 @@ static func get_tome_texture(tome: TomeType) -> Texture2D:
 	else:
 		push_error("Bad tome value used in get_tome_texture function")
 		return null
+
+func reset():
+	current_melee = randi_range(0, MeleeWeaponType._Count - 1)
+	current_tome = randi_range(0, TomeType._Count - 1)

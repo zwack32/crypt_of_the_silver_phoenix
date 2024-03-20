@@ -100,6 +100,7 @@ func _process(delta):
 			if check_attack_timer():
 				await get_tree().create_timer(2).timeout
 			
+			attack_timer.wait_time += randf_range(-2.0, 2.0)
 			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
 		animated_sprite_2d.play("Bat_die")
@@ -176,6 +177,11 @@ func _on_area_entered(area):
 				on_fire = true
 			if area.type == "ice":
 				frozen = true
+				
+
+func _on_area_exited(area):
+	if area is Room:
+		velocity = Vector2.ZERO
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
@@ -202,3 +208,4 @@ func enemy_die():
 	on_fire = false
 	frozen = false
 	room_battle_instance.pop_enemy()
+	
