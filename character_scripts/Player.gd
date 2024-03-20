@@ -150,23 +150,23 @@ func move():
 		animated_sprite_2d.play("walk_right")
 	elif Input.is_action_just_released("move_down"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idle_transition")
-		await get_tree().create_timer(1).timeout
+		# animated_sprite_2d.play("idle_transition")
+		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
 	elif Input.is_action_just_released("move_up"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idle_transition")
-		await get_tree().create_timer(1).timeout
+		# animated_sprite_2d.play("idle_transition")
+		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
 	elif Input.is_action_just_released("move_left"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idle_transition")
-		await get_tree().create_timer(1).timeout
+		# animated_sprite_2d.play("idle_transition")
+		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
 	elif Input.is_action_just_released("move_right"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idle_transition")
-		await get_tree().create_timer(1).timeout
+		# animated_sprite_2d.play("idle_transition")
+		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
 	
 	

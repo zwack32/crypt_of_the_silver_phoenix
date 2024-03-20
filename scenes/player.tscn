@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=46 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="Texture2D" uid="uid://c7h54bner42ca" path="res://art/player_forward.png" id="3_vyaho"]
@@ -15,13 +15,9 @@ size = Vector2(76, 119)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbbew"]
 size = Vector2(75, 118)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hp0un"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xcsr"]
 atlas = ExtResource("4_v47rc")
-region = Rect2(0, 640, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hceef"]
-atlas = ExtResource("4_v47rc")
-region = Rect2(320, 640, 320, 320)
+region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwlwh"]
 atlas = ExtResource("4_v47rc")
@@ -163,10 +159,7 @@ region = Rect2(1600, 1600, 320, 320)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hp0un")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hceef")
+"texture": SubResource("AtlasTexture_4xcsr")
 }],
 "loop": true,
 "name": &"idle",
@@ -338,7 +331,7 @@ texture_filter = 1
 position = Vector2(-0.499996, -1.01328e-06)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_mkymf")
-animation = &"idle_transition"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
