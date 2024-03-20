@@ -96,4 +96,7 @@ static func draw_rect_borders(
 		tm.set_cell(0, Vector2i(x + w - 1, y + idx), 0, room_atlas.right_atlas)
 
 	# TODO implement corners
-
+	tm.set_cell(0, Vector2i(x, y), 0, room_atlas.top_left_corner_atlas)
+	tm.set_cell(0, Vector2i(x + w - 1, y), 0, room_atlas.top_right_corner_atlas)
+	tm.set_cell(0, Vector2i(x, y + h - 1), 0, room_atlas.bottom_left_corner_atlas)
+	tm.set_cell(0, Vector2i(x + w - 1, y + h - 1), 0, room_atlas.bottom_right_corner_atlas)

@@ -18,10 +18,8 @@ func set_disabled(disabled: bool):
 
 func _on_enter_trigger_area_entered(area):
 	if area.owner is Player:
-		print("enter", original_room_idx)
 		room_manager.enter_room(original_room_idx)
 
 func _on_enter_trigger_area_exited(area):
 	if area.owner is Player:
-		print("exit", original_room_idx)
 		room_manager.exit_room(original_room_idx)

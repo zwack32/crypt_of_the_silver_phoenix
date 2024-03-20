@@ -39,7 +39,6 @@ func enter_room(room_idx: int):
 func exit_room(room_idx: int):
 	var a = rooms[room_idx]
 	entered_rooms.erase(rooms[room_idx])
-	print("exit room", len(entered_rooms))
 	if len(entered_rooms) == 0:
 		trigger(a)
 
