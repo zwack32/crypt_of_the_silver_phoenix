@@ -135,9 +135,11 @@ func move():
 	if Input.is_action_pressed("move_down"):
 		direction = Vector2.DOWN
 		player_velocity.y += 1
+		animated_sprite_2d.play("walk_down")
 	if Input.is_action_pressed("move_up"):
 		direction = Vector2.UP
 		player_velocity.y += -1
+		animated_sprite_2d.play("walk_up")
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		player_velocity.x += -1
@@ -146,12 +148,29 @@ func move():
 		direction = Vector2.RIGHT
 		player_velocity.x += 1
 		animated_sprite_2d.play("walk_right")
+	elif Input.is_action_just_released("move_down"):
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("idle_transition")
+		await get_tree().create_timer(1).timeout
+		animated_sprite_2d.play("idle")
+	elif Input.is_action_just_released("move_up"):
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("idle_transition")
+		await get_tree().create_timer(1).timeout
+		animated_sprite_2d.play("idle")
 	elif Input.is_action_just_released("move_left"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("default_left")
+		animated_sprite_2d.play("idle_transition")
+		await get_tree().create_timer(1).timeout
+		animated_sprite_2d.play("idle")
 	elif Input.is_action_just_released("move_right"):
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("default_right")
+		animated_sprite_2d.play("idle_transition")
+		await get_tree().create_timer(1).timeout
+		animated_sprite_2d.play("idle")
+	
+	
+		
 
 	velocity = player_velocity.normalized() * movement_speed + bounce_velocity
 	bounce_velocity += Vector2.ONE * bounce_acceleration
