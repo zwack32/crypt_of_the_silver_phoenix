@@ -58,7 +58,7 @@ func trigger(room: Room):
 	triggered_battle.room_level = room_level
 	triggered_battle.player = player
 	triggered_battle.room_position = room.position * 3.0
-	triggered_battle.room_size = room.get_pixel_size() * 1.75
+	triggered_battle.room_size = room.get_pixel_size() * 2.0
 	add_child(triggered_battle)
 	
 	triggered_battle.begin_battle()
