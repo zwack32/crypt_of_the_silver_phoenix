@@ -15,7 +15,7 @@ class_name Bat
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 var enemy_max_health = 20
-var enemy_atk = 5
+var enemy_atk = 3
 var enemy_def = 3
 
 var enemy_health

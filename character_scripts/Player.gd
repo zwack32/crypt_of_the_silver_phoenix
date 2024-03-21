@@ -123,8 +123,6 @@ func ranged_attack():
 		spell_cooldown_timer.wait_time = spell.cooldown
 		spell_bar.max_value = spell_cooldown_timer.wait_time
 		spell.player = self
-		#TODO make this work with all spells. it might already, 
-		#but if it does we need to rename the variable
 		get_parent().add_child(spell)
 		spell_cooldown_timer.start()
 

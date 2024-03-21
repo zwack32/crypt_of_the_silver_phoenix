@@ -117,4 +117,4 @@ map_view={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(1, 0, 1, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

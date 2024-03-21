@@ -1,5 +1,6 @@
 extends CanvasLayer
 @onready var restart_button = $RestartButton
+var twice = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +12,9 @@ func _process(delta):
 	pass
 
 func _on_restart_button_pressed():
+	if twice:
+		return
+	twice = true
 	Progression.reset()
 	WeaponManager.reset()
 	await LevelTransition.fade_to_black(1)
