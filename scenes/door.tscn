@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckc52m6ovxgvd"]
+[gd_scene load_steps=6 format=3 uid="uid://ckc52m6ovxgvd"]
 
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
 [ext_resource type="Texture2D" uid="uid://tam6arov0slq" path="res://art/door.png" id="2_ihpan"]
@@ -7,6 +7,9 @@
 size = Vector2(128.5, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swms3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7btw2"]
+size = Vector2(119, 50)
 
 [node name="door" type="StaticBody2D"]
 scale = Vector2(1, 0.5)
@@ -29,5 +32,19 @@ disabled = true
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_swms3")
 
+[node name="KeepInTriggerLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerLeft"]
+position = Vector2(-134, 1)
+shape = SubResource("RectangleShape2D_7btw2")
+
+[node name="KeepInTriggerRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerRight"]
+position = Vector2(142.5, 0)
+shape = SubResource("RectangleShape2D_7btw2")
+
 [connection signal="area_entered" from="EnterTrigger" to="." method="_on_enter_trigger_area_entered"]
 [connection signal="area_exited" from="EnterTrigger" to="." method="_on_enter_trigger_area_exited"]
+[connection signal="area_entered" from="KeepInTriggerLeft" to="." method="_on_keep_in_trigger_left_area_entered"]
+[connection signal="area_entered" from="KeepInTriggerRight" to="." method="_on_keep_in_trigger_right_area_entered"]

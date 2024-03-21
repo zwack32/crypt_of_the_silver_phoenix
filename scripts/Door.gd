@@ -28,3 +28,13 @@ func _on_enter_trigger_area_entered(area):
 func _on_enter_trigger_area_exited(area):
 	if area.owner is Player:
 		room_manager.exit_room(original_room_idx)
+
+func _on_keep_in_trigger_left_area_entered(area):
+	if area.owner is Player:
+		var player: Player = area.owner
+		player.bounce_towards(-player.velocity.normalized() * 3.0)
+
+func _on_keep_in_trigger_right_area_entered(area):
+	if area.owner is Player:
+		var player: Player = area.owner
+		player.bounce_towards(-player.velocity.normalized() * 3.0)

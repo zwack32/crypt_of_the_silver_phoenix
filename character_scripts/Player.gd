@@ -4,7 +4,7 @@ class_name Player
 var movement_speed = 350
 
 #adjustable stats
-var player_max_health = 75
+var player_max_health = 50
 var player_atk = 10
 var player_def = 10
 var player_spd = 10
