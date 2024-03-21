@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-var movement_speed = 300
+var movement_speed = 350
 
 #adjustable stats
 var player_max_health = 50
