@@ -1,9 +1,10 @@
 extends Enemy
 class_name Bat
 
-@export var speed: float = 500.0
+@export var speed: float = 700.0
 @export var spawn_delay: float = 1.5
 @export var spawn_delay_rand_range: float = 3.0
+@export var charge_overshoot: float = 500.0
 
 #velocity = Vector2.ZERO
 
@@ -24,6 +25,8 @@ var enemy_health
 
 var dead = false
 var is_active = false
+var is_attacking = false
+var charge_to_position = Vector2.ZERO
 
 var on_fire = false
 var on_fire_process = false
@@ -41,7 +44,7 @@ func get_enemy_health():
 	return enemy_health
 
 func _ready():
-	bat_health_bar.max_value = enemy_max_health
+	bat_health_bar.max_value = enemy_max_health	
 	fire_tick_timer.start()
 	enemy_health = enemy_max_health
 	#randomize stats
@@ -85,7 +88,7 @@ func _ready():
 	collision_layer = original_layer
 	collision_mask = original_mask
 	await get_tree().create_timer(randf_range(0.0, spawn_delay_rand_range)).timeout
-	attack_timer.start()
+	prepare_attack(true)
 
 #Move toward player
 func _process(delta):
@@ -93,15 +96,12 @@ func _process(delta):
 		return
 	
 	if !dead:
-		if attack_timer.time_left <= 0:
+		if attack_timer.time_left <= 0 && !is_attacking:
 			var direction = (player.position - position).normalized()
+			charge_to_position = player.position + direction * charge_overshoot
 			velocity = direction * speed
-			check_attack_timer()
-			if check_attack_timer():
-				await get_tree().create_timer(2).timeout
+			is_attacking = true
 			
-			attack_timer.wait_time += randf_range(-2.0, 2.0)
-			attack_timer.start()
 	if death_timer.time_left <= 0 and dead:
 		animated_sprite_2d.play("Bat_die")
 		collision_layer = 0
@@ -109,7 +109,11 @@ func _process(delta):
 		# STUB: Remove this gross hardcoded time
 		await get_tree().create_timer(3).timeout
 		queue_free()
+	
 	position += velocity * delta
+	if position.distance_to(charge_to_position) < 4.0:
+		prepare_attack()
+		velocity = Vector2.ZERO
 	
 	bat_health_bar.value = enemy_health
 	#print(attack_timer.time_left)
@@ -141,15 +145,12 @@ func _process(delta):
 	if frozen_process and frozen_timer.time_left == 0:
 		frozen_process = false
 		speed *= 2
-	
 
-func check_attack_timer():
-	if attack_timer.timeout:
-		return true
-		velocity = Vector2.ZERO
-	else:
-		return false
-
+func prepare_attack(is_inital=false):
+	if attack_timer.is_stopped():
+		is_attacking = false
+		attack_timer.wait_time = randf_range(4.0, 8.0) * 3.0 if is_inital else 1.0
+		attack_timer.start()
 
 #differentiate between player hitting enemy and enemy hitting player
 func _on_area_entered(area):
@@ -160,7 +161,9 @@ func _on_area_entered(area):
 		if area is MeleeWeapon:
 			#enemy takes damage
 			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-			velocity /= 3
+			velocity /= 8
+			attack_timer.stop()
+			prepare_attack()
 			#print("enemy take damage")
 			
 			if area.type == "fire":
@@ -177,11 +180,6 @@ func _on_area_entered(area):
 				on_fire = true
 			if area.type == "ice":
 				frozen = true
-				
-
-func _on_area_exited(area):
-	if area is Room:
-		velocity = Vector2.ZERO
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)

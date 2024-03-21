@@ -9,7 +9,7 @@ class_name Slime
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 var enemy_max_health = 30
-var enemy_atk = 5
+var enemy_atk = 7
 var enemy_def = 5
 
 var enemy_health
