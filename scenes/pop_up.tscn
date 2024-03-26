@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkr12cubwnb3l"]
+
+[ext_resource type="Script" path="res://PopUp.gd" id="1_vlshg"]
+
+[node name="PopUp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 653.0
+script = ExtResource("1_vlshg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 245.0
+offset_right = 622.0
+offset_bottom = 351.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 141.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
