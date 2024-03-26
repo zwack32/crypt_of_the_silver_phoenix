@@ -3,7 +3,7 @@ extends Control
 @onready var popup = $"."
 
 var text_shown = "Pop Up"
-var show_time = 1
+var show_time = 10
 
 @onready var label = $ColorRect/Label
 @onready var popup_timer = $Timer
