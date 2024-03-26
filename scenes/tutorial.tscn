@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bav40ondsbav7"]
+[gd_scene load_steps=9 format=3 uid="uid://bav40ondsbav7"]
 
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_6q2q3"]
 [ext_resource type="PackedScene" uid="uid://u0hfdydssq7m" path="res://scenes/player.tscn" id="1_vi04c"]
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="2_5h4dw"]
 [ext_resource type="PackedScene" uid="uid://chvuc5rsrewvi" path="res://scenes/level.tscn" id="2_nj7hn"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="4_6gphw"]
 [ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_hh51a"]
+[ext_resource type="PackedScene" uid="uid://bkr12cubwnb3l" path="res://scenes/pop_up.tscn" id="7_ctw17"]
 
 [sub_resource type="TileSet" id="TileSet_c5ttn"]
 tile_size = Vector2i(320, 320)
 
 [node name="Tutorial" type="Node2D"]
+script = ExtResource("1_6q2q3")
 
 [node name="Level" parent="." node_paths=PackedStringArray("room_manager") instance=ExtResource("2_nj7hn")]
 room_collider = ExtResource("2_5h4dw")
@@ -23,5 +26,18 @@ layer_0/tile_data = PackedInt32Array(-6946889, 0, 0, -6881353, 0, 0, -6815817, 0
 
 [node name="room_manager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_hh51a")]
 player = NodePath("../Player")
+
+[node name="PopUp" parent="." instance=ExtResource("7_ctw17")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -547.0
+offset_top = -301.0
+offset_right = -547.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("1_vi04c")]
