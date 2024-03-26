@@ -166,9 +166,10 @@ func move():
 		# animated_sprite_2d.play("idle_transition")
 		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
+	#remove this before releasing the game
+	if Input.is_action_just_pressed("reroll"):
+		WeaponManager.reset()
 	
-	
-		
 
 	velocity = player_velocity.normalized() * movement_speed + bounce_velocity
 	bounce_velocity += Vector2.ONE * bounce_acceleration
