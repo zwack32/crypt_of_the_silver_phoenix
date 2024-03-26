@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byg362p4cudrl"]
+[gd_scene load_steps=12 format=3 uid="uid://byg362p4cudrl"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_ecl5h"]
 [ext_resource type="Texture2D" uid="uid://dxs7psfe6kucw" path="res://art/title_screen.png" id="2_7qss5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6d0skooop361" path="res://art/start_game.png" id="5_l1wtb"]
 [ext_resource type="Texture2D" uid="uid://cekd8h7ksnkmd" path="res://art/quit_game.png" id="6_rrq5b"]
 [ext_resource type="Texture2D" uid="uid://bq11u203vwg1m" path="res://art/controls.png" id="7_b7t3k"]
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="8_gulsa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1j76"]
 bg_color = Color(0.960784, 0.960784, 0.960784, 1)
@@ -25,8 +26,9 @@ script = ExtResource("1_ecl5h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_right = 112.0
+offset_left = -24.0
+offset_right = 207.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7qss5")
@@ -47,12 +49,12 @@ texture = ExtResource("3_qmjnh")
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = -1
 anchor_left = 0.621528
-anchor_top = 0.317901
-anchor_right = 0.789236
-anchor_bottom = 0.769753
+anchor_top = 0.308642
+anchor_right = 0.927
+anchor_bottom = 0.855
 offset_left = -1.52588e-05
-offset_right = 1094.8
-offset_bottom = 1659.2
+offset_right = 1995.1
+offset_bottom = 2005.96
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
@@ -82,7 +84,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_m4yik")
 icon = ExtResource("7_b7t3k")
 icon_alignment = 1
 
+[node name="Tutorial" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_gulsa")
+icon_alignment = 1
+
 [connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Instructions" to="Window" method="_on_instructions_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
