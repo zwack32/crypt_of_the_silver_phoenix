@@ -9,10 +9,10 @@ var show_time = 10
 @onready var popup_timer = $Timer
 
 func _ready():
-	label.text = text_shown
-	popup_timer.start(show_time)
+	#label.text = text_shown
+	#popup_timer.start(show_time)
+	pass
 	
-
 
 func _on_timer_timeout():
 	popup.queue_free()
