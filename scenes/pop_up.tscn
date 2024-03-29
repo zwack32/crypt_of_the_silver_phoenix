@@ -1,13 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkr12cubwnb3l"]
+[gd_scene load_steps=3 format=3 uid="uid://bkr12cubwnb3l"]
 
 [ext_resource type="Script" path="res://PopUp.gd" id="1_vlshg"]
+[ext_resource type="Texture2D" uid="uid://lla3k7b11r6e" path="res://art/game_controls.jpeg" id="2_atnvj"]
 
 [node name="PopUp" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_vlshg")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.513726)
+layout_mode = 0
+offset_left = 318.0
+offset_top = 187.0
+offset_right = 799.0
+offset_bottom = 423.0
+scale = Vector2(1.22797, 1.23718)
+texture = ExtResource("2_atnvj")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 356.0
 offset_top = 192.0
