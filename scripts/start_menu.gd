@@ -1,12 +1,14 @@
 extends CanvasLayer
 
-@onready var start_button = $CenterContainer/VBoxContainer/StartButton
+@onready var start_button = $CenterContainer/HBoxContainer/StartButton
+@onready var animated_title = $AnimatedTitle
 
 
 var pressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animated_title.play()
 	start_button.grab_focus()
 	
 	
