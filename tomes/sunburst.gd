@@ -2,7 +2,7 @@ extends Tome
 
 var str = 15
 var velocity = Vector2.ZERO
-var speed = 70.0
+var speed = 700.0
 var type = "glow"
 var entered_once = false
 
@@ -15,12 +15,11 @@ var entered_once = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var coord = get_global_mouse_position()
-	velocity = coord * speed
+	look_at(get_global_mouse_position())
 	position = player.position
 
 func _process(delta):
-	position += velocity
+	move_local_x(10.0, false)
 	set_collision_layer_value(1, 0)
 
 func _on_area_entered(area):
