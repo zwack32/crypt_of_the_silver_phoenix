@@ -334,7 +334,7 @@ sprite_frames = SubResource("SpriteFrames_mkymf")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]

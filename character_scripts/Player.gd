@@ -51,7 +51,7 @@ func _process(delta):
 	if Input.is_action_pressed("map_view"):
 		camera_2d.zoom = Vector2(0.1, 0.1)
 	else:
-		camera_2d.zoom = Vector2(0.75, 0.75)
+		camera_2d.zoom = Vector2(0.5, 0.5)
 	
 	if Input.is_action_just_pressed("melee"):
 		melee_attack()
