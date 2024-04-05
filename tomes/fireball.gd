@@ -4,13 +4,16 @@ var str = 10
 var type = "fire"
 @export var cooldown = 6.0
 
-@onready var cpu_particles_2d = $CPUParticles2D
+#@onready var cpu_particles_2d = $CPUParticles2D
+@onready var fire_animation = $"fire animation"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = get_global_mouse_position()
 	
-	cpu_particles_2d.emitting = true
+	fire_animation.play("fireball")
+	#cpu_particles_2d.emitting = true
 	
 	await get_tree().create_timer(1).timeout
 	queue_free()

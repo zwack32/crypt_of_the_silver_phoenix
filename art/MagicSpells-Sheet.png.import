@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4ndcaxxh5wcl"
-path="res://.godot/imported/title_screen5.png-1513c8fc6c361db173746dd8383ef151.ctex"
+uid="uid://bbjymm2eoaptu"
+path="res://.godot/imported/MagicSpells-Sheet.png-4e98d0e3b936f00cddaf44c8a44d34e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/title_screen5.png"
-dest_files=["res://.godot/imported/title_screen5.png-1513c8fc6c361db173746dd8383ef151.ctex"]
+source_file="res://art/MagicSpells-Sheet.png"
+dest_files=["res://.godot/imported/MagicSpells-Sheet.png-4e98d0e3b936f00cddaf44c8a44d34e0.ctex"]
 
 [params]
 

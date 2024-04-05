@@ -1,10 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch0qfkpi4s11o"]
+[gd_scene load_steps=16 format=3 uid="uid://ch0qfkpi4s11o"]
 
 [ext_resource type="Script" path="res://tomes/fireball.gd" id="1_5isqm"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_2bi8o"]
+[ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_373pt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oaidw"]
-radius = 85.0059
+radius = 76.0263
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foejv"]
+atlas = ExtResource("2_373pt")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii2eh"]
+atlas = ExtResource("2_373pt")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkd6s"]
+atlas = ExtResource("2_373pt")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl72h"]
+atlas = ExtResource("2_373pt")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x16mv"]
+atlas = ExtResource("2_373pt")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q10r3"]
+atlas = ExtResource("2_373pt")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ogc"]
+atlas = ExtResource("2_373pt")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex0ru"]
+atlas = ExtResource("2_373pt")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2roel"]
+atlas = ExtResource("2_373pt")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5uiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foejv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii2eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkd6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl72h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x16mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q10r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65ogc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex0ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2roel")
+}],
+"loop": true,
+"name": &"fireball",
+"speed": 8.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_0f41u"]
 colors = PackedColorArray(1, 0, 0, 1, 0.317647, 0, 0, 0.360784)
@@ -16,12 +88,20 @@ script = ExtResource("1_5isqm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oaidw")
 
+[node name="fire animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.45683, 7.49558)
+scale = Vector2(0.727855, 0.746847)
+sprite_frames = SubResource("SpriteFrames_x5uiw")
+animation = &"fireball"
+frame_progress = 0.0720254
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 rotation = 0.785398
 texture = ExtResource("2_2bi8o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 emitting = false
 amount = 20
 lifetime = 0.4
