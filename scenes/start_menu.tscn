@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1j76"]
