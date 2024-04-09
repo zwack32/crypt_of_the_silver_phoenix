@@ -6,7 +6,7 @@ var type = "ice"
 @export var cooldown = 3.0
 
 #@onready var cpu_particles_2d = $CPUParticles2D
-@onready var ice_cone = $IceCone
+@onready var ice_cone_animation = $IceConeAnimation
 
 
 func _ready():
@@ -17,7 +17,7 @@ func _ready():
 	rotation = coord.angle() + PI / 2
 	position = player.position
 	#cpu_particles_2d.emitting = true
-	ice_cone.play("ice cone")
+	ice_cone_animation.play("ice_cone")
 
 func _on_area_entered(area):
 	await get_tree().create_timer(0.5).timeout
