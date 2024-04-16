@@ -1,8 +1,6 @@
 extends Enemy
 class_name Bat
 
-@export var speed = 700.0
-
 var charge_to_position = Vector2.ZERO
 var is_attacking = false
 
@@ -19,6 +17,7 @@ func _ready():
 	enemy_max_health = 20
 	enemy_atk = 5
 	enemy_def = 3
+	enemy_speed = 700
 	
 	health_bar = $HealthBar
 
@@ -47,14 +46,6 @@ func _process(delta):
 	if !is_attacking:
 		velocity = Vector2.ZERO
 	
-	#if death_timer.time_left <= 0 and dead:
-	#	animated_sprite_2d.play("Bat_die")
-	#	collision_layer = 0
-	#	collision_mask = 0
-		# STUB: Remove this gross hardcoded time
-	#	await get_tree().create_timer(3).timeout
-	#	queue_free()
-	
 	if position.distance_to(charge_to_position) < 4.0:
 		attack_finished.emit()
 	
@@ -63,7 +54,7 @@ func prepare_attack(is_inital=false):
 		await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
 		var direction = (player.position - position).normalized()
 		charge_to_position = player.position + direction * charge_overshoot
-		velocity = direction * speed
+		velocity = direction * enemy_speed
 		is_attacking = true
 		await attack_finished
 		is_attacking = false

@@ -1,8 +1,6 @@
 extends Enemy
 class_name Slime
 
-@export var speed = 100.0
-
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
@@ -10,6 +8,7 @@ func _ready():
 	enemy_max_health = 30
 	enemy_atk = 7
 	enemy_def = 5
+	enemy_speed = 100
 
 	idle_animation_name = "idle"
 	die_animation_name = "die"
@@ -30,7 +29,7 @@ func _process(delta):
 	
 	if !is_dead:
 		var direction = (player.position - position).normalized()
-		velocity = direction * speed
+		velocity = direction * enemy_speed
 	
 	health_bar.value = enemy_health
 

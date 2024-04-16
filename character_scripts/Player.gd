@@ -63,7 +63,6 @@ func _process(delta):
 	spell_bar.value = spell_cooldown_timer.time_left
 
 func get_mouse_direction_from_player():
-	
 	var target = get_global_mouse_position()
 	return global_position.direction_to(target)
 

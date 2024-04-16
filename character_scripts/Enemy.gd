@@ -5,18 +5,24 @@ class_name Enemy
 @export var player: Player
 @export var room_level: int
 
+var is_dead = false
+var is_active = false
+var is_burning = false
+var is_frozen = false
+
 @export var spawn_delay: float
 @export var spawn_delay_rand_range: float
+
+@export var burn_duration: float = 5.0
+@export var burn_tick_duration: float = 1.0
+@export var freeze_duration: float = 10.0
 
 var enemy_max_health
 var enemy_atk
 var enemy_def
 var enemy_health
+var enemy_speed
 
-var is_dead = false
-var is_active = false
-var is_burning = false
-var is_frozen = false
 
 var idle_animation_name
 var die_animation_name
@@ -71,30 +77,6 @@ func on_enemy_process() -> bool:
 	health_bar.value = enemy_health
 		
 	move_and_slide()
-
-	# if is_burning:
-	#	on_fire_process = true
-	#	fire_tick_timer.start()
-	#	fire_timer.start()
-	#	on_fire = false
-		
-	#if on_fire_process and fire_tick_timer.time_left == 0:
-	#	enemy_health -= 2
-	#	fire_tick_timer.start()
-		
-	#if on_fire_process and fire_timer.time_left == 0:
-	#	on_fire = false
-	#	on_fire_process = false
-
-	#if frozen and !frozen_process:
-	#	frozen_timer.start()
-	#	frozen = false
-	#	frozen_process = true
-	#	speed /= 2
-	
-	#if frozen_process and frozen_timer.time_left == 0:
-	#	frozen_process = false
-	#	speed *= 2
 		
 	return true
 
@@ -139,9 +121,9 @@ func on_enemy_area_entered(area):
 		#enemy takes damage
 		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 		if area.type == "fire":
-			is_burning = true
+			on_burn()
 		if area.type == "ice":
-			is_frozen = true
+			on_freeze()
 	elif area.owner is Player:
 		#player takes damage
 		player.take_damage(enemy_atk)
@@ -149,9 +131,32 @@ func on_enemy_area_entered(area):
 	elif area is Tome:
 		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
 		if area.type == "fire":
-			is_burning = true
+			on_burn()
 		if area.type == "ice":
-			is_frozen = true
+			on_freeze()
+
+func on_burn():
+	if is_burning:
+		return
+	is_burning = true
+	
+	var total_burn_time = 0
+	
+	while total_burn_time < burn_duration:
+		set_enemy_health(enemy_health - 2)
+		total_burn_time += burn_tick_duration
+		await get_tree().create_timer(burn_tick_duration).timeout
+		
+	is_burning = false
+	
+func on_freeze():
+	if is_frozen:
+		return
+	is_frozen = true
+	enemy_speed /= 2
+	await get_tree().create_timer(freeze_duration).timeout
+	enemy_speed *= 2
+	is_frozen = false
 
 func get_enemy_atk():
 	return enemy_atk
@@ -161,6 +166,10 @@ func get_enemy_def():
 
 func get_enemy_max_hp():
 	return enemy_max_health
+
+func set_enemy_health(val: float):
+	enemy_health = clamp(val, 0, 999999)
+	health_bar.value = enemy_health
 
 func get_enemy_health():
 	return enemy_health
