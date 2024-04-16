@@ -1,10 +1,12 @@
 extends CanvasLayer
 @onready var restart_button = $RestartButton
+@onready var game_over = $"Game over"
+
 var twice = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	game_over.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

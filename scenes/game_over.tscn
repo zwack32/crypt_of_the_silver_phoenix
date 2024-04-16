@@ -1,17 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://deibshu8ih60"]
+[gd_scene load_steps=10 format=3 uid="uid://deibshu8ih60"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_oww1r"]
-[ext_resource type="Texture2D" uid="uid://cygxshqdn84e6" path="res://art/game_over_screen.png" id="2_6etdy"]
+[ext_resource type="Texture2D" path="res://art/game_over_screen.png" id="2_6etdy"]
+[ext_resource type="Texture2D" uid="uid://cpofpuv8cvi66" path="res://art/game_over_screen-Sheet-Sheet.png" id="2_pikcx"]
 [ext_resource type="Texture2D" uid="uid://cnnp3k2snnl46" path="res://art/restart.png" id="3_tvw0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6wy1"]
+atlas = ExtResource("2_pikcx")
+region = Rect2(0, 0, 1280, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5il8"]
+atlas = ExtResource("2_pikcx")
+region = Rect2(1280, 0, 1280, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irr6w"]
+atlas = ExtResource("2_pikcx")
+region = Rect2(2560, 0, 1280, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t48fv"]
+atlas = ExtResource("2_pikcx")
+region = Rect2(3840, 0, 1280, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atvrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6wy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5il8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irr6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t48fv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Game Over" type="CanvasLayer"]
 layer = 11
 script = ExtResource("1_oww1r")
 
+[node name="Game over" type="AnimatedSprite2D" parent="."]
+position = Vector2(580, 328)
+scale = Vector2(0.88125, 1)
+sprite_frames = SubResource("SpriteFrames_atvrv")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -64.0
+offset_right = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_6etdy")

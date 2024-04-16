@@ -32,7 +32,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xlgdg")
 }],
 "loop": true,
-"name": &"sunburst",
+"name": &"sun burst",
 "speed": 17.0
 }]
 
@@ -45,12 +45,13 @@ script = ExtResource("1_v8ekr")
 scale = Vector2(1.76, 1.68)
 shape = SubResource("CircleShape2D_nj4lp")
 
-[node name="SunburstAnimation" type="AnimatedSprite2D" parent="."]
+[node name="SunBurst" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_q2xbk")
-animation = &"sunburst"
+animation = &"sun burst"
 
 [node name="BeadSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_6mejh")
 

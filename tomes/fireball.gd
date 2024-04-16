@@ -5,7 +5,7 @@ var type = "fire"
 @export var cooldown = 6.0
 
 #@onready var cpu_particles_2d = $CPUParticles2D
-@onready var fireball_animation = $FireballAnimation
+@onready var fireball_animation = $"fire animation"
 
 
 # Called when the node enters the scene tree for the first time.
