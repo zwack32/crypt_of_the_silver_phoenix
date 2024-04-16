@@ -7,7 +7,7 @@ var type = "glow"
 var entered_once = false
 
 @export var cooldown = 4.0
-
+ 
 @onready var bead_sprite = $BeadSprite
 #@onready var cpu_particles_2d = $CPUParticles2D
 @onready var sunburst_animation = $SunburstAnimation

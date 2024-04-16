@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://cw0sfcwrtmjxx"]
 
-[ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_soans"]
+[ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_02u24"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
 [ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_4wjsr"]
 
@@ -52,6 +52,10 @@ region = Rect2(544, 0, 32, 32)
 atlas = ExtResource("3_4wjsr")
 region = Rect2(576, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkbdy"]
+atlas = ExtResource("2_fu2hm")
+region = Rect2(224, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqbln"]
 atlas = ExtResource("2_fu2hm")
 region = Rect2(96, 0, 32, 32)
@@ -75,10 +79,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndbbh"]
 atlas = ExtResource("2_fu2hm")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mkbdy"]
-atlas = ExtResource("2_fu2hm")
-region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8sqte"]
 animations = [{
@@ -165,7 +165,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_aecqa")
 }],
 "loop": false,
-"name": &"Slime_die",
+"name": &"crumble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkbdy")
+}],
+"loop": true,
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -176,7 +184,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_oenvu")
 }],
 "loop": false,
-"name": &"Slime_hurt",
+"name": &"hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -193,15 +201,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ndbbh")
 }],
 "loop": true,
-"name": &"Slime_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mkbdy")
-}],
-"loop": true,
-"name": &"Slime_stoned",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -225,17 +225,13 @@ border_width_bottom = 2
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 26
-script = ExtResource("1_soans")
+script = ExtResource("1_02u24")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8sqte")
-animation = &"Slime_idle"
-
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 15.0
-one_shot = true
+animation = &"die"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -249,7 +245,7 @@ shape = SubResource("RectangleShape2D_k3680")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_k3680")
 
-[node name="EnemyHealth" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -78.0
 offset_top = -73.0
 offset_right = 78.0
@@ -259,16 +255,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_l1qn3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_f0dgw")
 value = 30.0
 show_percentage = false
-
-[node name="FireTickTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="FrozenTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
-[node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
