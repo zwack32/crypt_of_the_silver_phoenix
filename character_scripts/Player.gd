@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var movement_speed = 350
+@onready var camera = $Camera2D
 
 #adjustable stats
 var player_max_health = 50
@@ -120,6 +121,7 @@ func ranged_attack():
 		pass
 	else:
 		var spell = WeaponManager.get_tome_scene().instantiate()
+		camera.apply_shake()
 		spell_cooldown_timer.wait_time = spell.cooldown
 		spell_bar.max_value = spell_cooldown_timer.wait_time
 		spell.player = self
@@ -190,6 +192,7 @@ func on_death():
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	set_health(health - dmg)
+	camera.apply_shake()
 	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
 
 func renable_swing():
