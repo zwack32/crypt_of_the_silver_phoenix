@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var movement_speed = 350
+@onready var camera = $Camera2D
 
 #adjustable stats
 var player_max_health = 50
@@ -62,13 +63,8 @@ func _process(delta):
 	spell_bar.value = spell_cooldown_timer.time_left
 
 func get_mouse_direction_from_player():
-	var mouse_pos = get_viewport().get_mouse_position()
-	var viewport = get_viewport().size
-	var screen_mouse_pos = Vector2(mouse_pos.x / viewport.x, mouse_pos.y / viewport.y)
-	var screen_coord = screen_mouse_pos * 2.0 - Vector2(1.0, 1.0)
-	
-	return screen_coord
-
+	var target = get_global_mouse_position()
+	return global_position.direction_to(target)
 
 func melee_attack():
 	if !can_swing:
@@ -120,6 +116,7 @@ func ranged_attack():
 		pass
 	else:
 		var spell = WeaponManager.get_tome_scene().instantiate()
+		camera.apply_shake()
 		spell_cooldown_timer.wait_time = spell.cooldown
 		spell_bar.max_value = spell_cooldown_timer.wait_time
 		spell.player = self
@@ -190,6 +187,7 @@ func on_death():
 func take_damage(enemy_atk):
 	var dmg = (clamp(enemy_atk-player_def, 0, 9999999))+enemy_atk
 	set_health(health - dmg)
+	camera.apply_shake()
 	print("Player takes " + str(dmg) + " damage and has " + str(health) + " hp left")
 
 func renable_swing():

@@ -47,6 +47,10 @@ region = Rect2(544, 0, 32, 32)
 atlas = ExtResource("3_qptct")
 region = Rect2(576, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3qnj"]
+atlas = ExtResource("3_qptct")
+region = Rect2(288, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sbvm"]
 atlas = ExtResource("3_qptct")
 region = Rect2(0, 0, 32, 32)
@@ -78,10 +82,6 @@ region = Rect2(192, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mqjcb"]
 atlas = ExtResource("3_qptct")
 region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j3qnj"]
-atlas = ExtResource("3_qptct")
-region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lcisv"]
 animations = [{
@@ -159,7 +159,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_aecqa")
 }],
 "loop": false,
-"name": &"Bat_die",
+"name": &"crumble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3qnj")
+}],
+"loop": true,
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -188,16 +196,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_mqjcb")
 }],
 "loop": true,
-"name": &"Bat_idle",
+"name": &"idle",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j3qnj")
-}],
-"loop": true,
-"name": &"Bat_stoned",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhq5"]
@@ -222,20 +222,20 @@ border_width_bottom = 2
 collision_layer = 0
 collision_mask = 24
 script = ExtResource("1_lp1dh")
+speed = null
+charge_overshoot = null
+room_level = null
+spawn_delay = null
+spawn_delay_rand_range = null
+burn_duration = null
+burn_tick_duration = null
+freeze_duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_lcisv")
-animation = &"Bat_idle"
-
-[node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 15.0
-one_shot = true
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -2)
@@ -249,7 +249,7 @@ collision_mask = 25
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_8bfjk")
 
-[node name="BatHealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -75.0
 offset_top = -56.0
 offset_right = 75.0
@@ -258,17 +258,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_vxa6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ldndp")
 value = 50.0
 show_percentage = false
-
-[node name="FireTickTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="FrozenTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
-[node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

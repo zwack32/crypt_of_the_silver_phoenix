@@ -1,211 +1,73 @@
 extends Enemy
 class_name Bat
 
-@export var speed: float = 500.0
-@export var spawn_delay: float = 1.5
-@export var spawn_delay_rand_range: float = 3.0
+var charge_to_position = Vector2.ZERO
+var is_attacking = false
 
-#velocity = Vector2.ZERO
+var last_position: Vector2
 
-@onready var death_timer = $DeathTimer
-@onready var attack_timer = $AttackTimer
-@onready var fire_tick_timer = $FireTickTimer
-@onready var frozen_timer = $FrozenTimer
-@onready var fire_timer = $FireTimer
-@onready var animated_sprite_2d = $AnimatedSprite2D
+signal attack_finished
 
-var enemy_max_health = 20
-var enemy_atk = 3
-var enemy_def = 3
-
-var enemy_health
-
-@onready var bat_health_bar = $BatHealthBar
-
-var dead = false
-var is_active = false
-
-var on_fire = false
-var on_fire_process = false
-var frozen = false
-var frozen_process = false
-
-#annoying functions so that we can use these in other scripts
-func get_enemy_atk():
-	return enemy_atk
-func get_enemy_def():
-	return enemy_def
-func get_enemy_max_hp():
-	return enemy_max_health
-func get_enemy_health():
-	return enemy_health
+@export var charge_overshoot: float = 500.0
 
 func _ready():
-	bat_health_bar.max_value = enemy_max_health
-	fire_tick_timer.start()
+	spawn_delay = 1.5
+	spawn_delay_rand_range = 3.0
+
+	enemy_max_health = 20
+	enemy_atk = 5
+	enemy_def = 3
+	enemy_speed = 700
+	
+	health_bar = $HealthBar
+
+	idle_animation_name = "idle"
+	die_animation_name = "die"
+	crumble_animation_name = "crumble"
+	
 	enemy_health = enemy_max_health
-	#randomize stats
-	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
-	enemy_def += randi_range((-1 + roundf(room_level/2)), (2+room_level))
-	enemy_health += randi_range((-2 + roundf(room_level/2)), 5+(2*room_level))
-	
-	collision_layer |= 0
-	
-	#if on room 3 or higher, start adding elemental enemies
-	var type = "normal"
-	if room_level >= 3:
-		var type_determiner = randi_range(1, 4)
-		if type_determiner == 1 or 2:
-			type = "normal"
-		elif type_determiner == 3:
-			type = "fire"
-			#load red godot icon here
-		elif type_determiner == 4:
-			type = "ice"
-			#load cyan godot logo here
-	
-	print(str(enemy_atk) + "atk")
-	print(str(enemy_def) + "def")
-	print(str(enemy_health) + "health")
-	
-	
-	var tween = get_tree().create_tween()
-	animated_sprite_2d.modulate = Color(1.0, 1.0, 1.0, 0.0)
-	tween.tween_property(animated_sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), spawn_delay)
-	
-	var original_layer = collision_layer
-	var original_mask = collision_mask
-	
-	collision_layer = 0
-	collision_mask = 0
-	
-	animated_sprite_2d.play("Bat_idle")
-	await get_tree().create_timer(spawn_delay).timeout
-	is_active = true
-	collision_layer = original_layer
-	collision_mask = original_mask
-	await get_tree().create_timer(randf_range(0.0, spawn_delay_rand_range)).timeout
-	attack_timer.start()
+	enemy_die_callback = on_die
 
-#Move toward player
+	health_bar = $HealthBar
+	animated_sprite_2d = $AnimatedSprite2D
+	
+	await on_enemy_ready()
+	prepare_attack(true)
+
 func _process(delta):
-	if !is_active:
-		return
+	if (is_on_ceiling() || is_on_floor() || is_on_wall()) && is_attacking && (position - last_position).normalized() != charge_to_position.normalized():
+		attack_finished.emit()
 	
-	if !dead:
-		if attack_timer.time_left <= 0:
-			var direction = (player.position - position).normalized()
-			velocity = direction * speed
-			check_attack_timer()
-			if check_attack_timer():
-				await get_tree().create_timer(2).timeout
-			
-			attack_timer.wait_time += randf_range(-2.0, 2.0)
-			attack_timer.start()
-	if death_timer.time_left <= 0 and dead:
-		animated_sprite_2d.play("Bat_die")
-		collision_layer = 0
-		collision_mask = 0
-		# STUB: Remove this gross hardcoded time
-		await get_tree().create_timer(3).timeout
-		queue_free()
-	position += velocity * delta
+	last_position = position
 	
-	bat_health_bar.value = enemy_health
-	#print(attack_timer.time_left)
-	if on_fire:
-		on_fire_process = true
-		fire_tick_timer.start()
-		fire_timer.start()
-		on_fire = false
-		
-	if on_fire_process and fire_tick_timer.time_left == 0:
-		enemy_health -= 2
-		fire_tick_timer.start()
-		
-	if on_fire_process and fire_timer.time_left == 0:
-		on_fire = false
-		on_fire_process = false
-		
-	if enemy_health <= 0:
-		enemy_health = 0
-		bat_health_bar.hide()
-		enemy_die()
+	if !on_enemy_process():
+		return;
 	
-	if frozen and !frozen_process:
-		frozen_timer.start()
-		frozen = false
-		frozen_process = true
-		speed /= 2
-	
-	if frozen_process and frozen_timer.time_left == 0:
-		frozen_process = false
-		speed *= 2
-	
-
-func check_attack_timer():
-	if attack_timer.timeout:
-		return true
+	if !is_attacking:
 		velocity = Vector2.ZERO
-	else:
-		return false
-
-
-#differentiate between player hitting enemy and enemy hitting player
-func _on_area_entered(area):
-	if !is_active:
-		return
-		
-	if !dead:
-		if area is MeleeWeapon:
-			#enemy takes damage
-			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-			velocity /= 3
-			#print("enemy take damage")
-			
-			if area.type == "fire":
-				on_fire = true
-			if area.type == "ice":
-				frozen = true
-		elif area.owner is Player:
-			#player takes damage
-			player.take_damage(enemy_atk)
-			#print("player take damage")
-		elif area is Tome:
-			enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-			if area.type == "fire":
-				on_fire = true
-			if area.type == "ice":
-				frozen = true
-				
-
-func _on_area_exited(area):
-	if area is Room:
-		velocity = Vector2.ZERO
-
-func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
-	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
-	enemy_health -= dmg
-	if enemy_health <= 0:
-		enemy_health = 0
-		bat_health_bar.hide()
-		enemy_die()
-	bat_health_bar.value = enemy_health
-	print("Enemy takes " + str(dmg) + " damage and has " + str(enemy_health) + " hp left")
-	return enemy_health
-
-func enemy_die():
-	if dead:
-		return
 	
-	print("did you die again")
-	dead = true
-	velocity = Vector2.ZERO
-	death_timer.start()
+	if position.distance_to(charge_to_position) < 4.0:
+		attack_finished.emit()
+	
+func prepare_attack(is_inital=false):
+	while !is_dead:
+		await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
+		var direction = (player.position - position).normalized()
+		charge_to_position = player.position + direction * charge_overshoot
+		velocity = direction * enemy_speed
+		is_attacking = true
+		await attack_finished
+		is_attacking = false
+
+		# Workaround to prevent sticking to wall
+		position -= direction
+
+func on_die():
 	collision_layer |= 2
-	animated_sprite_2d.play("Bat_stoned")
-	
-	on_fire = false
-	frozen = false
-	room_battle_instance.pop_enemy()
-	
+
+func _on_area_entered(area):
+	if !is_dead:
+		on_enemy_area_entered(area)
+		if area is MeleeWeapon:
+			velocity /= 8
+			attack_finished.emit()

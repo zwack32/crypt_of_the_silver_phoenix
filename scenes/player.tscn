@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=47 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="Texture2D" uid="uid://c7h54bner42ca" path="res://art/player_forward.png" id="3_vyaho"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_ben86"]
 [ext_resource type="Texture2D" uid="uid://db4ipt5uva7my" path="res://art/Player2.png" id="4_v47rc"]
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_6isvi"]
@@ -336,6 +337,7 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("4_ben86")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -96.0
