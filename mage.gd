@@ -1,5 +1,7 @@
 extends Enemy
-class_name Slime
+class_name Mage
+
+@export var speed = 100.0
 
 func _ready():
 	spawn_delay = 1.5
@@ -8,15 +10,14 @@ func _ready():
 	enemy_max_health = 30
 	enemy_atk = 7
 	enemy_def = 5
-	enemy_speed = 100
 
-	idle_animation_name = "Slime_idle"
-	die_animation_name = "Slime_stoned"
-	crumble_animation_name = "Slime_die"
+	idle_animation_name = "move"
+	die_animation_name = "die"
+	crumble_animation_name = "die"
 
 	enemy_health = enemy_max_health
 
-	health_bar = $EnemyHealth
+	health_bar = $MageHealthBar
 	animated_sprite_2d = $AnimatedSprite2D
 
 	await on_enemy_ready()
@@ -29,11 +30,12 @@ func _process(delta):
 	
 	if !is_dead:
 		var direction = (player.position - position).normalized()
-		velocity = direction * enemy_speed
+		velocity = direction * speed
 	
 	health_bar.value = enemy_health
 
-func _on_area_entered(area):
+
+func _on_area_2d_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
 		if area.owner is Player:
