@@ -6,7 +6,7 @@ var type = "ice"
 @export var cooldown = 3.0
 
 #@onready var cpu_particles_2d = $CPUParticles2D
-@onready var ice_cone_animation = $IceCone
+@onready var ice_cone_animation = $IceConeAnimation
 
 
 func _ready():
