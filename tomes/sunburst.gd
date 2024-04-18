@@ -7,26 +7,15 @@ var type = "glow"
 var entered_once = false
 
 @export var cooldown = 4.0
-<<<<<<< HEAD
- 
-@onready var bead_sprite = $BeadSprite
-#@onready var cpu_particles_2d = $CPUParticles2D
-@onready var sunburst_animation = $SunburstAnimation
-=======
-
 @onready var bead_sprite = $BeadSprite
 #@onready var cpu_particles_2d = $CPUParticles2D
 @onready var sunburst_animation = $SunburstAnimation
 
->>>>>>> parent of 456cb1a (changed game over animation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = player.position
-<<<<<<< HEAD
 	velocity = global_position.direction_to(get_global_mouse_position()) * speed
-=======
->>>>>>> parent of 456cb1a (changed game over animation)
 	bead_sprite.show()
 	sunburst_animation.hide()
 
