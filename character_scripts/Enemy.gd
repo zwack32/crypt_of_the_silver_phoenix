@@ -9,6 +9,7 @@ var is_dead = false
 var is_active = false
 var is_burning = false
 var is_frozen = false
+var is_glowing = false
 
 @export var spawn_delay: float
 @export var spawn_delay_rand_range: float
@@ -80,9 +81,14 @@ func on_enemy_process() -> bool:
 		
 	return true
 
-func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str):
+func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
-	enemy_health -= dmg
+	
+	if !is_glowing:
+		enemy_health -= dmg
+	if area.type == "glow" and is_glowing:
+		enemy_health -= dmg * 2
+	
 	if enemy_health <= 0:
 		enemy_health = 0
 		health_bar.hide()
@@ -117,23 +123,19 @@ func on_enemy_area_entered(area):
 	if !is_active:
 		return
 		
-	if area is MeleeWeapon:
+	if area is MeleeWeapon or Tome:
 		#enemy takes damage
-		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
+		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str, area)
 		if area.type == "fire":
 			on_burn()
 		if area.type == "ice":
 			on_freeze()
+		if area.type == "glow":
+			on_glow()
 	elif area.owner is Player:
 		#player takes damage
 		player.take_damage(enemy_atk)
 		player.bounce_towards((player.position - position).normalized())
-	elif area is Tome:
-		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str)
-		if area.type == "fire":
-			on_burn()
-		if area.type == "ice":
-			on_freeze()
 
 func on_burn():
 	if is_burning:
@@ -157,6 +159,9 @@ func on_freeze():
 	await get_tree().create_timer(freeze_duration).timeout
 	enemy_speed *= 2
 	is_frozen = false
+
+func on_glow():
+	is_glowing = true
 
 func get_enemy_atk():
 	return enemy_atk
