@@ -57,7 +57,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_frrwa")
 }],
 "loop": true,
-"name": &"ice cone",
+"name": &"ice_cone",
 "speed": 10.0
 }]
 
@@ -70,13 +70,11 @@ position = Vector2(0, -156)
 scale = Vector2(1, 2.4375)
 texture = ExtResource("1_sintp")
 
-[node name="IceCone" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -291)
-rotation = -1.52888
-scale = Vector2(1.82515, 0.829072)
+[node name="IceConeAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -160)
+rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_pnwvt")
-animation = &"ice cone"
-frame_progress = 0.92765
+animation = &"ice_cone"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 128, -320, -128, -320)
