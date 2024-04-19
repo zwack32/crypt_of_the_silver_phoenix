@@ -16,7 +16,7 @@ func _ready():
 
 	enemy_health = enemy_max_health
 
-	health_bar = $HealthBar
+	health_bar = $EnemyHealth
 	animated_sprite_2d = $AnimatedSprite2D
 
 	await on_enemy_ready()
