@@ -10,6 +10,9 @@ var player_atk = 10
 var player_def = 10
 var player_spd = 10
 
+#shitty workaround
+#var str = null
+
 var bounce_acceleration = -100.0
 var bounce_initial_speed = 900.0
 
@@ -130,11 +133,13 @@ func move():
 	if Input.is_action_pressed("move_down"):
 		direction = Vector2.DOWN
 		player_velocity.y += 1
-		animated_sprite_2d.play("walk_down")
+		if !Input.is_action_pressed("move_left") or !Input.is_action_pressed("move_right"):
+			animated_sprite_2d.play("walk_down")
 	if Input.is_action_pressed("move_up"):
 		direction = Vector2.UP
 		player_velocity.y += -1
-		animated_sprite_2d.play("walk_up")
+		if !Input.is_action_pressed("move_left") or !Input.is_action_pressed("move_right"):
+			animated_sprite_2d.play("walk_up")
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 		player_velocity.x += -1

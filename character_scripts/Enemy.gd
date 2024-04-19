@@ -123,7 +123,7 @@ func on_enemy_area_entered(area):
 	if !is_active:
 		return
 		
-	if area is MeleeWeapon or Tome:
+	if area is MeleeWeapon:
 		#enemy takes damage
 		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str, area)
 		if area.type == "fire":
@@ -136,6 +136,15 @@ func on_enemy_area_entered(area):
 		#player takes damage
 		player.take_damage(enemy_atk)
 		player.bounce_towards((player.position - position).normalized())
+	elif area is Tome:
+		#enemy takes damage
+		enemy_health = enemy_take_damage(player.get_player_atk(), enemy_def, enemy_health, area.str, area)
+		if area.type == "fire":
+			on_burn()
+		if area.type == "ice":
+			on_freeze()
+		if area.type == "glow":
+			on_glow()
 
 func on_burn():
 	if is_burning:
