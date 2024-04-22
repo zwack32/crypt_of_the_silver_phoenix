@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5sbmy2xptq3m"]
+
+[ext_resource type="Script" path="res://weapons/scythe.gd" id="1_5kxkc"]
+[ext_resource type="Texture2D" uid="uid://b10jmjw6c1dc0" path="res://art/scythe.png" id="2_hc1sl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp6p8"]
+size = Vector2(176, 56)
+
+[node name="Scythe" type="Area2D"]
+script = ExtResource("1_5kxkc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, -232)
+scale = Vector2(0.685714, 0.7375)
+texture = ExtResource("2_hc1sl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(80, -412)
+shape = SubResource("RectangleShape2D_yp6p8")
