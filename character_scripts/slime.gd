@@ -10,13 +10,13 @@ func _ready():
 	enemy_def = 5
 	enemy_speed = 100
 
-	idle_animation_name = "Slime_idle"
-	die_animation_name = "Slime_stoned"
-	crumble_animation_name = "Slime_die"
+	idle_animation_name = "idle"
+	die_animation_name = "die"
+	crumble_animation_name = "crumble"
 
 	enemy_health = enemy_max_health
 
-	health_bar = $EnemyHealth
+	health_bar = $HealthBar
 	animated_sprite_2d = $AnimatedSprite2D
 
 	await on_enemy_ready()

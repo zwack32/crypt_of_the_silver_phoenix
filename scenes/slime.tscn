@@ -226,13 +226,6 @@ border_width_bottom = 2
 collision_layer = 2
 collision_mask = 26
 script = ExtResource("1_02u24")
-speed = null
-room_level = null
-spawn_delay = null
-spawn_delay_rand_range = null
-burn_duration = null
-burn_tick_duration = null
-freeze_duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
