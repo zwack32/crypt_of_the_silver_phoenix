@@ -1,10 +1,14 @@
-extends Tome
+extends Area2D
 
 var str = 15
 var velocity = Vector2.ZERO
-var speed = 700.0
+var speed = 1.0
 var type = "glow"
 var entered_once = false
+var spell_atk = 10
+
+@export var mage: Mage
+@export var player: Player
 
 @export var cooldown = 4.0
 @onready var bead_sprite = $BeadSprite
@@ -14,18 +18,19 @@ var entered_once = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position = player.position
-	velocity = global_position.direction_to(get_global_mouse_position()) * speed
+	position = mage.position
+	velocity = (player.position - position) * speed
 	bead_sprite.show()
 	sunburst_animation.hide()
 
 func _process(delta):
 	position += velocity * delta
-	set_collision_layer_value(0,2)
+	set_collision_layer_value(1, 0)
 
 func _on_area_entered(area):
 	bead_sprite.hide()
 	sunburst_animation.show()
+	player.take_damage(spell_atk)
 	if !entered_once: 
 		entered_once = true
 		scale = Vector2(4, 4)
@@ -35,3 +40,4 @@ func _on_area_entered(area):
 		
 		await get_tree().create_timer(0.3).timeout
 		queue_free()
+
