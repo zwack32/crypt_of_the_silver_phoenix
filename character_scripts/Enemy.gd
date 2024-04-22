@@ -84,7 +84,7 @@ func on_enemy_process() -> bool:
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
 	var dmg = clamp(clamp(player_atk+sword_str-enemy_def, 0, 9999999)+sword_str, 0, 9999999)
 	
-	if !is_glowing:
+	if !is_glowing or is_glowing and !area.type=="glow":
 		enemy_health -= dmg
 	if area.type == "glow" and is_glowing:
 		enemy_health -= dmg * 2
