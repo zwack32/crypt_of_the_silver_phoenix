@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_qxem7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj4lp"]
-radius = 24.0
+radius = 4.54545
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw5da"]
 atlas = ExtResource("2_qxem7")
