@@ -10,9 +10,6 @@ var player_atk = 10
 var player_def = 10
 var player_spd = 10
 
-#shitty workaround
-#var str = null
-
 var bounce_acceleration = -100.0
 var bounce_initial_speed = 900.0
 
