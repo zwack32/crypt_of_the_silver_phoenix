@@ -1,25 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkmleq2q5mg10"]
+[gd_scene load_steps=9 format=3 uid="uid://b631jijmt00nd"]
 
-[ext_resource type="Script" path="res://tomes/sunburst.gd" id="1_v8ekr"]
-[ext_resource type="Texture2D" uid="uid://did3h60swj18b" path="res://art/sunburst_effect.png" id="2_6mejh"]
-[ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_qxem7"]
+[ext_resource type="Script" path="res://scripts/MageSpell.gd" id="1_t7qwl"]
+[ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_qtgg4"]
+[ext_resource type="Texture2D" uid="uid://did3h60swj18b" path="res://art/sunburst_effect.png" id="3_roao2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nj4lp"]
-radius = 4.54545
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0ck7"]
+radius = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw5da"]
-atlas = ExtResource("2_qxem7")
+atlas = ExtResource("2_qtgg4")
 region = Rect2(0, 960, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jly"]
-atlas = ExtResource("2_qxem7")
+atlas = ExtResource("2_qtgg4")
 region = Rect2(320, 960, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlgdg"]
-atlas = ExtResource("2_qxem7")
+atlas = ExtResource("2_qtgg4")
 region = Rect2(640, 960, 320, 320)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q2xbk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_w883n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -36,23 +36,24 @@ animations = [{
 "speed": 17.0
 }]
 
-[node name="Sunburst" type="Area2D"]
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("1_v8ekr")
+[node name="MageSpell" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_t7qwl")
 
 [node name="BeadCollisionShape" type="CollisionShape2D" parent="."]
 scale = Vector2(1.76, 1.68)
-shape = SubResource("CircleShape2D_nj4lp")
+shape = SubResource("CircleShape2D_h0ck7")
 
 [node name="SunburstAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_q2xbk")
+sprite_frames = SubResource("SpriteFrames_w883n")
 animation = &"sunburst"
+frame = 1
+frame_progress = 0.405302
 
 [node name="BeadSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_6mejh")
+texture = ExtResource("3_roao2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false
