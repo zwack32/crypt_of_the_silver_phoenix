@@ -1,15 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckc52m6ovxgvd"]
 
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
-[ext_resource type="Texture2D" uid="uid://tam6arov0slq" path="res://art/door.png" id="2_ihpan"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6dv1i"]
+load_path = "res://.godot/imported/purple door.png-a79564e81e3e1905b0dbf0e557a26297.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evjrx"]
-size = Vector2(128.5, 128)
+size = Vector2(212, 316)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swms3"]
+size = Vector2(106, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7btw2"]
-size = Vector2(119, 50)
+size = Vector2(148.5, 50)
 
 [node name="door" type="StaticBody2D"]
 scale = Vector2(1, 0.5)
@@ -18,24 +21,30 @@ collision_mask = 3
 script = ExtResource("1_vkm81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.8147e-06, 3.8147e-06)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_ihpan")
+position = Vector2(70, -86)
+scale = Vector2(0.378125, 0.496875)
+texture = SubResource("CompressedTexture2D_6dv1i")
+offset = Vector2(-320, 320)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -7)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_evjrx")
 disabled = true
 
 [node name="EnterTrigger" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterTrigger"]
+position = Vector2(22, -16)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_swms3")
 
 [node name="KeepInTriggerLeft" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerLeft"]
-position = Vector2(-134, 1)
+position = Vector2(-119.25, 1)
 shape = SubResource("RectangleShape2D_7btw2")
 
 [node name="KeepInTriggerRight" type="Area2D" parent="."]
