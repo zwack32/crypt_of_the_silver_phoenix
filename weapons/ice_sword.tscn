@@ -7,6 +7,7 @@
 size = Vector2(16, 256)
 
 [node name="IceSword" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_lslar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
