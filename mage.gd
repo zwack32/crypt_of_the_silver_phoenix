@@ -17,7 +17,7 @@ func _ready():
 
 	idle_animation_name = "move"
 	die_animation_name = "die"
-	crumble_animation_name = "die"
+	crumble_animation_name = "crumble"
 
 	enemy_health = enemy_max_health
 

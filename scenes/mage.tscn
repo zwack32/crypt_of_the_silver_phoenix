@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgldaasme7uox"]
+[gd_scene load_steps=45 format=3 uid="uid://dgldaasme7uox"]
 
 [ext_resource type="Script" path="res://mage.gd" id="1_j0ubd"]
 [ext_resource type="Texture2D" uid="uid://b2akl0mbpmhf4" path="res://art/mage-Sheet.png" id="2_sr0m1"]
+[ext_resource type="Texture2D" uid="uid://35wxw41uu4bh" path="res://art/mage crumble-Sheet.png" id="3_smtww"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31e67"]
 atlas = ExtResource("2_sr0m1")
@@ -54,6 +55,66 @@ region = Rect2(3520, 640, 320, 320)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gg1n"]
 atlas = ExtResource("2_sr0m1")
 region = Rect2(3840, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0twj"]
+atlas = ExtResource("3_smtww")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl5nn"]
+atlas = ExtResource("3_smtww")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p11os"]
+atlas = ExtResource("3_smtww")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n0ot"]
+atlas = ExtResource("3_smtww")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h65w2"]
+atlas = ExtResource("3_smtww")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g405"]
+atlas = ExtResource("3_smtww")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmj32"]
+atlas = ExtResource("3_smtww")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_778s4"]
+atlas = ExtResource("3_smtww")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ymn0"]
+atlas = ExtResource("3_smtww")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd8hj"]
+atlas = ExtResource("3_smtww")
+region = Rect2(2880, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ryu"]
+atlas = ExtResource("3_smtww")
+region = Rect2(3200, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt070"]
+atlas = ExtResource("3_smtww")
+region = Rect2(3520, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7145"]
+atlas = ExtResource("3_smtww")
+region = Rect2(3840, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x31w"]
+atlas = ExtResource("3_smtww")
+region = Rect2(4160, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5y3y"]
+atlas = ExtResource("3_smtww")
+region = Rect2(4480, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34bac"]
 atlas = ExtResource("2_sr0m1")
@@ -131,6 +192,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_c0twj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl5nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p11os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n0ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h65w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g405")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmj32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_778s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ymn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd8hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ryu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt070")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7145")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x31w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5y3y")
+}],
+"loop": true,
+"name": &"crumble",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34bac")
 }],
 "loop": true,
@@ -202,7 +313,7 @@ script = ExtResource("1_j0ubd")
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mh7fc")
-animation = &"move"
+animation = &"crumble"
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 3.0
