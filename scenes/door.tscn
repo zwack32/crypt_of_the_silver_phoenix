@@ -12,7 +12,7 @@ size = Vector2(212, 316)
 size = Vector2(106, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7btw2"]
-size = Vector2(148.5, 50)
+size = Vector2(145.25, 50)
 
 [node name="door" type="StaticBody2D"]
 scale = Vector2(1, 0.5)
@@ -21,8 +21,8 @@ collision_mask = 3
 script = ExtResource("1_vkm81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(70, -86)
-scale = Vector2(0.378125, 0.496875)
+position = Vector2(75, -106)
+scale = Vector2(0.423437, 0.5925)
 texture = SubResource("CompressedTexture2D_6dv1i")
 offset = Vector2(-320, 320)
 metadata/_edit_group_ = true
@@ -44,13 +44,13 @@ shape = SubResource("RectangleShape2D_swms3")
 [node name="KeepInTriggerLeft" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerLeft"]
-position = Vector2(-119.25, 1)
+position = Vector2(-114.625, 0)
 shape = SubResource("RectangleShape2D_7btw2")
 
 [node name="KeepInTriggerRight" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerRight"]
-position = Vector2(142.5, 0)
+position = Vector2(134, 0)
 shape = SubResource("RectangleShape2D_7btw2")
 
 [connection signal="area_entered" from="EnterTrigger" to="." method="_on_enter_trigger_area_entered"]
