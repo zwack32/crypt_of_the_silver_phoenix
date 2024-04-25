@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbenmhq8l5ssu"]
+[gd_scene load_steps=4 format=3 uid="uid://ch4elknh3s4xk"]
 
 [ext_resource type="Script" path="res://weapons/shortsword.gd" id="1_begh2"]
 [ext_resource type="Texture2D" uid="uid://cepkv31kjwm2i" path="res://art/shortsword.png" id="2_iy5k5"]
@@ -7,6 +7,7 @@
 size = Vector2(16, 192)
 
 [node name="Shortsword" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_begh2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

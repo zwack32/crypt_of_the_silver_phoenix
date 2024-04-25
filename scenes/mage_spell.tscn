@@ -37,7 +37,7 @@ animations = [{
 }]
 
 [node name="MageSpell" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("1_t7qwl")
 
 [node name="BeadCollisionShape" type="CollisionShape2D" parent="."]

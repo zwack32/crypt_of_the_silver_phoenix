@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pq3d8p6fi55t"]
+[gd_scene load_steps=4 format=3 uid="uid://eebwslirl0ry"]
 
 [ext_resource type="Script" path="res://weapons/longsword.gd" id="1_01gqb"]
 [ext_resource type="Texture2D" uid="uid://be4sbr4f88j28" path="res://art/longsword.png" id="2_do6nk"]
@@ -7,7 +7,7 @@
 size = Vector2(19.9174, 31.75)
 
 [node name="Longsword" type="Area2D"]
-collision_layer = 9
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_01gqb")
 

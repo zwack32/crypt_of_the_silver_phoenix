@@ -1,7 +1,7 @@
 extends Enemy
 class_name Mage
 
-@export var speed = 100.0
+@export var speed = randi_range(50, 100)
 var mage_spell = preload("res://scenes/mage_spell.tscn")
 
 @onready var spell_cooldown_timer = $SpellCooldownTimer
@@ -17,7 +17,7 @@ func _ready():
 
 	idle_animation_name = "move"
 	die_animation_name = "die"
-	crumble_animation_name = "die"
+	crumble_animation_name = "crumble"
 
 	enemy_health = enemy_max_health
 
