@@ -86,6 +86,9 @@ func drop_melee():
 func drop_tome():
 	data = randi_range(0, TomeType._Count - 1)
 	if data != WeaponManager.current_tome:
-		sprite_2d.texture = WeaponManager.get_tome_texture(data)
+		pass
+		#TODO THIS NEEDS TO FIXED
+		printerr("FIX THIS PLEASE")
+		#sprite_2d.texture = WeaponManager.get_tome_texture(data)
 	else:
 		drop_tome()

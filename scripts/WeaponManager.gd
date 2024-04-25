@@ -31,6 +31,7 @@ const FIREBALL_TEXTURE = preload("res://art/fireball.png")
 const SUNBURST_TEXTURE = preload("res://art/sunburst.png")
 const ICE_CONE_TEXTURE = preload("res://art/ice_cone.png")
 
+
 enum MeleeWeaponType {
 	ShortSword = 0,
 	LongSword = 1,
@@ -118,16 +119,16 @@ static func get_tome_scene() -> PackedScene:
 		push_error("Bad tome value used, check set_tome call")
 		return null
 		
-static func get_tome_texture(tome: TomeType) -> Texture2D:
+static func get_tome_animation(tome: TomeType) -> String:
 	if tome == TomeType.Fireball:
-		return FIREBALL_TEXTURE
+		return "FireballTexture"
 	elif tome == TomeType.IceCone:
-		return ICE_CONE_TEXTURE
+		return "IceconeTexture"
 	elif tome == TomeType.Sunburst:
-		return SUNBURST_TEXTURE
+		return "SunburstTexture"
 	else:
 		push_error("Bad tome value used in get_tome_texture function")
-		return null
+		return "null"
 
 func reset():
 	current_melee = randi_range(0, MeleeWeaponType._Count - 1)

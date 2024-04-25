@@ -12,7 +12,7 @@ size = Vector2(212, 316)
 size = Vector2(106, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7btw2"]
-size = Vector2(145.25, 50)
+size = Vector2(119.688, 50)
 
 [node name="door" type="StaticBody2D"]
 scale = Vector2(1, 0.5)
@@ -46,14 +46,14 @@ shape = SubResource("RectangleShape2D_swms3")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerLeft"]
-position = Vector2(-114.625, 0)
+position = Vector2(-123.844, 0)
 shape = SubResource("RectangleShape2D_7btw2")
 
 [node name="KeepInTriggerRight" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KeepInTriggerRight"]
-position = Vector2(134, 0)
+position = Vector2(137.562, 0)
 shape = SubResource("RectangleShape2D_7btw2")
 
 [connection signal="area_entered" from="EnterTrigger" to="." method="_on_enter_trigger_area_entered"]
