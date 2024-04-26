@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_sfytf")
 [node name="IndicatorAreaRight" type="Area2D" parent="."]
 position = Vector2(1122, 0)
 collision_layer = 512
-collision_mask = 512
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IndicatorAreaRight"]
 position = Vector2(15.5, -2)
@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_sfytf")
 [node name="IndicatorAreaUp" type="Area2D" parent="."]
 position = Vector2(3, -632)
 collision_layer = 512
-collision_mask = 512
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IndicatorAreaUp"]
 position = Vector2(-2, -2.5)
@@ -43,8 +43,13 @@ shape = SubResource("RectangleShape2D_hjdcx")
 [node name="IndicatorAreaDown" type="Area2D" parent="."]
 position = Vector2(3, 633)
 collision_layer = 512
-collision_mask = 512
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IndicatorAreaDown"]
 position = Vector2(-2, -2.5)
 shape = SubResource("RectangleShape2D_hjdcx")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 512
+collide_with_areas = true
+collide_with_bodies = false

@@ -11,7 +11,7 @@ var is_active = false
 var is_burning = false
 var is_frozen = false
 var is_glowing = false
-var indicator_id = null
+var indicator_id
 
 @export var spawn_delay: float
 @export var spawn_delay_rand_range: float
@@ -82,8 +82,7 @@ func on_enemy_process() -> bool:
 	
 	move_and_slide()
 	
-	if indicator_id:
-		indicator_border.set_indicator_position(indicator_id, self)
+	indicator_border.set_indicator_position(indicator_id, self)
 	
 	return true
 
@@ -106,6 +105,8 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
 func on_enemy_die():
 	if is_dead:
 		return
+		
+	indicator_border.disable_indicator(indicator_id)
 	
 	if enemy_die_callback:
 		enemy_die_callback.call()
@@ -152,16 +153,6 @@ func on_enemy_area_entered(area):
 		if area.type == "glow":
 			on_glow()
 			
-func on_enemy_screen_entered():
-	if indicator_id:
-		pass
-		#indicator_border.disable_indicator(indicator_id)
-		#indicator_id = null
-	
-func on_enemy_screen_exited():
-	pass
-	#indicator_id = indicator_border.enable_indicator()
-
 func on_burn():
 	if is_burning:
 		return
