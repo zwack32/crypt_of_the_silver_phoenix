@@ -338,9 +338,9 @@ script = SubResource("GDScript_5jr82")
 
 [node name="MageHealthBar" type="ProgressBar" parent="."]
 offset_left = -58.0
-offset_top = -214.0
+offset_top = -123.0
 offset_right = 92.0
-offset_bottom = -193.0
+offset_bottom = -102.0
 pivot_offset = Vector2(75, 59)
 theme_override_styles/background = SubResource("StyleBoxFlat_yhefi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_44uug")

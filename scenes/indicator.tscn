@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cajayxmdl687l"]
 
-[ext_resource type="Texture2D" uid="uid://dkvmiol85v0x5" path="res://art/fireball.png" id="1_ysolv"]
+[ext_resource type="Texture2D" uid="uid://jmjhoeu8cnr4" path="res://art/indicator.png" id="1_4l0eu"]
 
 [node name="Indicator" type="Sprite2D"]
-texture = ExtResource("1_ysolv")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4l0eu")

@@ -28,12 +28,9 @@ func set_indicator_position(id: int, node: Node2D):
 	indicator_raycast.force_raycast_update()
 	var collider = indicator_raycast.get_collider()
 	if (collider != null):
-		print("found collision for raycast for object %s" % node.name)
-		print("collided with %s" % collider.name)
 		indicators[id].visible = true
 		var collision_point = indicator_raycast.get_collision_point()
-		indicators[id].global_position = collision_point
+		indicators[id].global_position = collision_point + (global_position - node.global_position).normalized() * -50.0
 	else:
-		print("no collider found for object %s" % node.name)
 		indicators[id].visible = false
 		
