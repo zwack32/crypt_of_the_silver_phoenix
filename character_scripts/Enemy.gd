@@ -43,8 +43,6 @@ enum EnemyElemental {
 }
 
 func on_enemy_ready():
-	indicator_id = indicator_border.enable_indicator()
-	
 	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
 	enemy_def += randi_range((-1 + roundf(room_level/2)), (2+room_level))
 	enemy_health += randi_range((-2 + roundf(room_level/2)), 5+(2*room_level))
@@ -72,6 +70,7 @@ func on_enemy_ready():
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
+	indicator_id = indicator_border.enable_indicator()	
 	await get_tree().create_timer(randf_range(0.0, spawn_delay_rand_range)).timeout
 	
 func on_enemy_process() -> bool:
@@ -82,7 +81,8 @@ func on_enemy_process() -> bool:
 	
 	move_and_slide()
 	
-	indicator_border.set_indicator_position(indicator_id, self)
+	if indicator_id != null:
+		indicator_border.set_indicator_position(indicator_id, self)
 	
 	return true
 
