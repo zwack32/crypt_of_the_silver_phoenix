@@ -2,7 +2,7 @@ extends Area2D
 
 var str = 15
 var velocity = Vector2.ZERO
-var speed = 1.0
+var speed = 0.8
 var type = "glow"
 var entered_once = false
 var spell_atk = 10

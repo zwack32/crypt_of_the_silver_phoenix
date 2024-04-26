@@ -37,6 +37,7 @@ func _process(delta):
 	if !is_dead:
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
+
 	
 	health_bar.value = enemy_health
 
