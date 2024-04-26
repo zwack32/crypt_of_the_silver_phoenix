@@ -71,3 +71,10 @@ func _on_area_entered(area):
 		if area is MeleeWeapon:
 			velocity /= 8
 			attack_finished.emit()
+
+func _on_screen_entered():
+	print("ee")
+	on_enemy_screen_entered()
+
+func _on_screen_exited():
+	on_enemy_screen_exited()

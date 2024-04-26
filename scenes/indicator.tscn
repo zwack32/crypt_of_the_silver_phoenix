@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cajayxmdl687l"]
+
+[ext_resource type="Texture2D" uid="uid://dkvmiol85v0x5" path="res://art/fireball.png" id="1_ysolv"]
+
+[node name="Indicator" type="Sprite2D"]
+texture = ExtResource("1_ysolv")

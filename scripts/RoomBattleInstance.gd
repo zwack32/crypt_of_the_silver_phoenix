@@ -2,6 +2,7 @@ extends Node
 class_name RoomBattleInstance
 
 @export var player: Player
+@export var indicator_border: IndicatorBorder
 @export var room_level: int
 @export var room_position: Vector2
 @export var room_size: Vector2
@@ -46,7 +47,6 @@ func _process(_delta):
 			return
 			
 		for _i in current_wave.total_enemy_count:
-			
 			var rand_position = get_random_room_position()
 			
 			var enemy_type = randi_range(0, 1)
@@ -59,6 +59,7 @@ func _process(_delta):
 			enemy.player = player
 			enemy.position = rand_position
 			enemy.room_battle_instance = self
+			enemy.indicator_border = indicator_border
 			enemy.room_level = room_level
 			get_parent().add_child(enemy)
 		waves_left.pop_front()

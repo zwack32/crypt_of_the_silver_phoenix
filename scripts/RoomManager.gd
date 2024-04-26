@@ -3,6 +3,7 @@ class_name RoomManager
 
 @export var room_battle_instance_scene: PackedScene
 @export var drop_item_scene: PackedScene
+@export var indicator_border: IndicatorBorder
 @export var player: Player
 
 var entered_rooms: Array[Room]
@@ -59,6 +60,7 @@ func trigger(room: Room):
 	triggered_battle.player = player
 	triggered_battle.room_position = room.position * 3.0
 	triggered_battle.room_size = room.get_pixel_size() * 2.0
+	triggered_battle.indicator_border = indicator_border
 	add_child(triggered_battle)
 	
 	triggered_battle.begin_battle()

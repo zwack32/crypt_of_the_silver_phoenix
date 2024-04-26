@@ -222,13 +222,6 @@ border_width_bottom = 2
 collision_layer = 0
 collision_mask = 24
 script = ExtResource("1_lp1dh")
-charge_overshoot = null
-room_level = null
-spawn_delay = null
-spawn_delay_rand_range = null
-burn_duration = null
-burn_tick_duration = null
-freeze_duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -258,5 +251,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ldndp")
 value = 50.0
 show_percentage = false
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2, -2)
+scale = Vector2(5, 1)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

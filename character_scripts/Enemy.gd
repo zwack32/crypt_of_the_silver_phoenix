@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var room_battle_instance: RoomBattleInstance
+@export var indicator_border: IndicatorBorder
 @export var player: Player
 @export var room_level: int
 
@@ -10,6 +11,7 @@ var is_active = false
 var is_burning = false
 var is_frozen = false
 var is_glowing = false
+var indicator_id = null
 
 @export var spawn_delay: float
 @export var spawn_delay_rand_range: float
@@ -23,7 +25,6 @@ var enemy_atk
 var enemy_def
 var enemy_health
 var enemy_speed
-
 
 var idle_animation_name
 var die_animation_name
@@ -42,6 +43,8 @@ enum EnemyElemental {
 }
 
 func on_enemy_ready():
+	indicator_id = indicator_border.enable_indicator()
+	
 	enemy_atk += randi_range((-1 + roundf(room_level/2)), (2+room_level))
 	enemy_def += randi_range((-1 + roundf(room_level/2)), (2+room_level))
 	enemy_health += randi_range((-2 + roundf(room_level/2)), 5+(2*room_level))
@@ -76,9 +79,12 @@ func on_enemy_process() -> bool:
 		return false
 		
 	health_bar.value = enemy_health
-		
+	
 	move_and_slide()
-		
+	
+	if indicator_id:
+		indicator_border.set_indicator_position(indicator_id, self)
+	
 	return true
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
@@ -145,6 +151,16 @@ func on_enemy_area_entered(area):
 			on_freeze()
 		if area.type == "glow":
 			on_glow()
+			
+func on_enemy_screen_entered():
+	if indicator_id:
+		pass
+		#indicator_border.disable_indicator(indicator_id)
+		#indicator_id = null
+	
+func on_enemy_screen_exited():
+	pass
+	#indicator_id = indicator_border.enable_indicator()
 
 func on_burn():
 	if is_burning:
