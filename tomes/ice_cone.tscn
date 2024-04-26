@@ -62,6 +62,7 @@ animations = [{
 }]
 
 [node name="IceCone" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_xp4w1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -8,6 +8,8 @@ class_name RoomBattleInstance
 @export var room_size: Vector2
 @export var slime_scene: PackedScene
 @export var bat_scene: PackedScene
+@export var mage_scene: PackedScene
+@export var ogre_scene: PackedScene
 
 var waves_left: Array[BattleWave]
 signal battle_ended
@@ -49,13 +51,17 @@ func _process(_delta):
 		for _i in current_wave.total_enemy_count:
 			var rand_position = get_random_room_position()
 			
-			var enemy_type = randi_range(0, 1)
+			var enemy_type = randi_range(0, 3)
 			
 			var enemy
 			if enemy_type == 0:
 				enemy = slime_scene.instantiate()
 			elif enemy_type == 1:
 				enemy = bat_scene.instantiate()
+			elif enemy_type == 2:
+				enemy = mage_scene.instantiate()
+			elif enemy_type == 3:
+				enemy = ogre_scene.instantiate()
 			enemy.player = player
 			enemy.position = rand_position
 			enemy.room_battle_instance = self

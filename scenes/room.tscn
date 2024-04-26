@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1ccn"]
 
 [node name="Room" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_jnge4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -9,6 +9,9 @@ const GREATSWORD = preload("res://weapons/greatsword.tscn")
 const FIRE_SWORD = preload("res://weapons/fire_sword.tscn")
 const ICE_SWORD = preload("res://weapons/ice_sword.tscn")
 const SUN_SWORD = preload("res://weapons/sun_sword.tscn")
+const AXE = preload("res://weapons/axe.tscn")
+const HAMMER = preload("res://weapons/hammer.tscn")
+const SCYTHE = preload("res://weapons/scythe.tscn")
 
 const FIREBALL = preload("res://tomes/fireball.tscn")
 const ICE_CONE = preload("res://tomes/ice_cone.tscn")
@@ -20,10 +23,14 @@ const ICE_SWORD_TEXTURE = preload("res://art/ice_sword.png")
 const LONGSWORD_TEXTURE = preload("res://art/longsword.png")
 const SHORTSWORD_TEXTURE = preload("res://art/shortsword.png")
 const SUNSWORD_TEXTURE = preload("res://art/sunsword.png")
+const AXE_TEXTURE = preload("res://art/axe.png")
+const HAMMER_TEXTURE = preload("res://art/hammer.png")
+const SCYTHE_TEXTURE = preload("res://art/scythe.png")
 
 const FIREBALL_TEXTURE = preload("res://art/fireball.png")
 const SUNBURST_TEXTURE = preload("res://art/sunburst.png")
 const ICE_CONE_TEXTURE = preload("res://art/ice_cone.png")
+
 
 enum MeleeWeaponType {
 	ShortSword = 0,
@@ -32,6 +39,9 @@ enum MeleeWeaponType {
 	FireSword = 3,
 	IceSword = 4,
 	SunSword = 5,
+	Axe = 6,
+	Hammer = 7,
+	Scythe = 8,
 	_Count,
 }
 
@@ -60,6 +70,12 @@ static func get_melee_scene() -> PackedScene:
 		return ICE_SWORD
 	elif current_melee == MeleeWeaponType.SunSword:
 		return SUN_SWORD
+	elif current_melee == MeleeWeaponType.Axe:
+		return AXE
+	elif current_melee == MeleeWeaponType.Hammer:
+		return HAMMER
+	elif current_melee == MeleeWeaponType.Scythe:
+		return SCYTHE
 	else:
 		push_error("Bad melee value used, check set_melee call")
 		return null
@@ -77,6 +93,12 @@ static func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
 		return ICE_SWORD_TEXTURE
 	elif melee == MeleeWeaponType.SunSword:
 		return SUNSWORD_TEXTURE
+	elif current_melee == MeleeWeaponType.Axe:
+		return AXE_TEXTURE
+	elif current_melee == MeleeWeaponType.Hammer:
+		return HAMMER_TEXTURE
+	elif current_melee == MeleeWeaponType.Scythe:
+		return SCYTHE_TEXTURE
 	else:
 		push_error("Bad melee value used in get_melee_texture function")
 		return null
@@ -97,16 +119,16 @@ static func get_tome_scene() -> PackedScene:
 		push_error("Bad tome value used, check set_tome call")
 		return null
 		
-static func get_tome_texture(tome: TomeType) -> Texture2D:
+static func get_tome_animation(tome: TomeType) -> String:
 	if tome == TomeType.Fireball:
-		return FIREBALL_TEXTURE
+		return "FireballTexture"
 	elif tome == TomeType.IceCone:
-		return ICE_CONE_TEXTURE
+		return "IceconeTexture"
 	elif tome == TomeType.Sunburst:
-		return SUNBURST_TEXTURE
+		return "SunburstTexture"
 	else:
 		push_error("Bad tome value used in get_tome_texture function")
-		return null
+		return "null"
 
 func reset():
 	current_melee = randi_range(0, MeleeWeaponType._Count - 1)
