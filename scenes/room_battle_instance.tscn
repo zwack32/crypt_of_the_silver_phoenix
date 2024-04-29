@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvacu8dh1edix"]
+[gd_scene load_steps=7 format=3 uid="uid://dvacu8dh1edix"]
 
 [ext_resource type="Script" path="res://scripts/RoomBattleInstance.gd" id="1_gkgbc"]
 [ext_resource type="PackedScene" uid="uid://cw0sfcwrtmjxx" path="res://scenes/slime.tscn" id="2_fdcum"]
 [ext_resource type="PackedScene" uid="uid://qq15dgyc72ta" path="res://scenes/bat.tscn" id="3_qlr4u"]
 [ext_resource type="PackedScene" uid="uid://dgldaasme7uox" path="res://scenes/mage.tscn" id="4_lmlw7"]
 [ext_resource type="PackedScene" uid="uid://citko3tuph1gg" path="res://scenes/ogre.tscn" id="5_yrcdf"]
+[ext_resource type="PackedScene" uid="uid://dcegt0vhhbhw1" path="res://scenes/goblin.tscn" id="6_payec"]
 
 [node name="RoomBattleInstance" type="Node2D"]
 script = ExtResource("1_gkgbc")
@@ -12,3 +13,4 @@ slime_scene = ExtResource("2_fdcum")
 bat_scene = ExtResource("3_qlr4u")
 mage_scene = ExtResource("4_lmlw7")
 ogre_scene = ExtResource("5_yrcdf")
+goblin_scene = ExtResource("6_payec")

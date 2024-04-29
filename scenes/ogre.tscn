@@ -214,9 +214,7 @@ script = ExtResource("1_3lsmk")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_anw5f")
-animation = &"crumble"
-frame = 11
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -238,7 +236,7 @@ offset_bottom = -53.0
 theme = SubResource("Theme_4k8ve")
 theme_override_styles/background = SubResource("StyleBoxFlat_1iwna")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gdfwe")
-value = 30.0
+value = 50.0
 show_percentage = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

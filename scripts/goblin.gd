@@ -1,16 +1,16 @@
 extends Enemy
-class_name Ogre
+class_name Goblin
 
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
 
-	enemy_max_health = 50
+	enemy_max_health = 30
 	enemy_atk = 10
-	enemy_def = 20
-	enemy_speed = 50
+	enemy_def = 10
+	enemy_speed = 200
 
-	idle_animation_name = "idle"
+	idle_animation_name = "move"
 	die_animation_name = "die"
 	crumble_animation_name = "crumble"
 
