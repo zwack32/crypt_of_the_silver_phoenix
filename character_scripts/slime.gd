@@ -32,6 +32,11 @@ func _process(delta):
 		velocity = direction * enemy_speed
 	
 	health_bar.value = enemy_health
+	
+	if (position.x > player.position.x):
+		$AnimatedSprite2D.flip_h = true
+	else: 
+		$AnimatedSprite2D.flip_h = false
 
 func _on_area_entered(area):
 	if !is_dead:
