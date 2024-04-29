@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqurbf8ka1va2"]
 
-[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_kxdaq"]
 [ext_resource type="Script" path="res://scripts/DropItem.gd" id="1_wlkss"]
+[ext_resource type="PackedScene" uid="uid://cdfomyrk0vvbn" path="res://scenes/tome_texture.tscn" id="2_n4ic2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dsc3"]
 size = Vector2(426.667, 410)
@@ -15,7 +15,10 @@ position = Vector2(0, -8.33334)
 shape = SubResource("RectangleShape2D_5dsc3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kxdaq")
+
+[node name="TomeTexture" parent="." instance=ExtResource("2_n4ic2")]
+position = Vector2(6.10352e-05, -10)
+animation = &"Empty"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

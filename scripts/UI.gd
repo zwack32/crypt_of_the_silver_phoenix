@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var weapon_rect = $WeaponRect
 @onready var tome_rect = $TomeRect
 @onready var level_label = $RichTextLabel
-@onready var tome_player = $MarginContainer/SpellsTexture
+@onready var tome_player = $MarginContainer/TomeTexture
 
 func _ready():
 	level_label.text = "Level: " + str(Progression.get_dungeon_level())
