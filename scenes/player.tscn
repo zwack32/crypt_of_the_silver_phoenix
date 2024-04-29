@@ -314,6 +314,25 @@ border_width_bottom = 2
 collision_mask = 18
 script = ExtResource("1_j4g1x")
 
+[node name="HealParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, 35)
+emitting = false
+lifetime = 0.6
+one_shot = true
+randomness = 0.25
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 78.44
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, -1000)
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+color = Color(0.709804, 1, 0.658824, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
 [node name="SwordSwing" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_6isvi")
 
