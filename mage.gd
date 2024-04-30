@@ -24,17 +24,15 @@ func _ready():
 
 	health_bar = $MageHealthBar
 	animated_sprite_2d = $AnimatedSprite2D
-	attack_timer.wait_time = randf_range(2.5, 5.0)
 
 	await on_enemy_ready()
-	print(enemy_atk)
+	ranged_attack()
 
 func _process(delta):
 	if !on_enemy_process():
 		return
 	
-	await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
-	ranged_attack()
+	
 
 	velocity = Vector2.ZERO
 	
@@ -54,13 +52,15 @@ func ranged_attack():
 	#await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
 	#if !attack_timer.time_left == 0:
 	#	pass
-	if true: #else:
+	while !is_dead:
+		await get_tree().create_timer(randf_range(2.0, 8.0)).timeout
+		
 		var spell = mage_spell.instantiate()
 		attack_timer.wait_time = spell.cooldown
 		spell.mage = self
 		spell.player = player
 		get_parent().add_child(spell)
-		attack_timer.start()
+		#attack_timer.start()
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:
