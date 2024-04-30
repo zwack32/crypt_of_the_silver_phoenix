@@ -29,7 +29,8 @@ func _on_quit_button_pressed():
 
 func _on_tutorial_pressed():
 	if !pressed:
+		Progression.set_tutorial()
 		pressed = true
 		await LevelTransition.fade_to_black(1)
-		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+		get_tree().change_scene_to_file("res://scenes/tutorial_world.tscn")
 		LevelTransition.fade_from_black(1)
