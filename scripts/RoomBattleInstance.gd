@@ -27,9 +27,9 @@ class BattleWave:
 
 func begin_battle():
 	# TODO: Make this less bad
-	for i in room_level:
-		var wave = BattleWave.new() 
-		wave.total_enemy_count = i + Progression.get_initial_enemy_count()
+	for i in log(room_level) / log(2) + 1:
+		var wave = BattleWave.new()
+		wave.total_enemy_count = clamp(i + Progression.get_initial_enemy_count(), 1, 12)
 		wave.enemies_left = wave.total_enemy_count + 1
 		waves_left.push_front(wave)
 	waves_left[0].enemies_left = 0

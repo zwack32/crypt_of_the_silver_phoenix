@@ -81,5 +81,5 @@ func untrigger_room():
 	for door in doors:
 		door.call_deferred("set_disabled", true)
 		
-	triggered_room = null	
+	triggered_room = null
 	
