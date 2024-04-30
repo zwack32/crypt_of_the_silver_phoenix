@@ -4,7 +4,7 @@ class_name Mage
 @export var speed = randi_range(50, 100)
 var mage_spell = preload("res://scenes/mage_spell.tscn")
 
-@onready var spell_cooldown_timer = $SpellCooldownTimer
+@onready var attack_timer = $AttackTimer
 
 func _ready():
 	spawn_delay = 1.5
@@ -13,7 +13,8 @@ func _ready():
 	enemy_max_health = 30
 	enemy_atk = 7
 	enemy_def = 5
-	enemy_speed = 100
+	enemy_speed = randi_range(50, 100)
+	
 
 	idle_animation_name = "move"
 	die_animation_name = "die"
@@ -23,13 +24,16 @@ func _ready():
 
 	health_bar = $MageHealthBar
 	animated_sprite_2d = $AnimatedSprite2D
+	attack_timer.wait_time = randf_range(2.5, 5.0)
 
 	await on_enemy_ready()
+	print(enemy_atk)
 
 func _process(delta):
 	if !on_enemy_process():
-		return;	
+		return
 	
+	await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
 	ranged_attack()
 
 	velocity = Vector2.ZERO
@@ -47,15 +51,16 @@ func _process(delta):
 	health_bar.value = enemy_health
 
 func ranged_attack():
-	if !spell_cooldown_timer.time_left == 0:
-		pass
-	else:
+	#await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
+	#if !attack_timer.time_left == 0:
+	#	pass
+	if true: #else:
 		var spell = mage_spell.instantiate()
-		spell_cooldown_timer.wait_time = spell.cooldown
+		attack_timer.wait_time = spell.cooldown
 		spell.mage = self
 		spell.player = player
 		get_parent().add_child(spell)
-		spell_cooldown_timer.start()
+		attack_timer.start()
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:

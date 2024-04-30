@@ -316,7 +316,6 @@ sprite_frames = SubResource("SpriteFrames_mh7fc")
 animation = &"crumble"
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
@@ -356,10 +355,6 @@ wait_time = 10.0
 one_shot = true
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="SpellCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
