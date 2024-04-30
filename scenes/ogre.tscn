@@ -206,6 +206,7 @@ border_width_top = 2
 border_width_bottom = 2
 
 [node name="Ogre" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 26
 script = ExtResource("1_3lsmk")
