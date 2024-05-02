@@ -18,18 +18,25 @@ func _ready():
 
 	health_bar = $HealthBar
 	animated_sprite_2d = $AnimatedSprite2D
+	
+	var attacking = true
 
 	await on_enemy_ready()
 
 func _process(delta):
 	if !on_enemy_process():
 		return;
-
+	var attacking = false
 	velocity = Vector2.ZERO
 	
 	if !is_dead:
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
+		
+		if position.distance_to(player.position) < 200 and !attacking:
+			attack()
+		
+		$Area2D/CollisionShape2D.scale = Vector2(1,1)
 	
 	health_bar.value = enemy_health
 	
@@ -38,10 +45,18 @@ func _process(delta):
 	else: 
 		$AnimatedSprite2D.flip_h = false
 
+func attack():
+	var attacking = true
+	animated_sprite_2d.play("attack")
+	await animated_sprite_2d.animation_finished
+	
+	$Area2D/CollisionShape2D.scale = Vector2(2,2)
+	
+	attacking = false
+	animated_sprite_2d.play("idle")
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
 		if area.owner is Player:
-			player.bounce_towards((player.position - position).normalized())
-			$AnimatedSprite2D.play("attack")
+			player.bounce_towards((player.position - position).normalized()*10)

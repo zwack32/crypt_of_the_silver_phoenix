@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://citko3tuph1gg"]
+[gd_scene load_steps=33 format=3 uid="uid://citko3tuph1gg"]
 
 [ext_resource type="Script" path="res://scripts/ogre.gd" id="1_3lsmk"]
 [ext_resource type="Texture2D" uid="uid://e8riu5j0moty" path="res://art/ogreswing-Sheet.png" id="1_i8oap"]
@@ -188,8 +188,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvftu"]
-size = Vector2(81.6875, 94.75)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0143j"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18xbx"]
+radius = 50.0
 
 [sub_resource type="Theme" id="Theme_4k8ve"]
 
@@ -222,12 +225,12 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-16.8438, 7)
-shape = SubResource("RectangleShape2D_yvftu")
+position = Vector2(-16.8438, 8)
+shape = SubResource("CircleShape2D_0143j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-17, 8)
-shape = SubResource("RectangleShape2D_yvftu")
+shape = SubResource("CircleShape2D_18xbx")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -78.0
