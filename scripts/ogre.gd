@@ -6,7 +6,7 @@ func _ready():
 	spawn_delay_rand_range = 0.5
 
 	enemy_max_health = 50
-	enemy_atk = 10
+	enemy_atk = 5
 	enemy_def = 20
 	enemy_speed = 50
 

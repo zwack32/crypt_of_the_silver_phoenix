@@ -7,7 +7,7 @@ func _ready():
 
 	enemy_max_health = 30
 	enemy_atk = 10
-	enemy_def = 10
+	enemy_def = 0
 	enemy_speed = 200
 
 	idle_animation_name = "move"
