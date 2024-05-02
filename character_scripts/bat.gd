@@ -1,14 +1,10 @@
 extends Enemy
 class_name Bat
 
-var charge_to_position = Vector2.ZERO
 var is_attacking = false
-
-var last_position: Vector2
+var charge_velocity: Vector2
 
 signal attack_finished
-
-@export var charge_overshoot: float = 500.0
 
 func _ready():
 	spawn_delay = 1.5
@@ -34,33 +30,60 @@ func _ready():
 	await on_enemy_ready()
 	prepare_attack(true)
 
+var draw_normal: Vector2
+
+func _draw():
+	draw_line(Vector2(0.0, 0.0), draw_normal * 100, Color.RED)
+	draw_line(Vector2(0.0, 0.0), velocity, Color.BLUE)
+
 func _process(delta):
-	if (is_on_ceiling() || is_on_floor() || is_on_wall()) && is_attacking && (position - last_position).normalized() != charge_to_position.normalized():
-		attack_finished.emit()
+	queue_redraw()
 	
-	last_position = position
+	if (is_on_ceiling() || is_on_floor() || is_on_wall()) && is_attacking:
+		var normal
+		if is_on_floor():
+			normal = get_floor_normal()
+		elif is_on_wall():
+			normal = get_wall_normal()
+		else:
+			normal = Vector2.DOWN
+		charge_velocity = charge_velocity.bounce(normal)
+		velocity = charge_velocity
+		
+		# Nudge out of wall
+		position += normal * 5.0
+		draw_normal = normal
+		print("the bounce")
+		move_and_slide()
+		
+		# attack_finished.emit()
 	
 	if !on_enemy_process():
 		return;
 	
 	if !is_attacking:
+		print("not attacking rn")
 		velocity = Vector2.ZERO
-	
-	if position.distance_to(charge_to_position) < 4.0:
-		attack_finished.emit()
+	else:
+		velocity = charge_velocity
 	
 func prepare_attack(is_inital=false):
 	while !is_dead:
-		await get_tree().create_timer(randf_range(4.0, 8.0) * 2.0).timeout
+		await get_tree().create_timer(randf_range(3.0, 8.0)).timeout
 		var direction = (player.position - position).normalized()
-		charge_to_position = player.position + direction * charge_overshoot
 		velocity = direction * enemy_speed
+		charge_velocity = velocity
 		is_attacking = true
+		await_end_attack()
 		await attack_finished
 		is_attacking = false
 
 		# Workaround to prevent sticking to wall
 		position -= direction
+
+func await_end_attack():
+	await get_tree().create_timer(randf_range(3.0, 6.0)).timeout
+	attack_finished.emit()
 
 func on_die():
 	collision_layer |= 2
@@ -70,4 +93,4 @@ func _on_area_entered(area):
 		on_enemy_area_entered(area)
 		if area is MeleeWeapon:
 			velocity /= 2
-			#attack_finished.emit()
+			# attack_finished.emit()
