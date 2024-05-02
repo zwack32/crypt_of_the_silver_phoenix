@@ -24,6 +24,7 @@ func _ready():
 
 	health_bar = $MageHealthBar
 	animated_sprite_2d = $AnimatedSprite2D
+	
 
 	await on_enemy_ready()
 	ranged_attack()
@@ -31,15 +32,22 @@ func _ready():
 func _process(delta):
 	if !on_enemy_process():
 		return
-	
-	
-
 	velocity = Vector2.ZERO
-	
+	var direction = Vector2.ZERO
 	if !is_dead:
-		var direction = (player.position - position).normalized()
-		velocity = direction * enemy_speed
-	
+		#move away if distance is less than ten, and closer if distance is greater than 20
+		if position.distance_to(player.position) > 600:
+			direction = (player.position - position).normalized()
+			velocity = direction * enemy_speed
+			print("forwards")
+		elif position.distance_to(player.position) < 600 and position.distance_to(player.position) > 400:
+			velocity = Vector2.ZERO
+			print("stay")
+		elif position.distance_to(player.position) < 400:
+			direction = (player.position - position).normalized()
+			direction *= -1
+			velocity = direction * enemy_speed
+			print("backwards")
 	if (position.x > player.position.x):
 		$AnimatedSprite2D.flip_h = true
 	else: 
@@ -54,13 +62,12 @@ func ranged_attack():
 	#	pass
 	while !is_dead:
 		await get_tree().create_timer(randf_range(2.0, 8.0)).timeout
-		
-		var spell = mage_spell.instantiate()
-		attack_timer.wait_time = spell.cooldown
-		spell.mage = self
-		spell.player = player
-		get_parent().add_child(spell)
-		#attack_timer.start()
+		if !is_dead:
+			var spell = mage_spell.instantiate()
+			attack_timer.wait_time = spell.cooldown
+			spell.mage = self
+			spell.player = player
+			get_parent().add_child(spell)
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:
