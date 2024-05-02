@@ -39,15 +39,12 @@ func _process(delta):
 		if position.distance_to(player.position) > 600:
 			direction = (player.position - position).normalized()
 			velocity = direction * enemy_speed
-			print("forwards")
 		elif position.distance_to(player.position) < 600 and position.distance_to(player.position) > 400:
 			velocity = Vector2.ZERO
-			print("stay")
 		elif position.distance_to(player.position) < 400:
 			direction = (player.position - position).normalized()
 			direction *= -1
 			velocity = direction * enemy_speed
-			print("backwards")
 	if (position.x > player.position.x):
 		$AnimatedSprite2D.flip_h = true
 	else: 
