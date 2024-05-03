@@ -26,7 +26,7 @@ func _process(delta):
 func _on_area_entered(area):
 	bead_sprite.hide()
 	sunburst_animation.show()
-	if !entered_once: 
+	if !entered_once && !(area.owner is Player): 
 		entered_once = true
 		scale = Vector2(4, 4)
 		#cpu_particles_2d.emitting = true
