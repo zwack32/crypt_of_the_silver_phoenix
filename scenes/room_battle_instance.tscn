@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qq15dgyc72ta" path="res://scenes/bat.tscn" id="3_qlr4u"]
 [ext_resource type="PackedScene" uid="uid://dgldaasme7uox" path="res://scenes/mage.tscn" id="4_lmlw7"]
 [ext_resource type="PackedScene" uid="uid://citko3tuph1gg" path="res://scenes/ogre.tscn" id="5_yrcdf"]
-[ext_resource type="PackedScene" path="res://scenes/goblin.tscn" id="6_payec"]
+[ext_resource type="PackedScene" uid="uid://b57ix8xbcv5ry" path="res://scenes/goblin.tscn" id="6_payec"]
 
 [node name="RoomBattleInstance" type="Node2D"]
 script = ExtResource("1_gkgbc")

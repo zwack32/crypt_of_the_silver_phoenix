@@ -1,6 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://dcegt0vhhbhw1"]
+[gd_scene load_steps=47 format=3 uid="uid://b57ix8xbcv5ry"]
 
-[ext_resource type="Script" path="res://scripts/goblin.gd" id="1_df812"]
+[ext_resource type="Script" path="res://character_scripts/goblin.gd" id="1_0ebxf"]
 [ext_resource type="Texture2D" uid="uid://bsadypmfnv4tn" path="res://art/goblin thing-Sheet.png" id="1_psf84"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uosce"]
@@ -317,7 +317,9 @@ border_width_top = 2
 border_width_bottom = 2
 
 [node name="Goblin" type="CharacterBody2D"]
-script = ExtResource("1_df812")
+collision_layer = 2
+collision_mask = 26
+script = ExtResource("1_0ebxf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

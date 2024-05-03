@@ -41,5 +41,6 @@ func _process(delta):
 func _on_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
+		# For example
 		if area.owner is Player:
-			player.bounce_towards((player.position - position).normalized())
+			pass

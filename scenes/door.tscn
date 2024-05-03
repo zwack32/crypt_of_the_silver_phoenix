@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckc52m6ovxgvd"]
 
-[ext_resource type="Script" path="res://scripts/Door.gd" id="1_s10iw"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6dv1i"]
 load_path = "res://.godot/imported/purple door.png-a79564e81e3e1905b0dbf0e557a26297.ctex"
@@ -18,7 +18,7 @@ size = Vector2(119.688, 50)
 scale = Vector2(1, 0.5)
 collision_layer = 18
 collision_mask = 19
-script = ExtResource("1_s10iw")
+script = ExtResource("1_vkm81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(94, -174)
