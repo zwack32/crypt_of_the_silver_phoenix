@@ -10,10 +10,10 @@ func get_dungeon_level() -> int:
 func get_room_count() -> int:
 	if dungeon_level == 0:
 		return 1
-	if dungeon_level <= 6:
-		return round((0.75 * (dungeon_level - 2)) ** 2 + 2)
+	if dungeon_level <= 8:
+		return round((0.4 * (dungeon_level - 1)) ** 2 + 5)
 	else:
-		return round(log(6 * dungeon_level) / log(2) + 8)
+		return round(log(dungeon_level) / log(2) + 24)
 	
 func get_player_health():
 	return player_health
