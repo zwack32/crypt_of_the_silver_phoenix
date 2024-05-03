@@ -30,12 +30,6 @@ func _ready():
 	await on_enemy_ready()
 	prepare_attack(true)
 
-var draw_normal: Vector2
-
-func _draw():
-	draw_line(Vector2(0.0, 0.0), draw_normal * 100, Color.RED)
-	draw_line(Vector2(0.0, 0.0), velocity, Color.BLUE)
-
 func _process(delta):
 	queue_redraw()
 	
@@ -52,8 +46,6 @@ func _process(delta):
 		
 		# Nudge out of wall
 		position += normal * 5.0
-		draw_normal = normal
-		print("the bounce")
 		move_and_slide()
 		
 		# attack_finished.emit()
@@ -62,7 +54,6 @@ func _process(delta):
 		return;
 	
 	if !is_attacking:
-		print("not attacking rn")
 		velocity = Vector2.ZERO
 	else:
 		velocity = charge_velocity
