@@ -83,3 +83,7 @@ func untrigger_room():
 		
 	triggered_room = null
 	
+func unpair_doors():
+	for door in doors:
+		if door.direction == Vector2.DOWN:
+			door.hide()
