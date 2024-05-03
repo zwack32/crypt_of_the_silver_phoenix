@@ -7,14 +7,42 @@
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_oy8ww")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = -1
+offset_left = 3.0
+offset_top = 600.0
+offset_right = 1152.0
+offset_bottom = 653.0
+color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = -1
+offset_left = 3.0
+offset_top = 306.0
+offset_right = 267.0
+offset_bottom = 653.0
+color = Color(0.596078, 0.596078, 0.596078, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+anchors_preset = -1
+offset_left = 873.0
+offset_top = 308.0
+offset_right = 1149.0
+offset_bottom = 651.0
+color = Color(0.596078, 0.596078, 0.596078, 1)
+
 [node name="WeaponRect" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
+offset_left = 27.0
+offset_top = -247.0
+offset_right = 227.0
+offset_bottom = -47.0
 grow_vertical = 0
 texture = ExtResource("2_jegqi")
+expand_mode = 1
 
 [node name="TomeRect" type="Container" parent="."]
 anchors_preset = 3
