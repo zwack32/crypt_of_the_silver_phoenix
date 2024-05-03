@@ -33,7 +33,7 @@ func _process(delta):
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		
-		if position.distance_to(player.position) < 200 and !attacking:
+		if position.distance_to(player.position) < 300 and !attacking:
 			attack()
 		
 		$Area2D/CollisionShape2D.scale = Vector2(1,1)
@@ -42,15 +42,19 @@ func _process(delta):
 	
 	if (position.x > player.position.x):
 		$AnimatedSprite2D.flip_h = true
+		$Area2D/CollisionShape2D.position = Vector2(15,0)
+		$CollisionShape2D.position = Vector2(0,8)
 	else: 
 		$AnimatedSprite2D.flip_h = false
+		$Area2D/CollisionShape2D.position = Vector2(0,0)
+		$CollisionShape2D.position = Vector2(-20,8)
 
 func attack():
 	var attacking = true
 	animated_sprite_2d.play("attack")
 	await animated_sprite_2d.animation_finished
 	
-	$Area2D/CollisionShape2D.scale = Vector2(2,2)
+	$Area2D/CollisionShape2D.scale = Vector2(3,3)
 	
 	attacking = false
 	animated_sprite_2d.play("idle")

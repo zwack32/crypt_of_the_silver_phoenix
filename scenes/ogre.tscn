@@ -221,15 +221,15 @@ sprite_frames = SubResource("SpriteFrames_anw5f")
 animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-20, 8)
 collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-16.8438, 8)
 shape = SubResource("CircleShape2D_0143j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-17, 8)
+position = Vector2(-20, 8)
 shape = SubResource("CircleShape2D_18xbx")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -240,6 +240,7 @@ offset_bottom = -53.0
 theme = SubResource("Theme_4k8ve")
 theme_override_styles/background = SubResource("StyleBoxFlat_1iwna")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gdfwe")
+max_value = 50.0
 value = 50.0
 show_percentage = false
 
