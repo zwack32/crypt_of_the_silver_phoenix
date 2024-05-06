@@ -11,7 +11,8 @@ var type = "ice"
 
 func _ready():
 	position = player.position
-	rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI / 2	
+	rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI / 2
+	player.apply_shake()
 	#cpu_particles_2d.emitting = true
 	ice_cone_animation.play("ice_cone")
 
