@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://dq53wpxguamfr"]
+
+[ext_resource type="Script" path="res://tomes/wave.gd" id="1_0weqk"]
+[ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_5w4m7"]
+[ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="3_u4rif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvhpn"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0if5"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(320, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgd5c"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(640, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e340q"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(960, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o4xh"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(1280, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiea0"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(1600, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frrwa"]
+atlas = ExtResource("3_u4rif")
+region = Rect2(1920, 640, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnwvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvhpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0if5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgd5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e340q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o4xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiea0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frrwa")
+}],
+"loop": true,
+"name": &"ice_cone",
+"speed": 10.0
+}]
+
+[node name="Wave" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_0weqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -156)
+scale = Vector2(1, 2.4375)
+texture = ExtResource("2_5w4m7")
+
+[node name="IceConeAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -160)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_pnwvt")
+animation = &"ice_cone"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 128, -320, -128, -320)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 120
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 1400.0
+linear_accel_min = -240.0
+linear_accel_max = -200.0
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+color = Color(0.164706, 0.580392, 0.85098, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
