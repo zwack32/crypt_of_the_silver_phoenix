@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var room_battle_instance: RoomBattleInstance
+@export var indicator_border: IndicatorBorder
 @export var player: Player
 @export var room_level: int
 
@@ -10,6 +11,7 @@ var is_active = false
 var is_burning = false
 var is_frozen = false
 var is_glowing = false
+var indicator_id
 
 @export var spawn_delay: float
 @export var spawn_delay_rand_range: float
@@ -23,7 +25,6 @@ var enemy_atk
 var enemy_def
 var enemy_health
 var enemy_speed
-
 
 var idle_animation_name
 var die_animation_name
@@ -69,6 +70,7 @@ func on_enemy_ready():
 	is_active = true
 	collision_layer = original_layer
 	collision_mask = original_mask
+	indicator_id = indicator_border.enable_indicator()	
 	await get_tree().create_timer(randf_range(0.0, spawn_delay_rand_range)).timeout
 	
 func on_enemy_process() -> bool:
@@ -76,9 +78,12 @@ func on_enemy_process() -> bool:
 		return false
 		
 	health_bar.value = enemy_health
-		
+	
 	move_and_slide()
-		
+	
+	if indicator_id != null:
+		indicator_border.set_indicator_position(indicator_id, self)
+	
 	return true
 
 func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
@@ -100,6 +105,8 @@ func enemy_take_damage(player_atk,enemy_def,enemy_health, sword_str, area):
 func on_enemy_die():
 	if is_dead:
 		return
+		
+	indicator_border.disable_indicator(indicator_id)
 	
 	if enemy_die_callback:
 		enemy_die_callback.call()
@@ -145,7 +152,7 @@ func on_enemy_area_entered(area):
 			on_freeze()
 		if area.type == "glow":
 			on_glow()
-
+			
 func on_burn():
 	if is_burning:
 		return

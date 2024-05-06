@@ -84,3 +84,5 @@ func _ready():
 		room_manager.add_door(new_door_collider)
 
 		add_child(new_door_collider)
+		
+	room_manager.unpair_doors()

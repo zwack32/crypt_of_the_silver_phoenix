@@ -6,6 +6,7 @@ const MeleeWeaponType = WeaponManager.MeleeWeaponType
 const TomeType = WeaponManager.TomeType
 
 @onready var sprite_2d = $Sprite2D
+@onready var tome_texture = $TomeTexture
 @onready var collision_shape_2d = $CollisionShape2D
 
 enum DropHeathValues {
@@ -48,7 +49,7 @@ func _ready():
 		
 	drop_item.ty = drop_type
 	drop_item.data = data
-
+ 
 func _process(delta):
 	if is_in_range && Input.is_action_just_pressed("pick_up"):
 		if drop_item.ty == DropItemType.Health:
@@ -79,6 +80,8 @@ func _on_area_exited(area):
 func drop_melee():
 	data = randi_range(0, MeleeWeaponType._Count - 1)
 	if data != WeaponManager.current_melee:
+		sprite_2d.visible = true
+		tome_texture.visible = false
 		sprite_2d.texture = WeaponManager.get_melee_texture(data)
 	else:
 		drop_melee()
@@ -86,9 +89,9 @@ func drop_melee():
 func drop_tome():
 	data = randi_range(0, TomeType._Count - 1)
 	if data != WeaponManager.current_tome:
-		pass
-		#TODO THIS NEEDS TO FIXED
-		printerr("FIX THIS PLEASE")
-		#sprite_2d.texture = WeaponManager.get_tome_texture(data)
+		sprite_2d.visible = false
+		tome_texture.visible = true
+		tome_texture.animation = WeaponManager.get_tome_animation(data)
+		tome_texture.play()
 	else:
 		drop_tome()

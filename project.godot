@@ -125,6 +125,7 @@ shake={
 2d_physics/layer_2="enemy"
 2d_physics/layer_4="player_weapon"
 2d_physics/layer_5="walls"
+2d_physics/layer_10="indicator_border"
 
 [rendering]
 

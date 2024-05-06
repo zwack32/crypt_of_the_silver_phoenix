@@ -28,7 +28,7 @@ var is_dead = false
 
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 @onready var sword_swing = $SwordSwing
-
+@onready var heal_particles = $HealParticles
 
 #annoying functions so that we can use these in other scripts
 func get_player_atk():
@@ -199,6 +199,9 @@ func get_health() -> float:
 	return health
 	
 func set_health(new_health: float):
+	if new_health > health:
+		heal_particles.emitting = true
+	
 	health = clamp(new_health, 0.0, player_max_health)
 	health = round(health)
 	health_bar.value = health

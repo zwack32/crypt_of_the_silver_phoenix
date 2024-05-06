@@ -2,12 +2,15 @@ extends Node
 class_name RoomBattleInstance
 
 @export var player: Player
+@export var indicator_border: IndicatorBorder
 @export var room_level: int
 @export var room_position: Vector2
 @export var room_size: Vector2
 @export var slime_scene: PackedScene
 @export var bat_scene: PackedScene
 @export var mage_scene: PackedScene
+@export var ogre_scene: PackedScene
+@export var goblin_scene: PackedScene
 
 var waves_left: Array[BattleWave]
 signal battle_ended
@@ -24,9 +27,9 @@ class BattleWave:
 
 func begin_battle():
 	# TODO: Make this less bad
-	for i in room_level:
-		var wave = BattleWave.new() 
-		wave.total_enemy_count = i + Progression.get_initial_enemy_count()
+	for i in log(room_level) / log(2) + 1:
+		var wave = BattleWave.new()
+		wave.total_enemy_count = clamp(i + Progression.get_initial_enemy_count(), 1, 12)
 		wave.enemies_left = wave.total_enemy_count + 1
 		waves_left.push_front(wave)
 	waves_left[0].enemies_left = 0
@@ -47,10 +50,9 @@ func _process(_delta):
 			return
 			
 		for _i in current_wave.total_enemy_count:
-			
 			var rand_position = get_random_room_position()
 			
-			var enemy_type = randi_range(0, 2)
+			var enemy_type = randi_range(0, 4)
 			
 			var enemy
 			if enemy_type == 0:
@@ -59,9 +61,14 @@ func _process(_delta):
 				enemy = bat_scene.instantiate()
 			elif enemy_type == 2:
 				enemy = mage_scene.instantiate()
+			elif enemy_type == 3:
+				enemy = ogre_scene.instantiate()
+			elif enemy_type == 4:
+				enemy = goblin_scene.instantiate()
 			enemy.player = player
 			enemy.position = rand_position
 			enemy.room_battle_instance = self
+			enemy.indicator_border = indicator_border
 			enemy.room_level = room_level
 			get_parent().add_child(enemy)
 		waves_left.pop_front()
