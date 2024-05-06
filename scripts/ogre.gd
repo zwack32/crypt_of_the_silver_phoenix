@@ -1,6 +1,8 @@
 extends Enemy
 class_name Ogre
 
+const ATTACK_DISTANCE = 300
+
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
@@ -33,7 +35,7 @@ func _process(delta):
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		
-		if position.distance_to(player.position) < 300 and !attacking:
+		if position.distance_to(player.position) < ATTACK_DISTANCE and !attacking:
 			attack()
 		
 		$Area2D/CollisionShape2D.scale = Vector2(1,1)
@@ -52,12 +54,13 @@ func _process(delta):
 func attack():
 	var attacking = true
 	animated_sprite_2d.play("attack")
-	await animated_sprite_2d.animation_finished
 	
-	$Area2D/CollisionShape2D.scale = Vector2(3,3)
-	
-	attacking = false
-	animated_sprite_2d.play("idle")
+	for _i in range(4):
+		await animated_sprite_2d.frame_changed
+	if position.distance_to(player.position) < ATTACK_DISTANCE:
+		$Area2D/CollisionShape2D.scale = Vector2(3,3)
+		attacking = false
+		animated_sprite_2d.play("idle")
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:

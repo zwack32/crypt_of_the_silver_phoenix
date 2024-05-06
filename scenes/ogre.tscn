@@ -218,7 +218,7 @@ script = ExtResource("1_3lsmk")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_anw5f")
-animation = &"idle"
+animation = &"attack"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-20, 8)
