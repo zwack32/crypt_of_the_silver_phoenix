@@ -2,9 +2,7 @@
 
 extends Tome
 var str = 15
-var velocity = Vector2.ZERO
-var speed = 70.0
-var type = "glow"
+var type = "null"
 var entered_once = false
 @export var cooldown = 4.0
 @onready var bead_sprite = $BeadSprite
@@ -15,7 +13,6 @@ func _ready():
 	position = player.position
 	
 func _process(delta):
-	position += velocity
 	set_collision_layer_value(1, 0)
 	
 func _on_area_entered(area):
@@ -24,6 +21,5 @@ func _on_area_entered(area):
 		entered_once = true
 	scale = Vector2(4, 4)
 	cpu_particles_2d.emitting = true
-	velocity = Vector2.ZERO
 	await get_tree().create_timer(0.3).timeout
 	queue_free()
