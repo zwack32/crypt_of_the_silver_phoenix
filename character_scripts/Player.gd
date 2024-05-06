@@ -116,7 +116,6 @@ func ranged_attack():
 		pass
 	else:
 		var spell = WeaponManager.get_tome_scene().instantiate()
-		camera.apply_shake()
 		spell_cooldown_timer.wait_time = spell.cooldown
 		spell_bar.max_value = spell_cooldown_timer.wait_time
 		spell.player = self
@@ -215,3 +214,6 @@ func set_health(new_health: float):
 		
 func bounce_towards(direction: Vector2):
 	bounce_velocity = direction * bounce_initial_speed
+
+func apply_shake():
+	camera.apply_shake()

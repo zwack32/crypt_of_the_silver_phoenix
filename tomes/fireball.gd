@@ -13,6 +13,7 @@ func _ready():
 	position = get_global_mouse_position()
 	
 	fireball_animation.play("fireball")
+	player.apply_shake()
 	#cpu_particles_2d.emitting = true
 	
 	await get_tree().create_timer(1).timeout
