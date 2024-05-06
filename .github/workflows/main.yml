@@ -1,2 +1,16 @@
-- name: Godot 4 Web Export
-  uses: glochtefeld/godot-html-export@v0.0.2
+name: github upload
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Godot HTML5 export
+        uses: dulvui/godot-html-export@v0.0.2
