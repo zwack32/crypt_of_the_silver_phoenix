@@ -81,6 +81,11 @@ jobs:
           mkdir -v -p build/web
           cd $PROJECT_PATH
           godot --headless --verbose --export-release "HTML5" ./build/web/index.html
+      - name: Check Validity
+        run: |
+          ls .
+          ls build/
+          ls build/web
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
