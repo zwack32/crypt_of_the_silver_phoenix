@@ -12,5 +12,9 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
+      - name: Create export directory
+        run: mkdir html5
       - name: Godot Engine 4.x Web Export
         uses: dulvui/godot-4-html-export@main
+        with:
+          working-directory: html5
