@@ -1,0 +1,2 @@
+- name: Godot 4 Web Export
+  uses: glochtefeld/godot-html-export@v0.0.2
