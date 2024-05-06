@@ -1,39 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://b631jijmt00nd"]
+[gd_scene load_steps=13 format=3 uid="uid://b631jijmt00nd"]
 
 [ext_resource type="Script" path="res://scripts/MageSpell.gd" id="1_t7qwl"]
-[ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_qtgg4"]
+[ext_resource type="Texture2D" uid="uid://dduy08fvlylib" path="res://art/magespell-Sheet.png" id="2_exubw"]
 [ext_resource type="Texture2D" uid="uid://did3h60swj18b" path="res://art/sunburst_effect.png" id="3_roao2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h0ck7"]
 radius = 24.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xw5da"]
-atlas = ExtResource("2_qtgg4")
-region = Rect2(0, 960, 320, 320)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldk4r"]
+atlas = ExtResource("2_exubw")
+region = Rect2(3200, 0, 640, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_55jly"]
-atlas = ExtResource("2_qtgg4")
-region = Rect2(320, 960, 320, 320)
+[sub_resource type="AtlasTexture" id="AtlasTexture_obhy3"]
+atlas = ExtResource("2_exubw")
+region = Rect2(0, 320, 640, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlgdg"]
-atlas = ExtResource("2_qtgg4")
-region = Rect2(640, 960, 320, 320)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n10s6"]
+atlas = ExtResource("2_exubw")
+region = Rect2(640, 320, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwbp8"]
+atlas = ExtResource("2_exubw")
+region = Rect2(1280, 320, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3xh7"]
+atlas = ExtResource("2_exubw")
+region = Rect2(1920, 320, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ekv5"]
+atlas = ExtResource("2_exubw")
+region = Rect2(2560, 320, 640, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne42c"]
+atlas = ExtResource("2_exubw")
+region = Rect2(3200, 320, 640, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w883n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xw5da")
+"texture": SubResource("AtlasTexture_ldk4r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_55jly")
+"texture": SubResource("AtlasTexture_obhy3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xlgdg")
+"texture": SubResource("AtlasTexture_n10s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwbp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3xh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ekv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne42c")
 }],
 "loop": true,
-"name": &"sunburst",
-"speed": 17.0
+"name": &"mage_spell",
+"speed": 10.0
 }]
 
 [node name="MageSpell" type="Area2D"]
@@ -44,14 +72,16 @@ script = ExtResource("1_t7qwl")
 scale = Vector2(1.76, 1.68)
 shape = SubResource("CircleShape2D_h0ck7")
 
-[node name="SunburstAnimation" type="AnimatedSprite2D" parent="."]
+[node name="Spell Animation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_w883n")
-animation = &"sunburst"
-frame = 1
-frame_progress = 0.405302
+animation = &"mage_spell"
+frame = 4
+frame_progress = 0.28536
 
 [node name="BeadSprite" type="Sprite2D" parent="."]
+modulate = Color(0.160784, 0.470588, 0.941176, 1)
+self_modulate = Color(0.286275, 0.490196, 1, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_roao2")
 

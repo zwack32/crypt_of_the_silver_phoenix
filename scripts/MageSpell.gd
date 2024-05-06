@@ -13,7 +13,7 @@ var spell_atk = 10
 @export var cooldown = 4.0
 @onready var bead_sprite = $BeadSprite
 #@onready var cpu_particles_2d = $CPUParticles2D
-@onready var sunburst_animation = $SunburstAnimation
+@onready var spell_animation = $"Spell Animation"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +21,7 @@ func _ready():
 	position = mage.position
 	velocity = (player.position - position) * speed
 	bead_sprite.show()
-	sunburst_animation.hide()
+	spell_animation.hide()
 
 func _process(delta):
 	position += velocity * delta
@@ -29,13 +29,13 @@ func _process(delta):
 
 func _on_area_entered(area):
 	bead_sprite.hide()
-	sunburst_animation.show()
+	spell_animation.show()
 	player.take_damage(spell_atk)
 	if !entered_once && area.owner is Player: 
 		entered_once = true
 		scale = Vector2(4, 4)
 		#cpu_particles_2d.emitting = true
-		sunburst_animation.play("sunburst")
+		spell_animation.play("mage_spell")
 		velocity = Vector2.ZERO
 		
 		await get_tree().create_timer(0.3).timeout
