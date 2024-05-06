@@ -6,6 +6,11 @@ env:
   EXPORT_NAME: maze-of-the-silver-phoenix
   PROJECT_PATH: .
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   export-windows:
     name: Windows Export
