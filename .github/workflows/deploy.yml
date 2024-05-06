@@ -80,7 +80,7 @@ jobs:
         run: |
           mkdir -v -p build/web
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+          godot --headless --verbose --export-release "HTML5" ./build/web/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -91,7 +91,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/web'
+          path: './build/web'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
