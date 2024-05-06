@@ -39,3 +39,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TomeTexture" parent="MarginContainer" instance=ExtResource("3_wx7l4")]
+animation = &"FireballTexture"

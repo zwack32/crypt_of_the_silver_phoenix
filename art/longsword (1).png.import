@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ww0ryg6nsiyd"
-path="res://.godot/imported/greatsword.png-0736269c332c9ca612c36c04c8175e22.ctex"
+uid="uid://b3merw0pa4ev4"
+path="res://.godot/imported/longsword (1).png-ac59eaa144e82de2a77b497621b4c3cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/greatsword.png"
-dest_files=["res://.godot/imported/greatsword.png-0736269c332c9ca612c36c04c8175e22.ctex"]
+source_file="res://art/longsword (1).png"
+dest_files=["res://.godot/imported/longsword (1).png-ac59eaa144e82de2a77b497621b4c3cc.ctex"]
 
 [params]
 
