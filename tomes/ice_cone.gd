@@ -16,6 +16,9 @@ func _ready():
 	#cpu_particles_2d.emitting = true
 	ice_cone_animation.play("ice_cone")
 
+func _process(delta):
+	position = player.position
+
 func _on_area_entered(area):
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
