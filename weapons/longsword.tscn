@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://eebwslirl0ry"]
 
 [ext_resource type="Script" path="res://weapons/longsword.gd" id="1_01gqb"]
-[ext_resource type="Texture2D" uid="uid://be4sbr4f88j28" path="res://art/longsword.png" id="2_do6nk"]
+[ext_resource type="Texture2D" uid="uid://b3merw0pa4ev4" path="res://art/longsword (1).png" id="2_qytfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4yrp"]
-size = Vector2(19.9174, 31.75)
+size = Vector2(19.9174, 32.75)
 
 [node name="Longsword" type="Area2D"]
 collision_layer = 8
@@ -12,13 +12,13 @@ collision_mask = 2
 script = ExtResource("1_01gqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.86265e-09, -127)
+position = Vector2(-1.86265e-09, -131)
 scale = Vector2(0.605, 8)
 shape = SubResource("RectangleShape2D_d4yrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, -128)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_do6nk")
+texture = ExtResource("2_qytfp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
