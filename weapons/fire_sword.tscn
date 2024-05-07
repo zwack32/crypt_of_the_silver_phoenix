@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://trwncky34tgb" path="res://art/firesword.png" id="2_gsged"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhtca"]
-size = Vector2(16, 218)
+size = Vector2(16, 194)
 
 [node name="FireSword" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_d840q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(2, -108)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_gsged")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -123)
+position = Vector2(0, -111)
 shape = SubResource("RectangleShape2D_hhtca")
