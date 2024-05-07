@@ -11,14 +11,14 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_01gqb")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -128)
+scale = Vector2(0.481481, 0.5)
+texture = ExtResource("2_qytfp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.86265e-09, -131)
 scale = Vector2(0.605, 8)
 shape = SubResource("RectangleShape2D_d4yrp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, -128)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qytfp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
