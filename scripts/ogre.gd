@@ -62,6 +62,7 @@ func attack():
 	
 	if !is_dead:
 		if can_attack_player():
+			player.apply_shake()
 			$Area2D/CollisionShape2D.scale = Vector2(3,3)
 			player.take_damage(enemy_atk + 3.25)
 			player.bounce_towards((player.position - position).normalized() * 15.0)
