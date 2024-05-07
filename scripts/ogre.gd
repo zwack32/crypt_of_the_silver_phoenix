@@ -1,14 +1,16 @@
 extends Enemy
 class_name Ogre
 
-const ATTACK_DISTANCE = 300
+const ATTACK_DISTANCE_X = 280
+const ATTACK_DISTANCE_Y = 250
 
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
 
 	enemy_max_health = 50
-	enemy_atk = 5
+	# This is the "base attack" used only when you boop the ogre
+	enemy_atk = 0.25
 	enemy_def = 20
 	enemy_speed = 50
 
@@ -35,7 +37,7 @@ func _process(delta):
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		
-		if position.distance_to(player.position) < ATTACK_DISTANCE and !attacking:
+		if can_attack_player() and !attacking:
 			attack()
 		
 		$Area2D/CollisionShape2D.scale = Vector2(1,1)
@@ -57,13 +59,23 @@ func attack():
 	
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
-	if position.distance_to(player.position) < ATTACK_DISTANCE:
-		$Area2D/CollisionShape2D.scale = Vector2(3,3)
-		attacking = false
+	
+	if !is_dead:
+		if can_attack_player():
+			$Area2D/CollisionShape2D.scale = Vector2(3,3)
+			player.take_damage(enemy_atk + 3.25)
+			player.bounce_towards((player.position - position).normalized() * 15.0)
+			attacking = false
+	
+		await animated_sprite_2d.animation_finished
 		animated_sprite_2d.play("idle")
+
+func can_attack_player() -> bool:
+	var to_player = player.position - position
+	to_player.x = abs(to_player.x)
+	to_player.y = abs(to_player.y)
+	return to_player.x < ATTACK_DISTANCE_X && to_player.y < ATTACK_DISTANCE_Y && to_player.length() < 300
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
-		if area.owner is Player:
-			player.bounce_towards((player.position - position).normalized()*10)
