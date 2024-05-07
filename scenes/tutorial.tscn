@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djmsskymhburo" path="res://scenes/room.tscn" id="2_5h4dw"]
 [ext_resource type="PackedScene" uid="uid://chvuc5rsrewvi" path="res://scenes/level.tscn" id="2_nj7hn"]
 [ext_resource type="PackedScene" uid="uid://ckc52m6ovxgvd" path="res://scenes/door.tscn" id="4_6gphw"]
-[ext_resource type="Script" path="res://PopUp.gd" id="5_66fgm"]
+[ext_resource type="Script" path="res://scripts/PopUp.gd" id="5_66fgm"]
 [ext_resource type="PackedScene" uid="uid://s8isyy0scoq5" path="res://scenes/room_manager.tscn" id="6_hh51a"]
 [ext_resource type="Texture2D" uid="uid://bpgs63h0lpdph" path="res://art/Powerup_image.png" id="6_p8e3c"]
 [ext_resource type="Texture2D" uid="uid://lla3k7b11r6e" path="res://art/game_controls.jpeg" id="6_rx4xy"]
