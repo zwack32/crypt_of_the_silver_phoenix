@@ -2,11 +2,11 @@ extends Node2D
 
 @export var is_tutorial = false
 
-@onready var bgm = $BGM
+#@onready var bgm = $BGM
 @onready var tutorial_nodes = $TutorialNodes
 
 func _ready():
-	bgm.play()
+	#bgm.play()
 	
 	if is_tutorial:
 		pass
