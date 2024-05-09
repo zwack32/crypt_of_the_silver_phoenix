@@ -83,5 +83,5 @@ func _on_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
 		if area is MeleeWeapon:
-			velocity /= 2
+			charge_velocity /= 2
 			# attack_finished.emit()

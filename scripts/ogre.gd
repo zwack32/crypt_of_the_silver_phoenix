@@ -56,7 +56,7 @@ func _process(delta):
 func attack():
 	var attacking = true
 	animated_sprite_2d.play("attack")
-	
+	player.apply_shake()
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
 	if can_attack_player():
