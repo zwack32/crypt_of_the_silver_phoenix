@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://h54agp16cdqi"]
+[gd_scene load_steps=5 format=3 uid="uid://h54agp16cdqi"]
 
 [ext_resource type="PackedScene" uid="uid://dhy7e2fcung4f" path="res://scenes/test_world.tscn" id="1_of2pc"]
+[ext_resource type="Texture2D" uid="uid://b1e60hnkp4dkh" path="res://art/e_items.png" id="2_20ham"]
+[ext_resource type="Texture2D" uid="uid://cqwkhdo23erjd" path="res://art/descend_2.png" id="3_caw51"]
+[ext_resource type="Texture2D" uid="uid://cteqvd7vt53vt" path="res://art/tab_zoom.png" id="4_taxvg"]
 
 [node name="TutorialWorld" type="Node2D"]
 
 [node name="TestWorld" parent="." instance=ExtResource("1_of2pc")]
 is_tutorial = true
+
+[node name="PickupItems" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 513.0
+offset_top = -160.0
+offset_right = 1153.0
+offset_bottom = 160.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_20ham")
+
+[node name="DescendStairs" type="TextureRect" parent="."]
+offset_left = -320.0
+offset_top = -4076.0
+offset_right = 320.0
+offset_bottom = -3756.0
+texture = ExtResource("3_caw51")
+
+[node name="TabZoom" type="TextureRect" parent="."]
+offset_left = -1149.0
+offset_top = -160.0
+offset_right = -509.0
+offset_bottom = 160.0
+texture = ExtResource("4_taxvg")
