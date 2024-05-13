@@ -56,19 +56,17 @@ func _process(delta):
 func attack():
 	var attacking = true
 	animated_sprite_2d.play("attack")
-	
+	player.apply_shake()
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
+	if can_attack_player():
+		$Area2D/CollisionShape2D.scale = Vector2(3,3)
+		player.take_damage(enemy_atk + 3.25)
+		player.bounce_towards((player.position - position).normalized() * 15.0)
+		attacking = false
 	
-	if !is_dead:
-		if can_attack_player():
-			$Area2D/CollisionShape2D.scale = Vector2(3,3)
-			player.take_damage(enemy_atk + 3.25)
-			player.bounce_towards((player.position - position).normalized() * 15.0)
-			attacking = false
-	
-		await animated_sprite_2d.animation_finished
-		animated_sprite_2d.play("idle")
+	await animated_sprite_2d.animation_finished
+	animated_sprite_2d.play("idle")
 
 func can_attack_player() -> bool:
 	var to_player = player.position - position

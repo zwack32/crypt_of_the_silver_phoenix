@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://dgldaasme7uox"]
 
-[ext_resource type="Script" path="res://character_scripts/mage.gd" id="1_j0ubd"]
+[ext_resource type="Script" path="res://mage.gd" id="1_j0ubd"]
 [ext_resource type="Texture2D" uid="uid://b2akl0mbpmhf4" path="res://art/mage-Sheet.png" id="2_sr0m1"]
 [ext_resource type="Texture2D" uid="uid://35wxw41uu4bh" path="res://art/mage crumble-Sheet.png" id="3_smtww"]
 

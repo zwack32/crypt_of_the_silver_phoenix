@@ -21,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	position += velocity * delta
-	set_collision_layer_value(0,2)
+	#set_collision_layer_value(0,2)
 
 func _on_area_entered(area):
 	bead_sprite.hide()

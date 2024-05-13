@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://bjgqf6tg6q0fh" path="res://art/sunsword.png" id="2_g6l3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxr0d"]
-size = Vector2(16, 256)
+size = Vector2(24, 243)
 
 [node name="SunSword" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_1pyvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, -128)
+position = Vector2(-2, -125)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_g6l3i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(1, -120.5)
 shape = SubResource("RectangleShape2D_oxr0d")

@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://buyjbr7hlq7fw" path="res://art/shortsword (1).png" id="2_r36ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp6p8"]
-size = Vector2(16, 208)
+size = Vector2(16, 192)
 
 [node name="Shortsword" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_begh2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, -182)
-scale = Vector2(0.703704, 0.736111)
+position = Vector2(-3, -183)
+scale = Vector2(0.71875, 0.75)
 texture = ExtResource("2_r36ua")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -104)
+position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_yp6p8")
