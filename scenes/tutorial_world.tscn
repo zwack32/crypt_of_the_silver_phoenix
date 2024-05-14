@@ -24,9 +24,9 @@ texture = ExtResource("2_20ham")
 
 [node name="DescendStairs" type="TextureRect" parent="."]
 offset_left = -320.0
-offset_top = -4076.0
+offset_top = -3850.0
 offset_right = 320.0
-offset_bottom = -3756.0
+offset_bottom = -3530.0
 texture = ExtResource("3_caw51")
 
 [node name="TabZoom" type="TextureRect" parent="."]
