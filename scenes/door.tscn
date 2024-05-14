@@ -1,6 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckc52m6ovxgvd"]
+[gd_scene load_steps=12 format=3 uid="uid://ckc52m6ovxgvd"]
 
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
+[ext_resource type="Texture2D" uid="uid://drokqbdx3rj2w" path="res://art/door animation-Sheet.png" id="2_bgshb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt2tw"]
+atlas = ExtResource("2_bgshb")
+region = Rect2(0, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs71v"]
+atlas = ExtResource("2_bgshb")
+region = Rect2(960, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p6ie"]
+atlas = ExtResource("2_bgshb")
+region = Rect2(1920, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3edoe"]
+atlas = ExtResource("2_bgshb")
+region = Rect2(2880, 0, 960, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lf7j4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt2tw")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs71v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p6ie")
+}],
+"loop": true,
+"name": &"closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3edoe")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6dv1i"]
 load_path = "res://.godot/imported/purple door.png-a79564e81e3e1905b0dbf0e557a26297.ctex"
@@ -20,7 +67,16 @@ collision_layer = 18
 collision_mask = 19
 script = ExtResource("1_vkm81")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.99998, -48)
+scale = Vector2(0.225, 0.428125)
+sprite_frames = SubResource("SpriteFrames_lf7j4")
+animation = &"closing"
+frame = 1
+frame_progress = 0.400782
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(94, -174)
 scale = Vector2(0.6, 0.84)
 texture = SubResource("CompressedTexture2D_6dv1i")

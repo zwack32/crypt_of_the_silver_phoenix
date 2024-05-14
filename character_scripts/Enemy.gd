@@ -20,6 +20,7 @@ var indicator_id
 @export var burn_tick_duration: float = 1.0
 @export var freeze_duration: float = 10.0
 
+
 var enemy_max_health
 var enemy_atk
 var enemy_def
@@ -157,9 +158,8 @@ func on_burn():
 	if is_burning:
 		return
 	is_burning = true
-	
 	var total_burn_time = 0
-	
+
 	while total_burn_time < burn_duration:
 		set_enemy_health(enemy_health - 2)
 		total_burn_time += burn_tick_duration

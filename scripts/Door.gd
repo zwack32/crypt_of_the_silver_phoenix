@@ -8,21 +8,25 @@ class_name Door
 @onready var enter_trigger = $EnterTrigger
 @onready var collider = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _ready():
 	enter_trigger.position = -Vector2.UP * 100.0
 	rotation = direction.angle() + PI / 2
 	
-	sprite_2d.hide()
+	#sprite_2d.hide()
+	animated_sprite_2d.play("open")
 
 func set_disabled(disabled: bool):
 	collider.disabled = disabled
 	if disabled:
 		# pass
-		sprite_2d.hide()
+		#sprite_2d.hide()
+		animated_sprite_2d.play("open")
 	else:
 		# pass
-		sprite_2d.show()
+		#sprite_2d.show()
+		animated_sprite_2d.play("closed")
 
 func _on_enter_trigger_area_entered(area):
 	if area.owner is Player:
