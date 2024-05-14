@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs8ryit1q2i3t"]
+
+[ext_resource type="Texture2D" uid="uid://dkte24xxcek5b" path="res://art/fire_02.png" id="1_fuv57"]
+
+[node name="Fire Particle" type="CPUParticles2D"]
+randomness = 0.04
+texture = ExtResource("1_fuv57")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(2.08165e-12, -1)
+gravity = Vector2(2.08165e-12, -300)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+angular_velocity_max = 10.0
+linear_accel_max = 20.0
+radial_accel_min = 20.0
+radial_accel_max = 20.0
+damping_min = 20.0
+damping_max = 20.0
+color = Color(0.890196, 0.0784314, 0.0745098, 0.933333)
