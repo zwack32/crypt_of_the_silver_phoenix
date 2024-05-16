@@ -2,6 +2,7 @@ extends Enemy
 class_name Goblin
 
 var should_run_away = false
+var stop_velocity = false
 
 func _ready():
 	spawn_delay = 1.5
@@ -30,12 +31,11 @@ func _process(delta):
 	velocity = Vector2.ZERO
 	
 	if !is_dead:
-		var direction
+		var direction = (player.position - position).normalized()
 		if should_run_away:
-			direction = (position - player.position).normalized()
-		else:
-			direction = (player.position - position).normalized()
-		velocity = direction * enemy_speed
+			direction *= -1.3
+		if !stop_velocity:
+			velocity = direction * enemy_speed
 	
 	health_bar.value = enemy_health
 	
@@ -54,7 +54,12 @@ func run_away():
 
 func _on_area_2d_area_entered(area):
 	if !is_dead:
+		if area.owner is Player:
+			stop_velocity = true
+			$AnimatedSprite2D.play("attack")
+			await $AnimatedSprite2D.animation_finished
 		on_enemy_area_entered(area)
 		if area.owner is Player:
+			stop_velocity = false
 			run_away()
-			$AnimatedSprite2D.play("attack")
+			$AnimatedSprite2D.play("move")
