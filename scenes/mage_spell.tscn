@@ -66,6 +66,7 @@ animations = [{
 
 [node name="MageSpell" type="Area2D"]
 collision_layer = 0
+collision_mask = 17
 script = ExtResource("1_t7qwl")
 
 [node name="BeadCollisionShape" type="CollisionShape2D" parent="."]
@@ -100,3 +101,4 @@ scale_amount_max = 3.0
 color = Color(0.96, 0.96, 0.6144, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
