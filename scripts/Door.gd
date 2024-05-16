@@ -15,7 +15,8 @@ func _ready():
 	rotation = direction.angle() + PI / 2
 	
 	#sprite_2d.hide()
-	animated_sprite_2d.play("open")
+	
+	animated_sprite_2d.play("opening")
 
 func set_disabled(disabled: bool):
 	collider.disabled = disabled
