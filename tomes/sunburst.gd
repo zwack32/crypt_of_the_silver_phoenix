@@ -24,15 +24,21 @@ func _process(delta):
 	#set_collision_layer_value(0,2)
 
 func _on_area_entered(area):
-	bead_sprite.hide()
-	sunburst_animation.show()
 	if !entered_once && !(area.owner is Player):
-		player.apply_shake()
 		entered_once = true
 		scale = Vector2(4, 4)
-		#cpu_particles_2d.emitting = true
-		sunburst_animation.play("sunburst")
-		velocity = Vector2.ZERO
+		boom()
+
+func _on_body_entered(body):
+	boom()
+
+func boom():
+	player.apply_shake()
+	bead_sprite.hide()
+	sunburst_animation.show()
+	#cpu_particles_2d.emitting = true
+	sunburst_animation.play("sunburst")
+	velocity = Vector2.ZERO
 		
-		await get_tree().create_timer(0.3).timeout
-		queue_free()
+	await get_tree().create_timer(0.3).timeout
+	queue_free()
