@@ -93,11 +93,11 @@ static func get_melee_texture(melee: MeleeWeaponType) -> Texture2D:
 		return ICE_SWORD_TEXTURE
 	elif melee == MeleeWeaponType.SunSword:
 		return SUNSWORD_TEXTURE
-	elif current_melee == MeleeWeaponType.Axe:
+	elif melee == MeleeWeaponType.Axe:
 		return AXE_TEXTURE
-	elif current_melee == MeleeWeaponType.Hammer:
+	elif melee == MeleeWeaponType.Hammer:
 		return HAMMER_TEXTURE
-	elif current_melee == MeleeWeaponType.Scythe:
+	elif melee == MeleeWeaponType.Scythe:
 		return SCYTHE_TEXTURE
 	else:
 		push_error("Bad melee value used in get_melee_texture function")
