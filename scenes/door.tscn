@@ -1,23 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckc52m6ovxgvd"]
+[gd_scene load_steps=14 format=3 uid="uid://ckc52m6ovxgvd"]
 
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
 [ext_resource type="Texture2D" uid="uid://drokqbdx3rj2w" path="res://art/door animation-Sheet.png" id="2_bgshb"]
+[ext_resource type="Texture2D" uid="uid://cbmolpgifd208" path="res://art/door animation2-Sheet.png" id="3_ntp35"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lt2tw"]
 atlas = ExtResource("2_bgshb")
 region = Rect2(0, 0, 960, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gs71v"]
-atlas = ExtResource("2_bgshb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxkxd"]
+atlas = ExtResource("3_ntp35")
+region = Rect2(2880, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spf6q"]
+atlas = ExtResource("3_ntp35")
+region = Rect2(0, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvsyj"]
+atlas = ExtResource("3_ntp35")
 region = Rect2(960, 0, 960, 640)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4p6ie"]
-atlas = ExtResource("2_bgshb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tos1b"]
+atlas = ExtResource("3_ntp35")
 region = Rect2(1920, 0, 960, 640)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3edoe"]
-atlas = ExtResource("2_bgshb")
-region = Rect2(2880, 0, 960, 640)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lf7j4"]
 animations = [{
@@ -31,21 +36,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gs71v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4p6ie")
+"texture": SubResource("AtlasTexture_yxkxd")
 }],
 "loop": true,
-"name": &"closing",
+"name": &"open",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3edoe")
+"texture": SubResource("AtlasTexture_spf6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvsyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tos1b")
 }],
 "loop": true,
-"name": &"open",
+"name": &"opening",
 "speed": 5.0
 }]
 
@@ -71,9 +79,7 @@ script = ExtResource("1_vkm81")
 position = Vector2(1.99998, -48)
 scale = Vector2(0.225, 0.428125)
 sprite_frames = SubResource("SpriteFrames_lf7j4")
-animation = &"closing"
-frame = 1
-frame_progress = 0.400782
+animation = &"opening"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
