@@ -1,8 +1,10 @@
 extends Enemy
 class_name Ogre
 
-const ATTACK_DISTANCE_X = 280
+const ATTACK_DISTANCE_X = 268
 const ATTACK_DISTANCE_Y = 250
+	
+var attacking = false
 
 func _ready():
 	spawn_delay = 1.5
@@ -22,25 +24,20 @@ func _ready():
 
 	health_bar = $HealthBar
 	animated_sprite_2d = $AnimatedSprite2D
-	
-	var attacking = true
 
 	await on_enemy_ready()
 
 func _process(delta):
 	if !on_enemy_process():
 		return;
-	var attacking = false
 	velocity = Vector2.ZERO
 	
 	if !is_dead:
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		
-		if can_attack_player() and !attacking:
+		if can_attack_player() && !attacking:
 			attack()
-		
-		$Area2D/CollisionShape2D.scale = Vector2(1,1)
 	
 	health_bar.value = enemy_health
 	
@@ -54,16 +51,16 @@ func _process(delta):
 		$CollisionShape2D.position = Vector2(-20,8)
 
 func attack():
-	var attacking = true
+	attacking = true
 	animated_sprite_2d.play("attack")
-	player.apply_shake()
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
 	if can_attack_player():
-		$Area2D/CollisionShape2D.scale = Vector2(3,3)
-		player.take_damage(enemy_atk + 3.25)
-		player.bounce_towards((player.position - position).normalized() * 15.0)
-		attacking = false
+		player.take_damage(enemy_atk + 7.25)
+		player.bounce_towards((player.position - position).normalized() * 18.0)
+	else:
+		player.apply_shake()
+	attacking = false
 	
 	await animated_sprite_2d.animation_finished
 	animated_sprite_2d.play("idle")
