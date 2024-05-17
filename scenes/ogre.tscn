@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ogre.gd" id="1_3lsmk"]
 [ext_resource type="Texture2D" uid="uid://e8riu5j0moty" path="res://art/ogreswing-Sheet.png" id="1_i8oap"]
 [ext_resource type="Texture2D" uid="uid://ce4lgqmvbhjho" path="res://art/ogre-Sheet.png" id="3_4mhx3"]
-[ext_resource type="PackedScene" uid="uid://bs8ryit1q2i3t" path="res://fire_particle_2.tscn" id="4_wgpv8"]
+[ext_resource type="PackedScene" path="res://scenes/fire_particle_2.tscn" id="4_wgpv8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ff038"]
 atlas = ExtResource("1_i8oap")
