@@ -34,21 +34,37 @@ func _ready():
 		if CheckerScript.check(rooms, doors):
 			break
 		
+	# var original_dungeon_atlas = RendererScript.RoomAtlas.init(
+	#	0,
+	#	Vector2i(1, 1),
+	#	Vector2i(1, 0),
+	#	Vector2i(3, 5),
+	#	Vector2i(0, 1),
+	#	Vector2i(4, 4),
+	#	Vector2i(0, 0),
+	#	Vector2i(4, 0),
+	#	Vector2i(0, 5),
+	#	Vector2i(4, 5),
+	# )
+		
+	var sand_dungeon_atlas = RendererScript.RoomAtlas.init(
+		1,
+		Vector2i(1, 1),
+		Vector2i(1, 0),
+		Vector2i(1, 2),
+		Vector2i(0, 1),
+		Vector2i(8, 1),
+		Vector2i(0, 0),
+		Vector2i(8, 0),
+		Vector2i(0, 2),
+		Vector2i(8, 2),
+	)
+		
 	RendererScript.render_level(
 		self, 
 		rooms, 
 		doors,
-		RendererScript.RoomAtlas.init(
-			Vector2i(1, 1),
-			Vector2i(1, 0),
-			Vector2i(3, 5),
-			Vector2i(0, 1),
-			Vector2i(4, 4),
-			Vector2i(0, 0),
-			Vector2i(4, 0),
-			Vector2i(0, 5),
-			Vector2i(4, 5),
-		)
+		sand_dungeon_atlas,
 	)
 
 	for room_idx in range(0, len(rooms)):

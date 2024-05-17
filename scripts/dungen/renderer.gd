@@ -5,6 +5,7 @@ const RoomNode = RoomsScript.RoomNode
 const DoorNode = DoorsScript.DoorNode
 
 class RoomAtlas:
+	var source_id: int
 	var room_atlas: Vector2i
 	var top_atlas: Vector2i
 	var bottom_atlas: Vector2i
@@ -16,6 +17,7 @@ class RoomAtlas:
 	var bottom_right_corner_atlas: Vector2i
 
 	static func init(
+		new_source_id: int,
 		new_room_atlas: Vector2i,
 		new_top_atlas: Vector2i,
 		new_bottom_atlas: Vector2i,
@@ -27,6 +29,7 @@ class RoomAtlas:
 		new_bottom_right_corner_atlas: Vector2i,
 	) -> RoomAtlas:
 		var this = RoomAtlas.new()
+		this.source_id = new_source_id
 		this.room_atlas = new_room_atlas
 		this.top_atlas = new_top_atlas
 		this.bottom_atlas = new_bottom_atlas
@@ -86,17 +89,16 @@ static func draw_rect_borders(
 	var h = int(size.y * 2)
 
 	for idx in range(0, w):
-		tm.set_cell(0, Vector2i(x + idx, y), 0, room_atlas.top_atlas)
+		tm.set_cell(0, Vector2i(x + idx, y), room_atlas.source_id, room_atlas.top_atlas)
 	for idx in range(0, w):
-		tm.set_cell(0, Vector2i(x + idx, y + h - 1), 0, room_atlas.bottom_atlas)
+		tm.set_cell(0, Vector2i(x + idx, y + h - 1), room_atlas.source_id, room_atlas.bottom_atlas)
 		
 	for idx in range(0, h):
-		tm.set_cell(0, Vector2i(x, y + idx), 0, room_atlas.left_atlas)
+		tm.set_cell(0, Vector2i(x, y + idx), room_atlas.source_id, room_atlas.left_atlas)
 	for idx in range(0, h):
-		tm.set_cell(0, Vector2i(x + w - 1, y + idx), 0, room_atlas.right_atlas)
+		tm.set_cell(0, Vector2i(x + w - 1, y + idx), room_atlas.source_id, room_atlas.right_atlas)
 
-	# TODO implement corners
-	tm.set_cell(0, Vector2i(x, y), 0, room_atlas.top_left_corner_atlas)
-	tm.set_cell(0, Vector2i(x + w - 1, y), 0, room_atlas.top_right_corner_atlas)
-	tm.set_cell(0, Vector2i(x, y + h - 1), 0, room_atlas.bottom_left_corner_atlas)
-	tm.set_cell(0, Vector2i(x + w - 1, y + h - 1), 0, room_atlas.bottom_right_corner_atlas)
+	tm.set_cell(0, Vector2i(x, y), room_atlas.source_id, room_atlas.top_left_corner_atlas)
+	tm.set_cell(0, Vector2i(x + w - 1, y), room_atlas.source_id, room_atlas.top_right_corner_atlas)
+	tm.set_cell(0, Vector2i(x, y + h - 1), room_atlas.source_id, room_atlas.bottom_left_corner_atlas)
+	tm.set_cell(0, Vector2i(x + w - 1, y + h - 1), room_atlas.source_id, room_atlas.bottom_right_corner_atlas)
