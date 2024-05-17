@@ -9,7 +9,7 @@ func set_room_manager(new_room_manager: RoomManager):
 	room_manager = new_room_manager
 
 func get_pixel_size() -> Vector2:
-	return sprite_2d.get_rect().size * 1.75
+	return sprite_2d.get_rect().size * 0.001
 
 func _on_area_entered(area):
 	room_manager.enter_room_area(original_room_idx)
