@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=45 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
+[ext_resource type="Texture2D" uid="uid://dhqce6ko7h03c" path="res://art/Capstone copy-Sheet.png" id="2_b2jsn"]
 [ext_resource type="Texture2D" uid="uid://c7h54bner42ca" path="res://art/player_forward.png" id="3_vyaho"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_ben86"]
 [ext_resource type="Texture2D" uid="uid://db4ipt5uva7my" path="res://art/Player2.png" id="4_v47rc"]
@@ -10,6 +11,10 @@ size = Vector2(76, 119)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbbew"]
 size = Vector2(75, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4wou"]
+atlas = ExtResource("2_b2jsn")
+region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwlwh"]
 atlas = ExtResource("4_v47rc")
@@ -141,7 +146,10 @@ region = Rect2(1600, 1600, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mkymf"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4wou")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
