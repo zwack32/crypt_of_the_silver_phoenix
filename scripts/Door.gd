@@ -16,7 +16,7 @@ func _ready():
 	
 	#sprite_2d.hide()
 	
-	animated_sprite_2d.play("opening")
+	animated_sprite_2d.play("open")
 
 func set_disabled(disabled: bool):
 	collider.disabled = disabled
