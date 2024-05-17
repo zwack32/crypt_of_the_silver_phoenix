@@ -12,7 +12,7 @@ func _ready():
 
 	enemy_max_health = 50
 	# This is the "base attack" used only when you boop the ogre
-	enemy_atk = 0.25
+	enemy_atk = 1
 	enemy_def = 20
 	enemy_speed = 50
 
@@ -56,7 +56,7 @@ func attack():
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
 	if can_attack_player():
-		player.take_damage(enemy_atk + 7.25)
+		player.take_damage(enemy_atk + 13)
 		player.bounce_towards((player.position - position).normalized() * 18.0)
 	else:
 		player.apply_shake()
