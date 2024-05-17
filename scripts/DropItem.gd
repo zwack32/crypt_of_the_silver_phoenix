@@ -57,11 +57,11 @@ func _process(delta):
 	if is_in_range && Input.is_action_just_pressed("pick_up"):
 		if drop_item.ty == DropItemType.Health:
 			if drop_item.data == DropHeathValues.HealthSmall:
-				player.set_health(player.get_health() + 0.15 * player.get_player_max_hp())
+				player.set_health(player.get_health() + 0.18 * player.get_player_max_hp())
 			elif drop_item.data == DropHeathValues.HealthMedium:
 				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
 			elif drop_item.data == DropHeathValues.HealthBig:
-				player.set_health(player.get_health() + 0.25 * player.get_player_max_hp())
+				player.set_health(player.get_health() + 0.45 * player.get_player_max_hp())
 		elif drop_item.ty == DropItemType.Melee:
 			WeaponManager.set_melee(drop_item.data)
 			print("You got a melee from item drop")
