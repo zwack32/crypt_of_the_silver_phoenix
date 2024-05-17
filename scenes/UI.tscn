@@ -32,7 +32,6 @@ offset_left = 31.0
 offset_top = 21.0
 offset_right = 122.0
 offset_bottom = 61.0
-scale = Vector2(2, 2)
 text = "Level 0"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
