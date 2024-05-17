@@ -52,7 +52,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tos1b")
 }],
-"loop": false,
+"loop": true,
 "name": &"opening",
 "speed": 5.0
 }]
@@ -70,16 +70,14 @@ size = Vector2(106, 159)
 size = Vector2(119.688, 50)
 
 [node name="door" type="StaticBody2D"]
-z_index = 10
 scale = Vector2(1, 0.5)
 collision_layer = 18
 collision_mask = 19
 script = ExtResource("1_vkm81")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 10
-position = Vector2(1, -48.5)
-scale = Vector2(0.239583, 0.429687)
+position = Vector2(1.99998, -48)
+scale = Vector2(0.225, 0.428125)
 sprite_frames = SubResource("SpriteFrames_lf7j4")
 animation = &"opening"
 

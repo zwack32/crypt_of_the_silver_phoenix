@@ -33,8 +33,9 @@ var is_in_range = false
 var drop_item: DropItemUnion = DropItemUnion.new()
 var data
 func _ready():
-	var drop_type = randi_range(0, DropItemType._Count - 1)
-	if drop_type == DropItemType.Health:
+	var drop_type = randi_range(0, 5)
+	if drop_type >= 0 && drop_type <= 3:
+		drop_type = DropItemType.Health
 		data = randi_range(0, DropHeathValues._Count - 1)
 		if data == DropHeathValues.HealthSmall:
 			sprite_2d.texture = load("res://art/small_heart.png")
@@ -42,9 +43,11 @@ func _ready():
 			sprite_2d.texture = load("res://art/med_heart.png")
 		if data == DropHeathValues.HealthBig:
 			sprite_2d.texture = load("res://art/large_heart.png")
-	elif drop_type == DropItemType.Melee:
+	elif drop_type == 4:
+		drop_type = DropItemType.Melee
 		drop_melee()
-	elif drop_type == DropItemType.Tome:
+	elif drop_type == 5:
+		drop_type = DropItemType.Tome
 		drop_tome()
 		
 	drop_item.ty = drop_type
