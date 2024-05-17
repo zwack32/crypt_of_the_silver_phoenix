@@ -12,8 +12,6 @@ func _ready():
 func _process(delta):
 	if fade_out and death_theme.volume_db >= -200:
 		death_theme.volume_db -= 0.05
-		print(death_theme.volume_db)
-		#await get_tree().create_timer(0.1).timeout
 	pass
 	
 

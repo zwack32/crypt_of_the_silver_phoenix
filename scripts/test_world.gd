@@ -12,6 +12,4 @@ func _ready():
 func _process(delta):
 	if standard_bgm.volume_db <= 0:
 		standard_bgm.volume_db += 0.5
-		print(standard_bgm.volume_db)
-		#await get_tree().create_timer(0.1).timeout
 	pass

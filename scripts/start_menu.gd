@@ -29,7 +29,6 @@ func _on_quit_button_pressed():
 func _process(delta):
 	if music_fade:
 		title_theme.volume_db -= 0.5
-		print(title_theme.volume_db)
 
 
 func _on_tutorial_pressed():
