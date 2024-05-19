@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckc52m6ovxgvd"]
+[gd_scene load_steps=16 format=3 uid="uid://ckc52m6ovxgvd"]
 
 [ext_resource type="Script" path="res://scripts/Door.gd" id="1_vkm81"]
 [ext_resource type="Texture2D" uid="uid://drokqbdx3rj2w" path="res://art/door animation-Sheet.png" id="2_bgshb"]
 [ext_resource type="Texture2D" uid="uid://cbmolpgifd208" path="res://art/door animation2-Sheet.png" id="3_ntp35"]
+[ext_resource type="Texture2D" uid="uid://bau13teyplhkl" path="res://art/SunDoor.png" id="4_ewnw1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lt2tw"]
 atlas = ExtResource("2_bgshb")
@@ -23,6 +24,10 @@ region = Rect2(960, 0, 960, 640)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tos1b"]
 atlas = ExtResource("3_ntp35")
 region = Rect2(1920, 0, 960, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40klt"]
+atlas = ExtResource("4_ewnw1")
+region = Rect2(243, 0, 24, 72)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lf7j4"]
 animations = [{
@@ -55,6 +60,14 @@ animations = [{
 "loop": true,
 "name": &"opening",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40klt")
+}],
+"loop": true,
+"name": &"side_closed",
+"speed": 5.0
 }]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6dv1i"]
@@ -79,15 +92,19 @@ script = ExtResource("1_vkm81")
 position = Vector2(1.99998, -48)
 scale = Vector2(0.225, 0.428125)
 sprite_frames = SubResource("SpriteFrames_lf7j4")
-animation = &"opening"
+animation = &"side_closed"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ForwardDoor" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(94, -174)
 scale = Vector2(0.6, 0.84)
 texture = SubResource("CompressedTexture2D_6dv1i")
 offset = Vector2(-320, 320)
 metadata/_edit_group_ = true
+
+[node name="SideDoor" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_ewnw1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)

@@ -63,7 +63,8 @@ func attack():
 	attacking = false
 	
 	await animated_sprite_2d.animation_finished
-	animated_sprite_2d.play("idle")
+	if !is_dead:
+		animated_sprite_2d.play("idle")
 
 func can_attack_player() -> bool:
 	var to_player = player.position - position

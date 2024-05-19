@@ -3,6 +3,8 @@ extends Area2D
 @onready var sprite_2d = $Sprite2D
 var is_in_range = false
 
+var world_scene = preload("res://scenes/test_world.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,7 +16,7 @@ func _process(delta):
 		is_in_range = false
 		await LevelTransition.fade_to_black(1)
 		Progression.next_level()
-		get_tree().change_scene_to_file("res://scenes/test_world.tscn")
+		get_tree().change_scene_to_packed(world_scene)
 		LevelTransition.fade_from_black(1)
 
 func _on_area_entered(area):
