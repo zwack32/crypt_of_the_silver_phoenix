@@ -10,29 +10,11 @@ const RoomsScript = preload("res://scripts/dungen/rooms.gd")
 @export var room_manager: RoomManager
 
 func _ready():
-	var rooms: Array[RoomsScript.RoomNode]
-	var doors: Array[DoorsScript.DoorNode]
-
-	var start_room_idx
-	var exit_room_idx
-
-	while true:
-		rooms = RoomsScript.rooms_populate(Progression.get_room_count())
-		RoomsScript.rooms_gen(rooms)
-
-		var start_room = RoomsScript.RoomNode.init(Vector2(0.0, 200.0), Vector2(5.0, 5.0))
-		var exit_room = RoomsScript.RoomNode.init(Vector2(0.0, -200.0), Vector2(5.0, 5.0))
-
-		exit_room_idx = len(rooms)
-		RoomsScript.rooms_inject_room(rooms, exit_room)
-
-		start_room_idx = len(rooms)
-		RoomsScript.rooms_inject_room(rooms, start_room)
-		RendererScript.set_origin_to_last_room(rooms)
-
-		doors = DoorsScript.doors_gen(rooms)
-		if CheckerScript.check(rooms, doors):
-			break
+	var room_res = RoomCache.take_room()
+	var rooms: Array[RoomsScript.RoomNode] = room_res.rooms
+	var doors: Array[DoorsScript.DoorNode] = room_res.doors
+	var start_room_idx = room_res.start_room_idx
+	var exit_room_idx = room_res.exit_room_idx
 		
 	RendererScript.render_level(
 		self, 
