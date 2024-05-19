@@ -55,12 +55,13 @@ func attack():
 	animated_sprite_2d.play("attack")
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
-	if can_attack_player():
-		player.take_damage(enemy_atk + 13)
-		player.bounce_towards((player.position - position).normalized() * 18.0)
-	else:
-		player.apply_shake()
-	attacking = false
+	if !is_dead:
+		if can_attack_player():
+			player.take_damage(enemy_atk + 13)
+			player.bounce_towards((player.position - position).normalized() * 18.0)
+		else:
+			player.apply_shake()
+		attacking = false
 	
 	await animated_sprite_2d.animation_finished
 	if !is_dead:
