@@ -5,6 +5,8 @@ const ATTACK_DISTANCE_X = 268
 const ATTACK_DISTANCE_Y = 250
 	
 var attacking = false
+@onready var heavy_breathing = $HeavyBreathing
+@onready var thwack = $Thwack
 
 func _ready():
 	spawn_delay = 1.5

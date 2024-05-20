@@ -1,9 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://citko3tuph1gg"]
+[gd_scene load_steps=36 format=3 uid="uid://citko3tuph1gg"]
 
 [ext_resource type="Script" path="res://scripts/ogre.gd" id="1_3lsmk"]
 [ext_resource type="Texture2D" uid="uid://e8riu5j0moty" path="res://art/ogreswing-Sheet.png" id="1_i8oap"]
 [ext_resource type="Texture2D" uid="uid://ce4lgqmvbhjho" path="res://art/ogre-Sheet.png" id="3_4mhx3"]
 [ext_resource type="PackedScene" uid="uid://cscfo63mmurx6" path="res://scenes/fire_particle_2.tscn" id="4_wgpv8"]
+[ext_resource type="AudioStream" uid="uid://jtgefn01uu1l" path="res://sounds/heavy-breath-male-63980.mp3" id="5_ira5t"]
+[ext_resource type="AudioStream" uid="uid://dfmo11ct6v2gp" path="res://sounds/ogre_slam.mp3" id="6_57gcr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ff038"]
 atlas = ExtResource("1_i8oap")
@@ -245,10 +247,16 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
-[node name="Fire Particle" parent="." instance=ExtResource("4_wgpv8")]
+[node name="FireParticle" parent="." instance=ExtResource("4_wgpv8")]
 z_index = -10
 emitting = false
 initial_velocity_min = 0.0
 initial_velocity_max = 0.0
+
+[node name="HeavyBreathing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ira5t")
+
+[node name="Thwack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_57gcr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
