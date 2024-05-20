@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqd0ue5g0m07f"]
 
 [ext_resource type="Script" path="res://weapons/hammer.gd" id="1_ysxie"]
-[ext_resource type="Texture2D" uid="uid://cgt1nl05bgpol" path="res://art/hammeraxe.png" id="2_mpsnn"]
+[ext_resource type="Texture2D" uid="uid://dhf08qwvll4u5" path="res://art/hammer.png" id="2_8ard0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp6p8"]
 size = Vector2(27, 81)
@@ -11,9 +11,9 @@ collision_layer = 8
 script = ExtResource("1_ysxie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10, -152)
+position = Vector2(13, -217)
 scale = Vector2(0.7, 0.75)
-texture = ExtResource("2_mpsnn")
+texture = ExtResource("2_8ard0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(45.5, -159.5)

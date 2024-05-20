@@ -37,7 +37,7 @@ const LONGSWORD_TEXTURE = preload("res://art/longsword (1).png")
 const SHORTSWORD_TEXTURE = preload("res://art/shortsword (1).png")
 const SUNSWORD_TEXTURE = preload("res://art/sunsword.png")
 const AXE_TEXTURE = preload("res://art/axe-Sheet.png")
-const HAMMER_TEXTURE = preload("res://art/hammeraxe.png")
+const HAMMER_TEXTURE = preload("res://art/hammer.png")
 const SCYTHE_TEXTURE = preload("res://art/scythe (1).png")
 
 const FIREBALL_TEXTURE = preload("res://art/fireball.png")
