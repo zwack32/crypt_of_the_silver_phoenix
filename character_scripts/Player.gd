@@ -28,6 +28,8 @@ var is_dead = false
 
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 @onready var sword_swing = $SwordSwing
+@onready var fire_swing = $FireSwing
+@onready var ice_swing = $IceSwing
 @onready var heal_particles = $HealParticles
 
 #annoying functions so that we can use these in other scripts
@@ -71,18 +73,16 @@ func melee_attack():
 		return
 
 	var weapon = WeaponManager.get_melee_scene().instantiate()
-	# TODO Zack
-	# Fire
+
 	if WeaponManager.get_current_melee() == 3:
-		pass
-	# Ice
+		fire_swing.play()
 	elif WeaponManager.get_current_melee() == 4:
-		pass
+		ice_swing.play(0.5)
 	else:
-		pass
+		sword_swing.play()
+	
 	weapon.player = self
 	add_child(weapon)
-	sword_swing.play()
 	# animated_sprite_2d.play("attack1")
 	can_swing = false
 
