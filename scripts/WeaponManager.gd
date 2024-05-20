@@ -146,3 +146,6 @@ static func get_tome_animation(tome: TomeType) -> String:
 func reset():
 	current_melee = randi_range(0, MeleeWeaponType._Count - 1)
 	current_tome = randi_range(0, TomeType._Count - 1)
+	
+func get_current_melee():
+	return current_melee
