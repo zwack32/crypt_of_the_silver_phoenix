@@ -71,6 +71,15 @@ func melee_attack():
 		return
 
 	var weapon = WeaponManager.get_melee_scene().instantiate()
+	# TODO Zack
+	# Fire
+	if WeaponManager.current_weapon == 3:
+		pass
+	# Ice
+	elif WeaponManager.current_weapon == 4:
+		pass
+	else:
+		pass
 	weapon.player = self
 	add_child(weapon)
 	sword_swing.play()
