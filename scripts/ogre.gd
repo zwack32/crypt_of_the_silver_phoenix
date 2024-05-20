@@ -5,6 +5,8 @@ const ATTACK_DISTANCE_X = 268
 const ATTACK_DISTANCE_Y = 250
 	
 var attacking = false
+
+var e = 0
 @onready var heavy_breathing = $HeavyBreathing
 @onready var thwack = $Thwack
 
@@ -26,6 +28,8 @@ func _ready():
 
 	health_bar = $HealthBar
 	animated_sprite_2d = $AnimatedSprite2D
+
+	heavy_breathing.play()
 
 	await on_enemy_ready()
 
@@ -57,6 +61,10 @@ func attack():
 	animated_sprite_2d.play("attack")
 	for _i in range(4):
 		await animated_sprite_2d.frame_changed
+		e += 1
+		if e == 4:
+			thwack.play()
+			e = 0
 	if !is_dead:
 		if can_attack_player():
 			player.take_damage(enemy_atk + 13)
