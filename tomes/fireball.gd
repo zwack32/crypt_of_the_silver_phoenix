@@ -6,6 +6,7 @@ var type = "fire"
 
 #@onready var cpu_particles_2d = $CPUParticles2D
 @onready var fireball_animation = $FireballAnimation
+@onready var explosion = $Explosion
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +14,7 @@ func _ready():
 	position = get_global_mouse_position()
 	
 	fireball_animation.play("fireball")
+	explosion.play()
 	player.apply_shake()
 	#cpu_particles_2d.emitting = true
 	

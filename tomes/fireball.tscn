@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://ch0qfkpi4s11o"]
+[gd_scene load_steps=17 format=3 uid="uid://ch0qfkpi4s11o"]
 
 [ext_resource type="Script" path="res://tomes/fireball.gd" id="1_5isqm"]
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="2_2bi8o"]
 [ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="2_373pt"]
+[ext_resource type="AudioStream" uid="uid://wv38l8l20r62" path="res://sounds/cannon-fire-161072.mp3" id="4_akvmd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oaidw"]
 radius = 76.0263
@@ -120,3 +121,6 @@ linear_accel_max = -2500.0
 scale_amount_min = 50.0
 scale_amount_max = 100.0
 color_ramp = SubResource("Gradient_0f41u")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_akvmd")

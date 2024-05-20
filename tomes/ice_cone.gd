@@ -7,12 +7,13 @@ var type = "ice"
 
 #@onready var cpu_particles_2d = $CPUParticles2D
 @onready var ice_cone_animation = $IceConeAnimation
-
+@onready var ice_sound = $IceSound
 
 func _ready():
 	position = player.position
 	rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI / 2
 	player.apply_shake()
+	ice_sound.play()
 	#cpu_particles_2d.emitting = true
 	ice_cone_animation.play("ice_cone")
 

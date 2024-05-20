@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://djx3jxny78ig6"]
+[gd_scene load_steps=13 format=3 uid="uid://djx3jxny78ig6"]
 
 [ext_resource type="Texture2D" uid="uid://qcyp21s52d5" path="res://icon.svg" id="1_sintp"]
 [ext_resource type="Script" path="res://tomes/ice_cone.gd" id="1_xp4w1"]
 [ext_resource type="Texture2D" uid="uid://bbjymm2eoaptu" path="res://art/MagicSpells-Sheet.png" id="3_e71sw"]
+[ext_resource type="AudioStream" uid="uid://nf76h2fviwbk" path="res://sounds/ice2-90655.mp3" id="4_o0ht6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvhpn"]
 atlas = ExtResource("3_e71sw")
@@ -99,5 +100,8 @@ linear_accel_max = -200.0
 scale_amount_min = 8.0
 scale_amount_max = 8.0
 color = Color(0.164706, 0.580392, 0.85098, 1)
+
+[node name="IceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o0ht6")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

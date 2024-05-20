@@ -10,6 +10,7 @@ var entered_once = false
 @onready var bead_sprite = $BeadSprite
 #@onready var cpu_particles_2d = $CPUParticles2D
 @onready var sunburst_animation = $SunburstAnimation
+@onready var sunburst_sound = $SunburstSound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,9 +28,11 @@ func _on_area_entered(area):
 	if !entered_once && !(area.owner is Player):
 		entered_once = true
 		scale = Vector2(4, 4)
+		sunburst_sound.play(2)
 		boom()
 
 func _on_body_entered(body):
+	sunburst_sound.play(1.5)
 	boom()
 
 func boom():
@@ -39,6 +42,5 @@ func boom():
 	#cpu_particles_2d.emitting = true
 	sunburst_animation.play("sunburst")
 	velocity = Vector2.ZERO
-		
 	await get_tree().create_timer(0.3).timeout
 	queue_free()

@@ -27,7 +27,7 @@ var is_dead = false
 @onready var camera_2d = $Camera2D
 
 @onready var spell_cooldown_timer = $SpellCooldownTimer
-#@onready var sword_swing = $SwordSwing
+@onready var sword_swing = $SwordSwing
 @onready var heal_particles = $HealParticles
 
 #annoying functions so that we can use these in other scripts
@@ -73,7 +73,7 @@ func melee_attack():
 	var weapon = WeaponManager.get_melee_scene().instantiate()
 	weapon.player = self
 	add_child(weapon)
-	#sword_swing.play()
+	sword_swing.play()
 	# animated_sprite_2d.play("attack1")
 	can_swing = false
 
