@@ -5,6 +5,7 @@ var is_attacking = false
 var charge_velocity: Vector2
 
 signal attack_finished
+@onready var screech = $Screech
 
 func _ready():
 	spawn_delay = 1.5
@@ -61,6 +62,7 @@ func _process(delta):
 func prepare_attack(is_inital=false):
 	while !is_dead:
 		await get_tree().create_timer(randf_range(3.0, 8.0)).timeout
+		screech.play()
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		charge_velocity = velocity
