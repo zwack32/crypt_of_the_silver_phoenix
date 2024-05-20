@@ -14,6 +14,10 @@ size = Vector2(76, 119)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbbew"]
 size = Vector2(75, 118)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjitf"]
+atlas = ExtResource("3_vyaho")
+region = Rect2(0, 0, 320, 320)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwlwh"]
 atlas = ExtResource("4_v47rc")
 region = Rect2(0, 320, 320, 320)
@@ -37,10 +41,6 @@ region = Rect2(1280, 320, 320, 320)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq7q8"]
 atlas = ExtResource("4_v47rc")
 region = Rect2(1600, 320, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjitf"]
-atlas = ExtResource("3_vyaho")
-region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nv54m"]
 atlas = ExtResource("3_vyaho")
@@ -144,7 +144,10 @@ region = Rect2(1600, 1600, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mkymf"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjitf")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -325,7 +328,7 @@ texture_filter = 1
 position = Vector2(-0.499996, -1.01328e-06)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_mkymf")
-animation = &"walk_down"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
