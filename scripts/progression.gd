@@ -15,7 +15,9 @@ func get_room_count(dungeon_level) -> int:
 	elif dungeon_level == 2:
 		return 11
 	elif dungeon_level == 3:
-		return round((0.4 * (dungeon_level - 1)) ** 2 + 13)
+		return 16
+	elif dungeon_level == 4:
+		return 24
 	else:
 		return round(log(dungeon_level) / log(2) + 24)
 	

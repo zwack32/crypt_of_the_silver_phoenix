@@ -66,6 +66,7 @@ func _ready():
 		new_door_collider.direction = door.normal
 		new_door_collider.original_room_idx = door.original_room_idx
 		new_door_collider.room_manager = room_manager
+		new_door_collider.is_pair_far = abs((doors[door.pair_room_idx].pos - door.pos).length()) >= 0.8
 
 		room_manager.add_door(new_door_collider)
 

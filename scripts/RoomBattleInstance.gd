@@ -67,7 +67,8 @@ func pop_enemy():
 			enemy.indicator_border = indicator_border
 			enemy.room_level = room_level
 			current_wave_enemy_count += 1
-			get_parent().add_child(enemy)
+			get_parent().call_deferred("add_child", enemy)
+			# get_parent().add_child(enemy)
 		current_wave += 1;
 
 func get_random_room_position() -> Vector2:

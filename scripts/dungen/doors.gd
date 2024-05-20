@@ -17,7 +17,7 @@ class DoorGenNode:
 		new_pos: Vector2, 
 		new_normal: Vector2, 
 		new_perpendicular_size: float, 
-		new_original_room_idx: int
+		new_original_room_idx: int,
 	) -> DoorGenNode:
 		var node = DoorGenNode.new()
 		node.pos = new_pos
@@ -83,7 +83,7 @@ static func doors_gen(rooms: Array[RoomNode]) -> Array[DoorNode]:
 			up, 
 			Vector2(0.0, 1.0), 
 			room.size.x, 
-			original_room_idx
+			original_room_idx,
 		))
 		nodes.push_back(DoorGenNode.init(
 			down, 

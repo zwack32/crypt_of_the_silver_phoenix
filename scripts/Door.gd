@@ -4,6 +4,7 @@ class_name Door
 @export var direction: Vector2
 @export var original_room_idx: int
 @export var room_manager: RoomManager
+@export var is_pair_far: bool = false
 
 @onready var enter_trigger = $EnterTrigger
 @onready var collider = $CollisionShape2D

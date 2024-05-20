@@ -87,5 +87,5 @@ func unpair_doors():
 	for door in doors:
 		if door.direction == Vector2.DOWN:
 			door.hide()
-		if door.direction == Vector2.RIGHT:
+		if door.direction == Vector2.RIGHT && !door.is_pair_far:
 			door.hide()
