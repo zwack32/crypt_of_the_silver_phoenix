@@ -91,10 +91,11 @@ direction = null
 original_room_idx = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
 position = Vector2(1.99998, -48)
 scale = Vector2(0.225, 0.428125)
 sprite_frames = SubResource("SpriteFrames_lf7j4")
-animation = &"side_closed"
+animation = &"open"
 
 [node name="ForwardDoor" type="Sprite2D" parent="."]
 visible = false
