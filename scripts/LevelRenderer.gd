@@ -10,7 +10,11 @@ const RoomsScript = preload("res://scripts/dungen/rooms.gd")
 @export var room_manager: RoomManager
 
 func _ready():
-	var room_res = RoomCache.take_room()
+	var room_res
+	if Progression.get_dungeon_level() == 0:
+		room_res = RoomCache.take_tutorial_rooms()
+	else:
+		room_res = RoomCache.take_rooms()
 	var rooms: Array[RoomsScript.RoomNode] = room_res.rooms
 	var doors: Array[DoorsScript.DoorNode] = room_res.doors
 	var start_room_idx = room_res.start_room_idx

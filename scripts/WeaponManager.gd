@@ -1,7 +1,20 @@
 extends Node
 
-static var current_melee: MeleeWeaponType = randi_range(0, MeleeWeaponType._Count - 1)
+static var current_melee: MeleeWeaponType = get_initial_melee()
 static var current_tome: TomeType = randi_range(0, TomeType._Count - 1)
+
+static func get_initial_melee():
+	var rand = randi_range(0, 4)
+	if rand == 0:
+		return MeleeWeaponType.ShortSword
+	if rand == 1:
+		return MeleeWeaponType.LongSword
+	if rand == 2:
+		return MeleeWeaponType.GreatSword
+	if rand == 3:
+		return MeleeWeaponType.Axe
+	if rand == 4:
+		return MeleeWeaponType.Hammer
 
 const SHORTSWORD = preload("res://weapons/shortsword.tscn")
 const LONGSWORD = preload("res://weapons/longsword.tscn")

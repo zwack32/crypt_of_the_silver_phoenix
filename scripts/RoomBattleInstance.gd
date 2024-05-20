@@ -34,7 +34,7 @@ func pop_enemy():
 			queue_free()
 			return
 
-		var spawn_value = roundi(6 * log(current_wave + Progression.get_initial_enemy_count() + 1) + 3)
+		var spawn_value = roundi(4 * log(current_wave + Progression.get_initial_enemy_count() + 1) + 3)
 		current_wave_enemy_count = 0
 		while spawn_value > 0:
 			var rand_position = get_random_room_position()

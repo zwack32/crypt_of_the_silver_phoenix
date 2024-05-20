@@ -76,8 +76,10 @@ position = Vector2(0, -160)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_pnwvt")
 animation = &"ice_cone"
+frame_progress = 0.950829
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.72, 1.12)
 polygon = PackedVector2Array(0, 0, 128, -320, -128, -320)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
