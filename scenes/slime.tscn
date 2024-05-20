@@ -256,4 +256,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_f0dgw")
 value = 30.0
 show_percentage = false
 
+[node name="Squish" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
