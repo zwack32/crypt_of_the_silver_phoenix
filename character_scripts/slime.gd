@@ -1,6 +1,8 @@
 extends Enemy
 class_name Slime
 
+@onready var squish = $Sqiush
+
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
@@ -22,6 +24,10 @@ func _ready():
 	await on_enemy_ready()
 
 func _process(delta):
+	if is_dead:
+		#squish.volume_db = -99999
+		squish.stop()
+	
 	if !on_enemy_process():
 		return;
 
@@ -37,7 +43,8 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = true
 	else: 
 		$AnimatedSprite2D.flip_h = false
-
+		
+	
 func _on_area_entered(area):
 	if !is_dead:
 		on_enemy_area_entered(area)
