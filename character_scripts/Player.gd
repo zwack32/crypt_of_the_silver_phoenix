@@ -176,7 +176,13 @@ func move():
 	#remove this before releasing the game
 	if Input.is_action_just_pressed("reroll"):
 		WeaponManager.reset()
-	
+	if Input.is_action_just_pressed("next_level"):
+		await LevelTransition.fade_to_black(1)
+		Progression.next_level()
+		get_tree().change_scene_to_file("res://scenes/test_world.tscn")
+		LevelTransition.fade_from_black(1)
+	if Input.is_action_just_pressed("heal"):
+		set_health(player_max_health)
 
 	velocity = player_velocity.normalized() * movement_speed + bounce_velocity
 	bounce_velocity += Vector2.ONE * bounce_acceleration
