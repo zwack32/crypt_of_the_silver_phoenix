@@ -4,6 +4,9 @@ class_name Goblin
 var should_run_away = false
 var stop_velocity = false
 
+@onready var hit = $Hit
+@onready var footsteps = $Footsteps
+
 func _ready():
 	spawn_delay = 1.5
 	spawn_delay_rand_range = 0.5
@@ -58,6 +61,7 @@ func _on_area_2d_area_entered(area):
 			stop_velocity = true
 			$AnimatedSprite2D.play("attack")
 			await $AnimatedSprite2D.animation_finished
+			hit.play()
 		on_enemy_area_entered(area)
 		if area.owner is Player:
 			stop_velocity = false

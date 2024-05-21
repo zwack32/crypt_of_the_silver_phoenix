@@ -1,7 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://b57ix8xbcv5ry"]
+[gd_scene load_steps=48 format=3 uid="uid://b57ix8xbcv5ry"]
 
 [ext_resource type="Script" path="res://character_scripts/goblin.gd" id="1_0ebxf"]
 [ext_resource type="Texture2D" uid="uid://bsadypmfnv4tn" path="res://art/goblin thing-Sheet.png" id="1_psf84"]
+[ext_resource type="AudioStream" uid="uid://ya2o03rghvjr" path="res://sounds/goblin_hammer.mp3" id="3_td74f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uosce"]
 atlas = ExtResource("1_psf84")
@@ -352,5 +353,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_7obue")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oxxkd")
 value = 30.0
 show_percentage = false
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_td74f")
+volume_db = 24.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

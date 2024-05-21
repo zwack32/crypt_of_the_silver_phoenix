@@ -62,11 +62,11 @@ func _process(delta):
 func prepare_attack(is_inital=false):
 	while !is_dead:
 		await get_tree().create_timer(randf_range(3.0, 8.0)).timeout
-		screech.play()
 		var direction = (player.position - position).normalized()
 		velocity = direction * enemy_speed
 		charge_velocity = velocity
 		is_attacking = true
+		screech.play()
 		await_end_attack()
 		await attack_finished
 		is_attacking = false

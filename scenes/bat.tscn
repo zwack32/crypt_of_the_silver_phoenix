@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://qq15dgyc72ta"]
 
 [ext_resource type="Script" path="res://character_scripts/bat.gd" id="1_lp1dh"]
-[ext_resource type="AudioStream" uid="uid://b3aw0bhopyie5" path="res://sounds/double-squeak-2-103875.mp3" id="3_eb1qx"]
 [ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_qptct"]
+[ext_resource type="AudioStream" uid="uid://c7xwi3p5jvtql" path="res://sounds/bat_screech.mp3" id="3_utixm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64hby"]
 atlas = ExtResource("3_qptct")
@@ -253,7 +253,7 @@ value = 50.0
 show_percentage = false
 
 [node name="Screech" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_eb1qx")
+stream = ExtResource("3_utixm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
