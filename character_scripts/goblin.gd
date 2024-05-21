@@ -39,16 +39,15 @@ func _process(delta):
 			direction *= -1.3
 		if !stop_velocity:
 			velocity = direction * enemy_speed
+		if (position.x > player.position.x):
+			$AnimatedSprite2D.flip_h = true
+		else: 
+			$AnimatedSprite2D.flip_h = false
+			
+		if should_run_away:
+			$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 	
 	health_bar.value = enemy_health
-	
-	if (position.x > player.position.x):
-		$AnimatedSprite2D.flip_h = true
-	else: 
-		$AnimatedSprite2D.flip_h = false
-		
-	if should_run_away:
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 
 func run_away():
 	should_run_away = true
@@ -56,14 +55,17 @@ func run_away():
 	should_run_away = false
 
 func _on_area_2d_area_entered(area):
+	if is_dead:
+		return
+	if area.owner is Player:
+		stop_velocity = true
+		$AnimatedSprite2D.play("attack")
+		await $AnimatedSprite2D.animation_finished
 	if !is_dead:
-		if area.owner is Player:
-			stop_velocity = true
-			$AnimatedSprite2D.play("attack")
-			await $AnimatedSprite2D.animation_finished
-			hit.play()
+		hit.play()
 		on_enemy_area_entered(area)
-		if area.owner is Player:
-			stop_velocity = false
-			run_away()
-			$AnimatedSprite2D.play("move")
+	if area.owner is Player && !is_dead:
+		stop_velocity = false
+		run_away()
+		$AnimatedSprite2D.play("move")
+
