@@ -6,6 +6,8 @@ class_name Enemy
 @export var player: Player
 @export var room_level: int
 
+var enemy_particles = preload("res://scenes/enemy_particles.tscn")
+
 var is_dead = false
 var is_active = false
 var is_burning = false
@@ -19,7 +21,6 @@ var indicator_id
 @export var burn_duration: float = 5.0
 @export var burn_tick_duration: float = 1.0
 @export var freeze_duration: float = 10.0
-
 
 var enemy_max_health
 var enemy_atk
@@ -35,6 +36,8 @@ var enemy_die_callback: Callable
 
 var animated_sprite_2d: AnimatedSprite2D
 var health_bar: ProgressBar
+
+var spawned_particles: Array[EnemyParticles] = []
 
 enum EnemyElemental {
 	Normal,
@@ -107,6 +110,9 @@ func on_enemy_die():
 	if is_dead:
 		return
 		
+	for particles in spawned_particles:
+		particles.stop()
+		
 	indicator_border.disable_indicator(indicator_id)
 	
 	if enemy_die_callback:
@@ -158,6 +164,10 @@ func on_burn():
 	if is_burning:
 		return
 	is_burning = true
+	var particles = enemy_particles.instantiate()
+	particles.play_burn()
+	spawned_particles.push_back(particles)
+	add_child(particles)
 	var total_burn_time = 0
 
 	while total_burn_time < burn_duration:
@@ -166,17 +176,27 @@ func on_burn():
 		await get_tree().create_timer(burn_tick_duration).timeout
 		
 	is_burning = false
+	particles.stop()
 	
 func on_freeze():
 	if is_frozen:
 		return
 	is_frozen = true
+	var particles = enemy_particles.instantiate()
+	particles.play_freeze()
+	spawned_particles.push_back(particles)
+	add_child(particles)
 	enemy_speed /= 2
 	await get_tree().create_timer(freeze_duration).timeout
 	enemy_speed *= 2
 	is_frozen = false
+	particles.stop()
 
 func on_glow():
+	var particles = enemy_particles.instantiate()
+	particles.play_glow()
+	spawned_particles.push_back(particles)
+	add_child(particles)
 	is_glowing = true
 
 func get_enemy_atk():

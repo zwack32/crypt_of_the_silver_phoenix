@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1ng30cw2hh2"]
+
+[ext_resource type="Script" path="res://scripts/enemy_particles.gd" id="1_4l28l"]
+
+[sub_resource type="Curve" id="Curve_uf2pd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.174157, 0.758242), 0.0, 0.0, 0, 0, Vector2(0.657303, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 0.274725), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_lrgl2"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_oqwnp"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.0705882)
+
+[node name="EnemyParticles" type="Node2D"]
+script = ExtResource("1_4l28l")
+
+[node name="Burn" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.6
+speed_scale = 0.6
+emission_shape = 2
+emission_sphere_radius = 30.0
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, -900)
+initial_velocity_min = 10.0
+initial_velocity_max = 300.0
+angle_min = 30.0
+angle_max = 30.0
+scale_amount_min = 25.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_uf2pd")
+color = Color(1, 0.180392, 0.0901961, 1)
+color_ramp = SubResource("Gradient_lrgl2")
+
+[node name="Freeze" type="CPUParticles2D" parent="."]
+position = Vector2(-1, -13)
+emitting = false
+amount = 25
+lifetime = 0.3
+speed_scale = 0.1
+emission_shape = 1
+emission_sphere_radius = 75.0
+gravity = Vector2(0, 400)
+scale_amount_min = 6.0
+scale_amount_max = 6.0
+color = Color(0.396869, 0.820943, 0.981444, 1)
+color_ramp = SubResource("Gradient_oqwnp")
+
+[node name="Glow" type="CPUParticles2D" parent="."]
+position = Vector2(-1, -35)
+emitting = false
+lifetime = 0.3
+emission_shape = 2
+emission_sphere_radius = 49.15
+gravity = Vector2(0, 400)
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.984314, 1, 0.00392157, 1)
+color_ramp = SubResource("Gradient_oqwnp")
