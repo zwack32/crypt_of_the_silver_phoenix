@@ -28,11 +28,11 @@ func _on_area_entered(area):
 	if !entered_once && !(area.owner is Player):
 		entered_once = true
 		scale = Vector2(4, 4)
-		sunburst_sound.play(2)
+		sunburst_sound.play()
 		boom()
 
 func _on_body_entered(body):
-	sunburst_sound.play(1.5)
+	sunburst_sound.play()
 	boom()
 
 func boom():

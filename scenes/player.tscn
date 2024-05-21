@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_ben86"]
 [ext_resource type="Texture2D" uid="uid://db4ipt5uva7my" path="res://art/Player2.png" id="4_v47rc"]
 [ext_resource type="AudioStream" uid="uid://cpjm0yh48hh55" path="res://sounds/sword-slash-and-swing-185432.mp3" id="5_1f2ap"]
-[ext_resource type="AudioStream" uid="uid://dpa5sb2ecgraj" path="res://sounds/shimmer-glass-81711.mp3" id="6_56fms"]
-[ext_resource type="AudioStream" uid="uid://6aakqxkonf7a" path="res://sounds/B9RF3M4-fire-sword.mp3" id="6_oiu4k"]
+[ext_resource type="AudioStream" uid="uid://b7dmbkex5ga3f" path="res://sounds/ice_sword_real.mp3" id="6_ii7x6"]
+[ext_resource type="AudioStream" uid="uid://c1rldj18qlr8d" path="res://sounds/fire_sword.mp3" id="7_ene72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nia33"]
 size = Vector2(76, 119)
@@ -367,7 +367,7 @@ show_percentage = false
 stream = ExtResource("5_1f2ap")
 
 [node name="IceSwing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_56fms")
+stream = ExtResource("6_ii7x6")
 
 [node name="FireSwing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_oiu4k")
+stream = ExtResource("7_ene72")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw0sfcwrtmjxx"]
+[gd_scene load_steps=29 format=3 uid="uid://cw0sfcwrtmjxx"]
 
 [ext_resource type="Script" path="res://character_scripts/slime.gd" id="1_02u24"]
 [ext_resource type="Texture2D" uid="uid://10mncje2gad2" path="res://art/slime-Sheet.png" id="2_fu2hm"]
 [ext_resource type="Texture2D" uid="uid://jwypq46gciry" path="res://art/bat-Sheet.png" id="3_4wjsr"]
+[ext_resource type="AudioStream" uid="uid://mma66pev8bk1" path="res://sounds/slime-2-30099.mp3" id="4_e7mti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyi3a"]
 atlas = ExtResource("2_fu2hm")
@@ -257,5 +258,6 @@ value = 30.0
 show_percentage = false
 
 [node name="Squish" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e7mti")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

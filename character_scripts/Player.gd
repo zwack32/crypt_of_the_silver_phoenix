@@ -77,7 +77,7 @@ func melee_attack():
 	if WeaponManager.get_current_melee() == 3:
 		fire_swing.play()
 	elif WeaponManager.get_current_melee() == 4:
-		ice_swing.play(0.5)
+		ice_swing.play()
 	else:
 		sword_swing.play()
 	
