@@ -355,9 +355,8 @@ value = 30.0
 show_percentage = false
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_td74f")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_td74f")
-volume_db = 24.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

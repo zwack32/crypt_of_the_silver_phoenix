@@ -62,6 +62,7 @@ func _on_area_2d_area_entered(area):
 			$AnimatedSprite2D.play("attack")
 			await $AnimatedSprite2D.animation_finished
 			hit.play()
+			print("hit")
 		on_enemy_area_entered(area)
 		if area.owner is Player:
 			stop_velocity = false
