@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://u0hfdydssq7m"]
+[gd_scene load_steps=44 format=3 uid="uid://u0hfdydssq7m"]
 
 [ext_resource type="Script" path="res://character_scripts/Player.gd" id="1_j4g1x"]
 [ext_resource type="Texture2D" uid="uid://c7h54bner42ca" path="res://art/player_forward.png" id="3_vyaho"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="4_ben86"]
 [ext_resource type="Texture2D" uid="uid://db4ipt5uva7my" path="res://art/Player2.png" id="4_v47rc"]
 [ext_resource type="AudioStream" uid="uid://cpjm0yh48hh55" path="res://sounds/sword-slash-and-swing-185432.mp3" id="5_1f2ap"]
+[ext_resource type="AudioStream" uid="uid://d0rrletxgwaxq" path="res://sounds/concrete-footsteps-6752.mp3" id="5_yfebs"]
 [ext_resource type="AudioStream" uid="uid://b7dmbkex5ga3f" path="res://sounds/ice_sword_real.mp3" id="6_ii7x6"]
 [ext_resource type="AudioStream" uid="uid://c1rldj18qlr8d" path="res://sounds/fire_sword.mp3" id="7_ene72"]
 
@@ -341,6 +342,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yfebs")
 
 [node name="SwordSwing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1f2ap")

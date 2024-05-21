@@ -26,10 +26,12 @@ var is_dead = false
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var camera_2d = $Camera2D
 
+@onready var footsteps = $Footsteps
 @onready var spell_cooldown_timer = $SpellCooldownTimer
 @onready var sword_swing = $SwordSwing
 @onready var fire_swing = $FireSwing
 @onready var ice_swing = $IceSwing
+
 @onready var heal_particles = $HealParticles
 
 #annoying functions so that we can use these in other scripts
@@ -182,7 +184,12 @@ func move():
 		# await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("idle")
 		
-	#remove this before releasing the game
+		#if velocity != Vector2.ZERO:
+		#	footsteps.play()
+		#elif velocity == Vector2.ZERO:
+		#	footsteps.stop()
+	
+	#TODO remove this before releasing the game
 	if Input.is_action_just_pressed("reroll"):
 		WeaponManager.reset()
 	if Input.is_action_just_pressed("next_level"):
