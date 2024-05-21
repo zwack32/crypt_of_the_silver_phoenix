@@ -34,6 +34,8 @@ func _ready():
 	await on_enemy_ready()
 
 func _process(delta):
+	if is_dead:
+		heavy_breathing.stop()
 	if !on_enemy_process():
 		return;
 	velocity = Vector2.ZERO

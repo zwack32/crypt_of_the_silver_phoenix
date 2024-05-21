@@ -5,6 +5,8 @@ class_name Mage
 var mage_spell = preload("res://scenes/mage_spell.tscn")
 
 @onready var attack_timer = $AttackTimer
+@onready var glide = $Glide
+@onready var fweeee = $Fweeee
 
 func _ready():
 	spawn_delay = 1.5
@@ -25,11 +27,14 @@ func _ready():
 	health_bar = $MageHealthBar
 	animated_sprite_2d = $AnimatedSprite2D
 	
-
+	glide.play()
+	
 	await on_enemy_ready()
 	ranged_attack()
 
 func _process(delta):
+	if is_dead:
+		glide.stop()
 	if !on_enemy_process():
 		return
 	velocity = Vector2.ZERO
@@ -64,6 +69,7 @@ func ranged_attack():
 			attack_timer.wait_time = spell.cooldown
 			spell.mage = self
 			spell.player = player
+			fweeee.play()
 			get_parent().add_child(spell)
 
 func _on_area_2d_area_entered(area):
