@@ -62,17 +62,19 @@ func _process(delta):
 func prepare_attack(is_inital=false):
 	while !is_dead:
 		await get_tree().create_timer(randf_range(3.0, 8.0)).timeout
-		var direction = (player.position - position).normalized()
-		velocity = direction * enemy_speed
-		charge_velocity = velocity
-		is_attacking = true
-		screech.play() #also plays while dead. i have no idea what's going on here
-		await_end_attack()
-		await attack_finished
-		is_attacking = false
+		if !is_dead:
+			var direction = (player.position - position).normalized()
+			velocity = direction * enemy_speed
+			charge_velocity = velocity
+			is_attacking = true
+			screech.play()
+			print("screech")
+			await_end_attack()
+			await attack_finished
+			is_attacking = false
 
-		# Workaround to prevent sticking to wall
-		position -= direction
+			# Workaround to prevent sticking to wall
+			position -= direction
 
 func await_end_attack():
 	await get_tree().create_timer(randf_range(3.0, 6.0)).timeout
