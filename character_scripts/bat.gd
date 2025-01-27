@@ -62,7 +62,7 @@ func _process(delta):
 func prepare_attack(is_inital=false):
 	while !is_dead:
 		await get_tree().create_timer(randf_range(3.0, 8.0)).timeout
-		if !is_dead:
+		if !is_dead and player.health != 0:
 			var direction = (player.position - position).normalized()
 			velocity = direction * enemy_speed
 			charge_velocity = velocity
