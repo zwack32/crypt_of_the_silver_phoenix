@@ -66,7 +66,7 @@ func prepare_attack(is_inital=false):
 		velocity = direction * enemy_speed
 		charge_velocity = velocity
 		is_attacking = true
-		screech.play()
+		screech.play() #also plays while dead. i have no idea what's going on here
 		await_end_attack()
 		await attack_finished
 		is_attacking = false
